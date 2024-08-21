@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Your Email</title>
+    <link rel="stylesheet" href="./stylesheets/output.css">
+    <style>
+        #resend-button.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
+            <div class="flex flex-col items-center">
+                <svg class="w-16 h-16 mb-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2.003 5.884L10 10.294l7.997-4.41A2 2 0 0016.764 4H3.236a2 2 0 00-1.233.884zM18 8.118l-8 4.411-8-4.41V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                </svg>
+                <h1 class="text-2xl font-bold text-gray-800">Verify Your Email</h1>
+                <p class="mt-2 text-center text-gray-600">
+                    A verification email has been sent to your registered email address. Please check your inbox and click the link to verify your account.
+                </p>
+                <p id="timer" class="mt-4 text-center text-gray-500">You can request a new email in <span id="countdown">2:00</span></p>
+                <a href="/resend" id="resend-button" class="hidden px-6 py-3 mt-4 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
+                    Resend Email
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function startCountdown(duration, display) {
+            let timer = duration, minutes, seconds;
+            const resendButton = document.getElementById('resend-button');
+            const countdownElement = document.getElementById('countdown');
+            
+            const interval = setInterval(() => {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? '0' + minutes : minutes;
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+
+                display.textContent = `${minutes}:${seconds}`;
+
+                if (--timer < 0) {
+                    clearInterval(interval);
+                    resendButton.classList.remove('hidden'); // Show button when countdown ends
+                    countdownElement.textContent = '00:00';
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            const twoMinutes =  60 * 2; // Duration in seconds
+            const display = document.getElementById('countdown');
+            startCountdown(twoMinutes, display);
+        };
+    </script>
+
+</body>
+</html>
