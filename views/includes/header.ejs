@@ -1,0 +1,79 @@
+<nav class="flex items-center justify-between w-full h-20 px-4 align-middle bg-black md:px-4">
+    <div class="flex items-center w-2/5 h-full md:gap-x-8 gap-x-4">
+      <div class="mb-2">
+        <a href="#" class="self-center text-5xl text-white" onclick="toggleSidebar(event)">&#8801;</a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <div class="w-10 h-10 rounded-full cursor-pointer md:h-14 md:w-14">
+          <img class="w-full h-full" src="./images/logo.png" alt="">
+        </div>
+        <div class="text-2xl font-bold text-white md:text-3xl">Colab</div>
+      </div>
+    </div>
+    <ul class="items-center space-x-6 md:flex font-regular">
+      <div class="flex space-x-2">
+        <li class="hidden md:inline">
+          <img class="w-6 h-6" src="./images/home.png" alt="home icon">
+        </li>
+        <li class="mx-[10] cursor-pointer text-gray-400 hidden md:inline hover:text-white duration-300">Home</li>
+      </div>
+      <!-- Requests Section -->
+      <div class="relative flex space-x-2">
+        <li class="relative hidden md:inline">
+          <!-- Bell icon wrapped with a relative container -->
+          <img class="w-6 h-6" src="/images/bell.png" alt="requests">
+          <!-- Badge for larger screens -->
+          <span class="absolute top-[-10%] right-[-10%] bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5">3</span>
+        </li>
+        <li class="hidden text-gray-400 duration-300 cursor-pointer md:inline hover:text-white">Requests</li>
+        
+      </div>
+      <div class="flex space-x-2">
+        <li class="hidden md:inline">
+          <img class="w-6 h-6" src="./images/about.png" alt="">
+        </li>
+        <li class="hidden text-gray-400 duration-300 cursor-pointer md:inline hover:text-white">About</li>
+      </div>
+      <div class="flex space-x-2">
+        <li>
+          <img class="hidden w-6 h-6 md:inline" src="/images/telephone.png" alt="">
+        </li>
+        <li class="hidden text-gray-400 duration-300 cursor-pointer md:inline hover:text-white">Contact</li>
+      </div>
+      <div>
+        <li class="hidden text-white md:inline">|</li>
+      </div>
+      <div>
+        <li class="mx-[10px] cursor-pointer">
+          <img class="w-10 h-10 border-4 rounded-full" src="/images/profile.png" alt="">
+        </li>
+      </div>
+    </ul>
+    <div id="scrollNavbar"
+      class="fixed top-0 z-10 flex flex-row justify-center w-3/4 gap-5 p-2 m-2 mt-5 transition-transform duration-300 ease-in-out transform -translate-x-1/2 bg-transparent border-2 border-white shadow-2xl backdrop-blur-xl navbar left-1/2 rounded-3xl shadow-black md:hidden">
+      <a href="#home">
+        <img class="w-6 h-6" src="/images/home-black.png" alt="home">
+      </a>
+      <span class="font-bold text-center text-white">|</span>
+      <div class="relative">
+        <a href="#request">
+          <img class="w-6 h-6" src="/images/bell-black.png" alt="notifications">
+        </a>
+        <!-- Badge for smaller screens -->
+        <span class="absolute top-0 right-0 px-1 text-xs text-white bg-red-500 rounded-full">3</span>
+        <ul id="submenu">
+          <li class="flex flex-row"><span>request 1</span><div><button>accept</button><button>reject</button></div></li>
+          <li class="flex flex-row"><span>request 1</span><div><button>accept</button><button>reject</button></div></li>
+          <li class="flex flex-row"><span>request 1</span><div><button>accept</button><button>reject</button></div></li>
+        </ul>
+      </div>
+      <span class="font-bold text-center text-white">|</span>
+      <a href="#about">
+        <img class="w-6 h-6" src="/images/info-black.png" alt="about">
+      </a>
+      <span class="font-bold text-center text-white">|</span>
+      <a href="#contact">
+        <img class="w-6 h-6" src="/images/telephone-black.png" alt="contact">
+      </a>
+    </div>
+  </nav>

@@ -7,6 +7,7 @@ const controller = require('./controllers/appController.js')
 const session = require('express-session')
 const MongoDBStore = require("connect-mongodb-session")(session);
 const DataBase = require('./connect/db.js')
+const ejsMate = require('ejs-mate')
 
 DataBase.connect(uri)
 

@@ -1,5 +1,3 @@
-const express = require("express")
-const app = express()
 const nodemailer = require('nodemailer')
 const {EMAIL,PASSWORD,uri,key} = require('../env')
 const userModel = require('../models/userModel.js')
@@ -7,6 +5,7 @@ const axios = require('axios');
 const bcrypt = require('bcrypt')
 const validateEmail = require('../emailvalidator.js')
 const crypto = require('crypto')
+const ejsMate = require('ejs-mate') 
 
 let config = {
     service:'gmail',
@@ -22,30 +21,15 @@ let transporter = nodemailer.createTransport(config)
 
 exports.indexPage = (req,res)=>{
     if(req.session.isAuth==true){
-        return res.render('dashboard')
+        return res.render('home')
     }
     return res.render('index')
 }
 
 exports.emailSend = async (req, res) => {
-    const { name, email, message, 'g-recaptcha-response': recaptchaResponse } = req.body;
-
-    // Validate fields are not empty
-    if (!name || !email || !message) {
-        return res.status(400).render('sentfailed', { error: 'All fields are required.' });
-    }
-
-    // Verify reCAPTCHA
-    const secretKey = ''; // Replace with your reCAPTCHA secret key
-    const verificationURL = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${recaptchaResponse}`;
+    const { name, email, message} = req.body;
 
     try {
-        const verificationResponse = await axios.post(verificationURL);
-        const { success } = verificationResponse.data;
-
-        if (!success) {
-            return res.status(400).render('sentfailed', { error: 'reCAPTCHA verification failed. Please try again.' });
-        }
 
         // Prepare email body
         const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
@@ -61,7 +45,7 @@ exports.emailSend = async (req, res) => {
         return res.status(200).render('sent');
 
     } catch (error) {
-        console.error('Error sending email or verifying reCAPTCHA:', error);
+        console.error('Error sending email:', error);
         return res.status(500).render('sentfailed', { error: 'An error occurred. Please try again later.' });
     }
 }

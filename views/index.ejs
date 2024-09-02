@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./stylesheets/output.css">
-  <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
   <script src="../public/javascripts/script.js"></script>
     <title>Document</title>
   <style>
@@ -248,11 +247,9 @@
               <textarea id="message" name="message" class="w-full h-32 px-3 py-1 text-base leading-6 text-gray-100 transition-colors duration-200 ease-in-out bg-gray-800 border border-gray-700 rounded outline-none resize-none bg-opacity-40 focus:border-green-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900" required></textarea>
             </div>
           </div>
-          
-            <div class="g-recaptcha" data-sitekey="6LfHcikqAAAAAMt6u2DRoP69bDfWZrCcahM76QUc" data-callback="enableSubmitButton"></div>
-          
+                   
           <div class="w-full p-2">
-            <input type="submit" id="submit-button" value="Send" class="flex px-8 py-1 mx-auto mt-4 text-xl font-medium text-white duration-300 bg-red-500 border-0 rounded-lg hover:scale-105 focus:outline-none hover:bg-red-600" disabled>
+            <input type="submit" id="submit-button" value="Send" class="flex px-8 py-1 mx-auto mt-4 text-xl font-medium text-white duration-300 bg-red-500 border-0 rounded-lg hover:scale-105 focus:outline-none hover:bg-red-600">
           </div>
          
             </form>
@@ -261,22 +258,8 @@
   </div>
 </section> 
 
-<!-- JavaScript to handle reCAPTCHA and field validation -->
-<script>
-  function enableSubmitButton() {
-    const submitButton = document.getElementById('submit-button');
-    if (grecaptcha.getResponse()) {
-      submitButton.disabled = false;
-    } else {
-      submitButton.disabled = true;
-    }
-  }
 
-  
-</script>
 
-<!-- reCAPTCHA Script -->
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 
 <div class="flex justify-center ">
