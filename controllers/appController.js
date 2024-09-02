@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer')
 const {EMAIL,PASSWORD,uri,key} = require('../env')
 const userModel = require('../models/userModel.js')
-const axios = require('axios');
+
 const bcrypt = require('bcrypt')
 const validateEmail = require('../emailvalidator.js')
 const crypto = require('crypto')
@@ -109,20 +109,20 @@ exports.resend = async (req, res) => {
             to: email,
             subject: 'Verify Your Email Address',
             text: `
-                Hello,
+Hello,
 
-                Thank you for signing up with CoLab!
+Thank you for signing up with CoLab!
 
-                To complete your registration, please verify your email address by clicking the link below:
+To complete your registration, please verify your email address by clicking the link below:
 
-                Verification Link: https://${req.get('host')}/verify/${userId}
+Verification Link: https://${req.get('host')}/verify/${userId}
 
-                If you did not create an account with us, please disregard this email.
+If you did not create an account with us, please disregard this email.
 
-                If you have any questions or need assistance, feel free to reply to this email or contact our support team at support@yourcompany.com.
+If you have any questions or need assistance, feel free to reply to this email or contact our support team at support@yourcompany.com.
 
-                Thank you,
-                The CoLab Team
+Thank you,
+The CoLab Team
             `
         };
 
@@ -181,20 +181,20 @@ exports.create = async (req, res) => {
             to: user.email,
             subject: 'Verify Your Email Address',
             text: `
-                Hello,
+Hello,
 
-                Thank you for signing up with CoLab!
+Thank you for signing up with CoLab!
 
-                To complete your registration, please verify your email address by clicking the link below:
+To complete your registration, please verify your email address by clicking the link below:
 
-                Verification Link: https://${req.get('host')}/verify/${user._id}
+Verification Link: https://${req.get('host')}/verify/${user._id}
 
-                If you did not create an account with us, please disregard this email.
+If you did not create an account with us, please disregard this email.
 
-                If you have any questions or need assistance, feel free to reply to this email.
+If you have any questions or need assistance, feel free to reply to this email.
 
-                Thank you,
-                The CoLab Team
+Thank you,
+The CoLab Team
             `
         };
 

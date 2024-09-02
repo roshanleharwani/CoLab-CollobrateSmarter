@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="min-h-screen flex flex-col bg-black font-poppins">
+    <!-- Header -->
+    <nav class="w-full h-20 bg-black flex justify-between px-4 md:px-4 items-center align-middle">
+        <div class="flex items-center h-full w-2/5 md:gap-x-8 gap-x-4">
+            <div class="mb-2">
+                <a href="#" class="text-white text-5xl self-center" onclick="toggleSidebar(event)">&#8801;</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="md:h-14 md:w-14 rounded-full cursor-pointer h-10 w-10"><img class="h-full w-full "
+                        src="/assets/united (2).png" alt=""></div>
+                <div class="md:text-3xl text-white font-bold text-2xl">Colab</div>
+            </div>
+        </div>
+        <ul class="md:flex font-regular items-center space-x-6">
+            <div class="flex space-x-2">
+                <li class="hidden md:inline"><img class="w-6 h-6" src="/assets/home (3).png" alt="home icon"></li>
+                <li class="mx-[10] cursor-pointer text-gray-400 hidden md:inline hover:text-white duration-300">Home
+                </li>
+            </div>
+            <div class="flex space-x-2">
+                <li class="hidden md:inline"><img class="w-6 h-6 " src="/assets/bell (2).png" alt="requesticon"></li>
+                <li class="cursor-pointer text-gray-400 hidden md:inline hover:text-white duration-300">Requests</li>
+            </div>
+            <div class="flex space-x-2">
+                <li class="hidden md:inline"><img class="w-6 h-6 " src="/assets/about.png" alt=""></li>
+                <li class="cursor-pointer text-gray-400 hidden md:inline hover:text-white duration-300">About</li>
+            </div>
+            <div class="flex space-x-2">
+                <li><img class="w-6 h-6 hidden md:inline" src="/assets/telephone (1).png" alt=""> </li>
+                <li class="cursor-pointer text-gray-400 hidden md:inline hover:text-white duration-300">contact</li>
+            </div>
+            <div>
+                <li class=" text-white hidden md:inline">|</li>
+            </div>
+            <div>
+                <li class="mx-[10px] cursor-pointer"><img class="h-10 w-10 border-4 rounded-full"
+                        src="/assets/profile.png" alt=""></li>
+            </div>
+        </ul>
+        <div id="scrollNavbar"
+            class="fixed top-0 z-10 flex flex-row justify-center w-3/4 gap-5 p-2 m-2 mt-5 transition-transform duration-300 ease-in-out transform -translate-x-1/2 bg-transparent border-2 border-white shadow-2xl backdrop-blur-xl navbar left-1/2 rounded-3xl shadow-black md:hidden">
+            <a href="#about"><img class="w-6 h-6" src="/assets/login.png" alt="sign in"></a>
+            <span class="font-bold text-center text-white">|</span>
+            <a href="#request"><img class="w-6 h-6" src="/assets/categories.png" alt="features"></a>
+            <span class="font-bold text-center text-white">|</span>
+            <a href="#home"><img class="w-6 h-6" src="/assets/about (1).png" alt="about"></a>
+            <span class="font-bold text-center text-white">|</span>
+            <a href="#about"><img class="w-6 h-6" src="/assets/telephone (1).png" alt="contact"></a>
+        </div>
+    </nav>
+    <main class="flex-grow relative">
+        <!-- sidebar starts here -->
+        <div class="sidebar fixed top-0 left-0 p-2 w-[250px] overflow-y-auto text-center bg-gray-800 transform -translate-x-full transition-transform duration-300 rounded-xl z-20"
+            style="background-color: #1a1a1a;">
+            <div class="text-gray-100 text-xl">
+                <div class="p-2.5 mt-1 flex items-center">
+                    <img class="h-10 w-10 cursor-pointer" src="/assets/united (2).png" alt="">
+                    <h1 class="font-bold text-gray-200 ml-4">CoLab</h1>
+                    <i class="fa-solid fa-xmark ml-20 cursor-pointer" style="color: #ffffff;"
+                        onclick="toggleSidebar(event)"></i>
+                </div>
+                <hr class="my-2 text-gray-400">
+            </div>
+            <div
+                class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 bg-gray-700 justify-center text-white">
+                <h2>Hackathon</h2>
+            </div>
+            <div
+                class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 bg-gray-700 justify-center text-white">
+                <h2>Group-Projects</h2>
+            </div>
+            <div
+                class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 bg-gray-700 justify-center text-white">
+                <h2>Startup-Teams</h2>
+            </div>
+            <div
+                class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 bg-gray-700 justify-center text-white">
+                <h2>Teams</h2>
+            </div>
+            <hr class="my-4 text-gray-400">
+            <div
+                class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer justify-center text-white gap-5">
+                <div
+                    class="p-2.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-red-500 bg-gray-700 justify-center text-white gap-5">
+                    <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i>
+                    <button>Sign Out</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="overlay fixed inset-0 bg-black opacity-50 hidden z-10" onclick="toggleSidebar(event)"></div>
+        <!-- sidebar ends here -->
+        <!-- modal wrapper -->
+        <!-- Modal Wrapper -->
+        <div id="modal-wrapper" class="fixed z-10 inset-0 hidden duration-300">
+            <div class="flex items-center justify-center min-h-screen bg-gray-500 bg-opacity-75 transition-all">
+                <!-- Modal Box -->
+                <div class="flex flex-col items-center justify-between bg-black rounded-xl">
+                    <div class="flex justify-end w-full h-8 p-2">
+                        <i class="fa-solid fa-xmark cursor-pointer text-2xl" style="color: #ffffff;"
+                            id="close-modal-button"></i>
+                    </div>
+                    <div class="flex flex-col items-center justify-between bg-black p-10 rounded-xl gap-10">
+                        <div class="text-xl md:text-xl uppercase font-medium text-white py-4 border-b-2 border-white md:border-gray-500 md:border-b-2 md:hover:border-b-2 md:hover:border-white w-full text-center duration-300 cursor-pointer md:hover:bg-gray-500 rounded-xl md:hover:scale-105"
+                            onclick="openSubModal('requirements')">Show Requirements</div>
+                        <div class="text-xl md:text-xl uppercase font-medium text-white py-4 border-b-2 border-white md:border-gray-500 md:border-b-2 md:hover:border-b-2 md:hover:border-white w-full text-center duration-300 cursor-pointer md:hover:bg-gray-500 rounded-xl md:hover:scale-105"
+                            onclick="openSubModal('team-members')">Team Members</div>
+                        <div class="text-xl md:text-xl uppercase font-medium text-white py-4 border-b-2 border-white md:border-gray-500 md:border-b-2 md:hover:border-b-2 md:hover:border-white w-full text-center duration-300 cursor-pointer md:hover:bg-gray-500 rounded-xl md:hover:scale-105"
+                            onclick="openSubModal('join-team')">Join Team</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sub Modals -->
+        <div id="sub-modal-wrapper" class="fixed z-10 inset-0 hidden duration-300">
+            <div class="flex items-center justify-center min-h-screen bg-gray-500 bg-opacity-75 transition-all">
+                <div class="flex flex-col items-center justify-between bg-black rounded-xl p-4">
+                    <div class="flex justify-end w-full h-8 p-2">
+                        <i class="fa-solid fa-xmark cursor-pointer text-2xl" style="color: #ffffff;"
+                            id="close-sub-modal-button"></i>
+                    </div>
+                    <div id="sub-modal-content" class="text-white text-xl w-full text-center">
+                        <!-- Content will be dynamically inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="text-gray-600 body-font  w-5/6 min-h-48  mx-auto md:w-11/12">
+            <div class="container px-5 py-24 mx-auto">
+                <div class="h-1/4 text-white w-5/6 my-4 text-center text-3xl md:text-left md:ml-4 font-bold">Team
+                    Projects</div>
+                <div class="flex flex-wrap -m-4 mt-5">
+
+                    <div class="p-4 md:w-1/3 cursor-pointer open-modal-btn" id="open-modal-btn">
+                        <div
+                            class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden md:hover:scale-105 duration-300">
+
+                            <div
+                                class="lg:h-48 w-full object-cover object-top md:h-48 font-medium text-gray-200 text-center flex items-center justify-center text-xl bg-red-600 min-h-40 px-4">
+                                hello this team belongs to me</div>
+                            <div class="p-6">
+                                <h2 class="tracking-widest text-xs title-font font-medium text-gray-200 mb-1">CATEGORY
+                                </h2>
+                                <h1 class="title-font text-lg font-bold text-white mb-3">The Catalyzer</h1>
+                                <p class="leading-relaxed mb-3 text-gray-300">Photo booth fam kinfolk cold-pressed
+                                    sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                                <div class="flex items-center flex-wrap ">
+                                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                                        <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M5 12h14"></path>
+                                            <path d="M12 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                    <span
+                                        class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                        </svg>1.2K
+                                    </span>
+                                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path
+                                                d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z">
+                                            </path>
+                                        </svg>6
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 md:w-1/3 cursor-pointer open-modal-btn" id="open-modal-btn">
+                        <div
+                            class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden md:hover:scale-105 duration-300">
+                            <div
+                                class="lg:h-48 w-full object-cover object-top md:h-48 font-medium text-gray-200 text-center flex items-center justify-center text-xl bg-red-600 min-h-40 px-4">
+                                hello this team belongs to me</div>
+                            <div class="p-6">
+                                <h2 class="tracking-widest text-xs title-font font-medium text-gray-200 mb-1">CATEGORY
+                                </h2>
+                                <h1 class="title-font text-lg font-bold text-white">The 400 Blows</h1>
+                                <p class="leading-relaxed mb-3 text-gray-300">Photo booth fam kinfolk cold-pressed
+                                    sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                                <div class="flex items-center flex-wrap">
+                                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                                        <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M5 12h14"></path>
+                                            <path d="M12 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                    <span
+                                        class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                        </svg>1.2K
+                                    </span>
+                                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path
+                                                d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z">
+                                            </path>
+                                        </svg>6
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 md:w-1/3 cursor-pointer open-modal-btn" id="open-modal-btn">
+                        <div
+                            class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden md:hover:scale-105 duration-300">
+                            <div
+                                class="lg:h-48 w-full object-cover object-top md:h-48 font-medium text-gray-200 text-center flex items-center justify-center text-xl bg-red-600 min-h-40 px-4">
+                                hello this team belongs to me</div>
+                            <div class="p-6">
+                                <h2 class="tracking-widest text-xs title-font font-medium text-gray-200 mb-1">CATEGORY
+                                </h2>
+                                <h1 class="title-font text-lg font-bold text-white mb-3">Shooting Stars</h1>
+                                <p class="leading-relaxed mb-3 text-gray-300">Photo booth fam kinfolk cold-pressed
+                                    sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                                <div class="flex items-center flex-wrap ">
+                                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                                        <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M5 12h14"></path>
+                                            <path d="M12 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                    <span
+                                        class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                        </svg>1.2K
+                                    </span>
+                                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path
+                                                d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z">
+                                            </path>
+                                        </svg>6
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="w-[88vw] min-h-14  mx-auto flex justify-end">
+            <div class="plus-icon w-14 h-14 md:hover:scale-110 duration-300"><img src="/assets/plus.png" alt="" class="hover:border-2 hover:border-white rounded-full"></div>
+            
+          </div>
+    </main>
+    <footer class="w-full bg-black bottom-0">
+        <div class="h-full w-full p-4 text-white flex flex-col gap-4 md:justify-start">
+            <div class="heading w-full text-center md:text-left text-2xl">Developers</div>
+            <div class="developerContainer flex justify-around md:flex-col md:gap-2">
+                <div class="surya flex flex-col gap-2 md:flex-row md:justify-start">
+                    <div class="ml-10 md:ml-0"><img class="h-10 w-10 border-4 rounded-full" src="/assets/profile.png"
+                            alt="profilePic"></div>
+                    <div class="text-xl text-yellow-300 md:flex md:justify-center md:items-center">Suryabrata Sahoo
+                    </div>
+                    <div class="hidden md:flex md:justify-center md:items-center">|</div>
+                    <div class="text-xs text-slate-400 md:pt-[7px] md:flex md:justify-center md:items-center">Web
+                        Developer UI/UX
+                        React</div>
+                    <div class="hidden md:flex md:justify-center md:items-center">|</div>
+                    <div class="flex gap-2 ml-8 md:ml-0 md:flex md:justify-center md:items-center">
+                        <span class="cursor-pointer"><img class="h-4 w-4 md:h-6 md:w-6" src="/assets/instagram.png"
+                                alt=""></span>
+                        <span class="cursor-pointer"><img class="h-4 w-4 md:h-6 md:w-6" src="/assets/linkedin.png"
+                                alt=""></span>
+                        <span class="cursor-pointer"><img class="h-4 w-4 md:h-6 md:w-6" src="/assets/github-sign.png"
+                                alt=""></span>
+                    </div>
+                </div>
+                <div class="h-32 w-[2px] bg-white md:hidden"></div>
+                <div class="roshan flex flex-col gap-2 md:flex-row">
+                    <div class="ml-10 md:ml-0"><img class="h-10 w-10 border-4 rounded-full" src="/assets/profile.png"
+                            alt="profilePic"></div>
+                    <div class="text-xl text-yellow-300 md:flex md:justify-center md:items-center">Roshan Laharwani
+                    </div>
+                    <div class="hidden md:flex md:justify-center md:items-center">|</div>
+                    <div class="text-xs text-slate-400 md:pt-[7px] md:flex md:justify-center md:items-center">Web
+                        Developer UI/UX
+                        React</div>
+                    <div class="hidden md:flex md:justify-center md:items-center">|</div>
+                    <div class="flex gap-2 ml-8 md:ml-0 md:flex md:justify-center md:items-center">
+                        <span class="cursor-pointer"><img class="h-4 w-4 md:h-6 md:w-6" src="/assets/instagram.png"
+                                alt=""></span>
+                        <span class="cursor-pointer"><img class="h-4 w-4 md:h-6 md:w-6" src="/assets/linkedin.png"
+                                alt=""></span>
+                        <span class="cursor-pointer"><img class="h-4 w-4 md:h-6 md:w-6" src="/assets/github-sign.png"
+                                alt=""></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function toggleSidebar(event) {
+            event.stopPropagation();
+            const sidebar = document.querySelector(".sidebar");
+            const overlay = document.querySelector(".overlay");
+            sidebar.classList.toggle("-translate-x-full");
+            overlay.classList.toggle("hidden");
+        }
+
+        function openModal() {
+            document.getElementById("modal-wrapper").classList.remove("hidden");
+        }
+
+        function closeModal() {
+            document.getElementById("modal-wrapper").classList.add("hidden");
+        }
+
+        function openSubModal(type) {
+            const subModalContent = {
+                "requirements": `
+    <div class="modal-content p-4 bg-black text-white rounded-lg w-full max-w-lg mx-auto">
+        <h2 class="text-2xl font-bold mb-4 text-white text-center">Here are your Requirements</h2>
+        <ul class="list-disc space-y-4 pl-5">
+            <li class="flex flex-col items-start space-y-1">
+                <div class="text-yellow-400 font-semibold">Requirement 1:</div>
+                <div class="text-white">Understand the project scope</div>
+                <div class="border-t border-gray-700 mt-2 w-full"></div>
+            </li>
+            <li class="flex flex-col items-start space-y-1">
+                <div class="text-yellow-400 font-semibold">Requirement 2:</div>
+                <div class="text-white">Familiarity with the technology stack</div>
+                <div class="border-t border-gray-700 mt-2 w-full"></div>
+            </li>
+            <li class="flex flex-col items-start space-y-1">
+                <div class="text-yellow-400 font-semibold">Requirement 3:</div>
+                <div class="text-white">Ability to collaborate and communicate effectively</div>
+                <div class="border-t border-gray-700 mt-2 w-full"></div>
+            </li>
+            <li class="flex flex-col items-start space-y-1">
+                <div class="text-yellow-400 font-semibold">Requirement 4:</div>
+                <div class="text-white">Adherence to the project deadlines</div>
+                <div class="border-t border-gray-700 mt-2 w-full"></div>
+            </li>
+            <li class="flex flex-col items-start space-y-1">
+                <div class="text-yellow-400 font-semibold">Requirement 5:</div>
+                <div class="text-white">Regular progress updates</div>
+                <div class="border-t border-gray-700 mt-2 w-full"></div>
+            </li>
+        </ul>
+    </div>
+`
+
+,
+                "team-members": `
+                    <div class="modal-content p-4 bg-black text-white rounded-lg w-full max-w-lg mx-auto">
+    <h2 class="text-2xl font-bold mb-4 text-yellow-300">Team Members</h2>
+    <ul class="list-disc space-y-2 pl-5">
+        <li class="flex items-center">member 1: surya</li>
+        <li class="flex items-center">member 2: roshhan</li>
+        <li class="flex items-center">member 3: Uday</li>
+        <li class="flex items-center">member 4: panda</li>
+        <li class="flex items-center">member 5: subhayu</li>
+    </ul>
+                `,
+                "join-team": `
+                    <div class="modal-content p-4 bg-black text-white rounded-lg w-full max-w-lg mx-auto">
+        <h2 class="text-2xl font-bold mb-4 text-yellow-300 text-center">Join Team</h2>
+        <p class="text-white mb-4 w-full text-center">Are You compatible with the requirements?</p>
+        <div class="w-full text-center mb-4">
+            <input type="checkbox">
+            <label for="termsAndCondition"><span>Agree</span><span>|</span><a href="" class="text-blue-600">Terms and condition</a></label>
+        </div>
+        <div class="w-full text-center "><button class="bg-red-600 rounded w-20 h-8">Join</button></div>
+    </div>
+                `
+            };
+            document.getElementById("sub-modal-content").innerHTML = subModalContent[type];
+            document.getElementById("sub-modal-wrapper").classList.remove("hidden");
+        }
+
+        function closeSubModal() {
+            document.getElementById("sub-modal-wrapper").classList.add("hidden");
+        }
+
+        document.getElementById("close-modal-button").addEventListener("click", closeModal);
+        document.getElementById("close-sub-modal-button").addEventListener("click", closeSubModal);
+
+        document.querySelectorAll(".open-modal-btn").forEach(button => {
+            button.addEventListener("click", openModal);
+        });
+
+        let lastScrollTop = 0;
+        const navbar = document.getElementById('scrollNavbar');
+
+        window.addEventListener('scroll', function () {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop) {
+                navbar.style.top = '0px';
+            } else {
+                navbar.style.top = '-100px';
+            }
+
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+
+
+</html>
