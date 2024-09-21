@@ -4,7 +4,6 @@ const userModel = require('../models/userModel.js')
 const bcrypt = require('bcryptjs')
 const validateEmail = require('../emailvalidator.js')
 const crypto = require('crypto')
-const path = require('path')
 let config = {
     service:'gmail',
     auth:{
@@ -113,7 +112,7 @@ Thank you for signing up with CoLab!
 
 To complete your registration, please verify your email address by clicking the link below:
 
-Verification Link: http://${req.get('host')}/verify/${userId}
+Verification Link: https://${req.get('host')}/verify/${userId}
 
 If you did not create an account with us, please disregard this email.
 
