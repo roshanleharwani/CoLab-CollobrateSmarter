@@ -60,5 +60,10 @@ app.get('/signIn',controller.signIn)
 
 app.get('/signUp',controller.signUp)
 
+app.get('/leaderboard',controller.leaderBoard)
+
+app.get('/reportGenerate',controller.generate)
+
+app.get('/report',controller.report)
 
 app.listen(3000)

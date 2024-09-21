@@ -1,0 +1,28 @@
+const mongoose = require('mongoose')
+
+
+const projectSchema = new mongoose.Schema({
+  projectName: {
+    type: String,
+    required: true
+  },
+  projectDescription: {
+    type: String,
+    required: true
+  },
+  numberOfMembersRequired: {
+    type: Number,
+    required:true
+  },
+  existingMembers:{
+    type:Array,
+  },
+  skillsRequired :{
+    type:Array,
+    required:true
+  },
+  
+});
+
+
+module.exports = mongoose.model('projectPost', projectSchema);

@@ -3,16 +3,17 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "build:css": "npx tailwindcss -i ./input.css -o ./public/stylesheets/output.css --watch"
+    "build:css": "npx tailwindcss -i ./input.css -o ./public/stylesheets/output.css --watch",
+    "start": "npx tailwindcss -i ./input.css -o ./public/stylesheets/output.css  && nodemon app.js"
   },
   "author": "roshanleharwani",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "daisyui": "^4.12.10",
     "tailwindcss": "^3.4.9"
   },
   "dependencies": {
-    "@google-cloud/recaptcha-enterprise": "^5.10.0",
     "autoprefixer": "^10.4.20",
     "axios": "^1.7.4",
     "bcrypt": "^5.1.1",
@@ -28,6 +29,7 @@
     "mongoose": "^8.5.2",
     "nodemailer": "^6.9.14",
     "nodemon": "^3.1.4",
-    "postcss": "^8.4.41"
+    "postcss": "^8.4.41",
+    "puppeteer": "^23.3.0"
   }
 }
