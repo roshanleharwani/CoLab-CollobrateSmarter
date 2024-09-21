@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-900">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeaderBoard</title>
+    <link rel="stylesheet" href="./stylesheets/output.css">
+</head>
+<body>
+    <header>
+        <nav class="flex items-center justify-between w-full h-20 px-4 align-middle bg-black md:px-4">
+            <div class="flex items-center w-2/5 h-full md:gap-x-8 gap-x-4">
+              <div class="mb-2">
+                <a href="#" class="self-center text-5xl text-white" onclick="toggleSidebar(event)">&#8801;</a>
+              </div>
+              <div class="flex items-center space-x-4">
+                <div class="w-10 h-10 rounded-full cursor-pointer md:h-14 md:w-14">
+                  <img class="w-full h-full" src="./images/logo.png" alt="">
+                </div>
+                <div class="text-2xl font-bold text-white md:text-3xl">Colab</div>
+              </div>
+            </div>
+            <ul class="items-center space-x-6 md:flex font-regular">
+              <div class="flex space-x-2">
+                <li class="hidden md:inline">
+                  <img class="w-6 h-6" src="./images/home.png" alt="home icon">
+                </li>
+                <li class="mx-[10] cursor-pointer text-gray-400 hidden md:inline hover:text-white duration-300">Home</li>
+              </div>
+              <!-- Requests Section -->
+              <div class="relative flex space-x-2">
+                <li class="relative hidden md:inline">
+                  <!-- Bell icon wrapped with a relative container -->
+                  <img class="w-6 h-6" src="/images/bell.png" alt="requests">
+                  <!-- Badge for larger screens -->
+                  <span class="absolute top-[-10%] right-[-10%] bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5">3</span>
+                </li>
+                <li class="hidden text-gray-400 duration-300 cursor-pointer md:inline hover:text-white">Requests</li>
+                
+              </div>
+              <div class="flex space-x-2">
+                <li class="hidden md:inline">
+                  <img class="w-6 h-6" src="./images/about.png" alt="">
+                </li>
+                <li class="hidden text-gray-400 duration-300 cursor-pointer md:inline hover:text-white">About</li>
+              </div>
+              <div class="flex space-x-2">
+                <li>
+                  <img class="hidden w-6 h-6 md:inline" src="/images/telephone.png" alt="">
+                </li>
+                <li class="hidden text-gray-400 duration-300 cursor-pointer md:inline hover:text-white">Contact</li>
+              </div>
+              <div>
+                <li class="hidden text-white md:inline">|</li>
+              </div>
+              <div>
+                <li class="mx-[10px] cursor-pointer">
+                  <img class="w-10 h-10 border-4 rounded-full" src="/images/profile.png" alt="">
+                </li>
+              </div>
+            </ul>
+            <div id="scrollNavbar"
+              class="fixed top-0 z-10 flex flex-row justify-center w-3/4 gap-5 p-2 m-2 mt-5 transition-transform duration-300 ease-in-out transform -translate-x-1/2 bg-transparent border-2 border-white shadow-2xl backdrop-blur-xl navbar left-1/2 rounded-3xl shadow-black md:hidden">
+              <a href="#home">
+                <img class="w-6 h-6" src="/images/home-black.png" alt="home">
+              </a>
+              <span class="font-bold text-center text-white">|</span>
+              <div class="relative">
+                <a href="#request">
+                  <img class="w-6 h-6" src="/images/bell-black.png" alt="notifications">
+                </a>
+                <!-- Badge for smaller screens -->
+                <span class="absolute top-0 right-0 px-1 text-xs text-white bg-red-500 rounded-full">3</span>
+                <ul id="submenu">
+                  <li class="flex flex-row"><span>request 1</span><div><button>accept</button><button>reject</button></div></li>
+                  <li class="flex flex-row"><span>request 1</span><div><button>accept</button><button>reject</button></div></li>
+                  <li class="flex flex-row"><span>request 1</span><div><button>accept</button><button>reject</button></div></li>
+                </ul>
+              </div>
+              <span class="font-bold text-center text-white">|</span>
+              <a href="#about">
+                <img class="w-6 h-6" src="/images/info-black.png" alt="about">
+              </a>
+              <span class="font-bold text-center text-white">|</span>
+              <a href="#contact">
+                <img class="w-6 h-6" src="/images/telephone-black.png" alt="contact">
+              </a>
+            </div>
+          </nav>
+    </header>
+    <main class="">
+        <div
+      class="sidebar fixed top-0 left-0 p-2 w-[250px] overflow-y-auto text-center bg-gray-800 transform -translate-x-full transition-transform duration-300 rounded-xl z-20"
+      style="background-color: #1a1a1a;">
+      <div class="text-xl text-gray-100">
+        <div class="p-2.5 mt-1 flex items-center">
+          <img class="w-10 h-10 cursor-pointer" src="/images/logo.png" alt="">
+          <h1 class="ml-4 font-bold text-gray-200">CoLab</h1>
+          <i class="ml-20 cursor-pointer fa-solid fa-xmark" style="color: #ffffff;" onclick="toggleSidebar(event)"></i>
+        </div>
+        <hr class="my-2 text-gray-400">
+      </div>
+      <a href="#Hackathon">
+        <div
+          class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 bg-gray-700 justify-center text-white"
+          onclick="toggleSidebar(event, 'Hackathon')">
+          <h2>Hackathon & Codeathon</h2>
+        </div>
+      </a>
+      <div
+        class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 bg-gray-700 justify-center text-white">
+        <h2>Group-Projects</h2>
+      </div>
+      <div
+        class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 bg-gray-700 justify-center text-white">
+        <h2>Startup-Teams</h2>
+      </div>
+      <div
+        class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 bg-gray-700 justify-center text-white">
+        <h2>Teams</h2>
+      </div>
+      <hr class="my-4 text-gray-400">
+      <div
+        class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer justify-center text-white gap-5">
+        <div
+          class="p-2.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-red-500 bg-gray-700 justify-center text-white gap-5">
+          <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i>
+          <button>Sign Out</button>
+        </div>
+
+      </div>
+    </div>
+    <div class="fixed inset-0 z-10 hidden bg-black opacity-50 overlay" onclick="toggleSidebar(event)"></div>
+    <!-- sidebar ends here -->
+        <div class="max-w-lg mx-auto mt-16 overflow-hidden bg-gray-800 rounded-md shadow-md">
+            <div class="px-4 py-2 bg-gray-700">
+                <h2 class="text-xl font-semibold text-white">Top Contributors</h2>
+            </div>
+            <ul class="divide-y divide-gray-200">
+                <li class="flex items-center px-6 py-4">
+                    <span class="mr-4 text-lg font-medium text-white">1.</span>
+                    <img class="object-cover w-12 h-12 mr-4 rounded-full" src="https://randomuser.me/api/portraits/women/72.jpg"
+                        alt="User avatar">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-medium text-white">Emily Jones</h3>
+                        <p class="text-base text-white">1234 points</p>
+                    </div>
+                </li>
+                
+                <li class="flex items-center px-6 py-4">
+                    <span class="mr-4 text-lg font-medium text-white">1.</span>
+                    <img class="object-cover w-12 h-12 mr-4 rounded-full" src="https://randomuser.me/api/portraits/men/72.jpg"
+                        alt="User avatar">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-medium text-white">Ela William</h3>
+                        <p class="text-base text-white">1234 points</p>
+                    </div>
+                </li>
+                
+                <li class="flex items-center px-6 py-4">
+                    <span class="mr-4 text-lg font-medium text-white">1.</span>
+                    <img class="object-cover w-12 h-12 mr-4 rounded-full" src="https://randomuser.me/api/portraits/men/98.jpg"
+                        alt="User avatar">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-medium text-white">millennium</h3>
+                        <p class="text-base text-white">1234 points</p>
+                    </div>
+                </li>
+                
+                <li class="flex items-center px-6 py-4">
+                    <span class="mr-4 text-lg font-medium text-white">1.</span>
+                    <img class="object-cover w-12 h-12 mr-4 rounded-full" src="https://randomuser.me/api/portraits/women/45.jpg"
+                        alt="User avatar">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-medium text-white">james</h3>
+                        <p class="text-base text-white">1234 points</p>
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+    </main>
+    <footer class="relative bottom-0 w-full bg-slate-900">
+        <div class="flex flex-col w-full h-full gap-4 p-4 text-white md:justify-start">
+          <div class="w-full text-2xl text-center heading md:text-left">Developers</div>
+          <div class="flex justify-around developerContainer md:flex-col md:gap-2">
+            <div class="flex flex-col gap-2 surya md:flex-row md:justify-start">
+              <div class="ml-10 md:ml-0">
+                <img class="w-10 h-10 border-4 rounded-full" src="/images/surya.png" alt="profilePic">
+              </div>
+              <div class="text-lg text-yellow-300 md:flex md:justify-center md:items-center">Suryabrata Sahoo</div>
+              <div class="hidden md:flex md:justify-center md:items-center">|</div>
+              <div class="text-xs text-slate-400 md:pt-[7px] md:flex md:justify-center md:items-center">Web Developer UI/UX React</div>
+              <div class="hidden md:flex md:justify-center md:items-center">|</div>
+              <div class="flex gap-2 ml-8 md:ml-0 md:flex md:justify-center md:items-center">
+                <a href="https://www.instagram.com/suryabrata_30/"><span class="cursor-pointer"><img class="w-4 h-4 md:h-6 md:w-6" src="/images/instagram.png" alt=""></span></a>
+                <a href="https://www.linkedin.com/in/suryabrata-sahoo-707849299/"><span class="cursor-pointer"><img class="w-4 h-4 md:h-6 md:w-6" src="/images/linkedin.png" alt=""></span></a>
+                <a href="https://github.com/Suryabratasahoo"><span class="cursor-pointer"><img class="w-4 h-4 md:h-6 md:w-6" src="/images/github.png" alt=""></span></a>
+              </div>
+            </div>
+            <div class="h-32 w-[2px] bg-white md:hidden"></div>
+            <div class="flex flex-col gap-2 roshan md:flex-row">
+              <div class="ml-10 md:ml-0"><img class="w-10 h-10 border-4 rounded-full" src="/images/roshan.png" alt="profilePic"></div>
+              <div class="text-lg text-yellow-300 md:flex md:justify-center md:items-center">Roshan Laharwani</div>
+              <div class="hidden md:flex md:justify-center md:items-center">|</div>
+              <div class="text-xs text-slate-400 md:pt-[7px] md:flex md:justify-center md:items-center">Web Developer UI/UX React</div>
+              <div class="hidden md:flex md:justify-center md:items-center">|</div>
+              <div class="flex gap-2 ml-8 md:ml-0 md:flex md:justify-center md:items-center">
+                <a href="https://www.instagram.com/roshanlaharwani/"><span class="cursor-pointer"><img class="w-4 h-4 md:h-6 md:w-6" src="/images/instagram.png" alt=""></span></a>
+                <a href="https://www.linkedin.com/in/roshan-laharwani/"><span class="cursor-pointer"><img class="w-4 h-4 md:h-6 md:w-6" src="/images/linkedin.png" alt=""></span></a>
+                <a href="https://github.com/roshanleharwani"><span class="cursor-pointer"><img class="w-4 h-4 md:h-6 md:w-6" src="/images/github.png" alt=""></span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+</body>
+<script src="/javascripts/sidebarScripts.js"></script>
+
+</html>

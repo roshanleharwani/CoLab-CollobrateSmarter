@@ -1,0 +1,43 @@
+<div
+      class="sidebar fixed top-0 left-0 p-2 w-[250px] overflow-y-auto text-center bg-gray-800 transform -translate-x-full transition-transform duration-300 rounded-xl z-20"
+      style="background-color: #1a1a1a;">
+      <div class="text-xl text-gray-100">
+        <div class="p-2.5 mt-1 flex items-center">
+          <img class="w-10 h-10 cursor-pointer" src="/images/logo.png" alt="">
+          <h1 class="ml-4 font-bold text-gray-200">CoLab</h1>
+          <i class="ml-20 cursor-pointer fa-solid fa-xmark" style="color: #ffffff;" onclick="toggleSidebar(event)"></i>
+        </div>
+        <hr class="my-2 text-gray-400">
+      </div>
+      <a href="#Hackathon">
+        <div
+          class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 bg-gray-700 justify-center text-white"
+          onclick="toggleSidebar(event, 'Hackathon')">
+          <h2>Hackathon & Codeathon</h2>
+        </div>
+      </a>
+      <div
+        class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 bg-gray-700 justify-center text-white">
+        <h2>Group-Projects</h2>
+      </div>
+      <div
+        class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 bg-gray-700 justify-center text-white">
+        <h2>Startup-Teams</h2>
+      </div>
+      <div
+        class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 bg-gray-700 justify-center text-white">
+        <h2>Teams</h2>
+      </div>
+      <hr class="my-4 text-gray-400">
+      <div
+        class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer justify-center text-white gap-5">
+        <div
+          class="p-2.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-red-500 bg-gray-700 justify-center text-white gap-5">
+          <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i>
+          <button>Sign Out</button>
+        </div>
+
+      </div>
+    </div>
+    <div class="fixed inset-0 z-10 hidden bg-black opacity-50 overlay" onclick="toggleSidebar(event)"></div>
+    <!-- sidebar ends here -->

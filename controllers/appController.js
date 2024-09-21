@@ -5,7 +5,6 @@ const puppeteer  = require('puppeteer')
 const bcrypt = require('bcrypt')
 const validateEmail = require('../emailvalidator.js')
 const crypto = require('crypto')
-const ejsMate = require('ejs-mate') 
 const path = require('path')
 let config = {
     service:'gmail',
@@ -21,9 +20,9 @@ let transporter = nodemailer.createTransport(config)
 
 exports.indexPage = (req,res)=>{
     if(req.session.isAuth==true){
-        return res.render('dashboard')
+        return res.render('listings/home')
     }
-    return res.render('index')
+    return res.render('listings/index')
 }
 
 exports.emailSend = async (req, res) => {
@@ -91,7 +90,7 @@ exports.resend = async (req, res) => {
 
         // Check if the user is already verified
         if (user.isVerified) {
-            return res.render('emailVerified');
+            return res.render('listings/emailVerified');
         }
 
         // Configure the email transporter
@@ -130,10 +129,10 @@ The CoLab Team
         await transporter.sendMail(mailOptions);
 
         // Render the resend confirmation page
-        res.render('resend');
+        res.render('listings/resend');
     } catch (error) {
         console.error('Error:', error.message);
-        res.status(500).render('sentfailed'); // Render a failure page if email sending fails
+        res.status(500).render('listings/sentfailed'); // Render a failure page if email sending fails
     }
 }
 
@@ -143,12 +142,12 @@ exports.create = async (req, res) => {
     // req.session.email = email;
     // Check if passwords match
     if (password !== confirmPassword) {
-        return res.render('signup', { exists: false, pass: false });
+        return res.render('listings/signup', { exists: false, pass: false });
     }
 
     // Check if email is valid
     if (!result.valid) {
-        return res.render('emailfailed');
+        return res.render('listings/emailfailed');
     }
 
     try {
@@ -156,7 +155,7 @@ exports.create = async (req, res) => {
         const isExist = await userModel.findOne({ email: email });
 
         if (isExist) {
-            return res.render('signup', { exists: true, pass: true });
+            return res.render('listings/signup', { exists: true, pass: true });
         }
 
         // Hash the password
@@ -202,7 +201,7 @@ The CoLab Team
         await transporter.sendMail(mailOptions);
 
         // Redirect to the resend email page
-        return res.render('verify');
+        return res.render('listings/verify');
     } catch (error) {
         console.error('Error:', error.message);
         return res.status(500).send(error.message); // Render a generic error page
@@ -214,18 +213,18 @@ exports.authenticate = async (req, res) => {
     try {
         let isExist = await userModel.findOne({ email: req.body.email });
         if (!isExist) {
-            return res.render('signin', { trial: false }); 
+            return res.render('listings/signin', { trial: false }); 
         }
         const isMatch = await bcrypt.compare(req.body.password, isExist.password);
         if (!isMatch) {
-            return res.render('signin', { trial: false }); 
+            return res.render('listings/signin', { trial: false }); 
         }
         if(isExist.isVerified){
             req.session.isAuth = true;
-            return res.redirect('/dashboard')
+            return res.redirect('dashboard')
         }
         else{
-            return res.render('verify')
+            return res.render('listings/verify')
         }
     } catch (error) {
         console.error(error);
@@ -234,11 +233,11 @@ exports.authenticate = async (req, res) => {
 }
 
 exports.dashboard = (req,res)=>{
-    res.render('dashboard')
+    res.render('listings/home')
 }
 
 exports.forgetPassword = (req,res)=>{
-    return res.render('emailforpass')
+    return res.render('listings/emailforpass')
 }
 
 exports.sendResetLink = async (req,res)=>{
@@ -273,7 +272,7 @@ The CoLab Team`
     };
     try{
         await transporter.sendMail(mailOptions);
-        return res.render('passwordEmail');
+        return res.render('listings/passwordEmail');
     } catch (error) {
         console.error('Error:', error.message);
         return res.status(500).send(error.message); 
@@ -290,7 +289,7 @@ exports.changePassword = async (req, res) => {
             return res.status(404).send('Invalid or expired token');
         }
 
-        return res.render('changepassword', { user: user, match: 'fails' });
+        return res.render('listings/changepassword', { user: user, match: 'fails' });
     } catch (error) {
         return res.status(500).send('Server error');
     }
@@ -304,13 +303,13 @@ exports.setPassword = async (req,res)=>{
     }
     const {password,confirmpassword} = req.body
     if(password !== confirmpassword){
-        return res.status(400).render('changepassword',{match:false,user:user})
+        return res.status(400).render('listings/changepassword',{match:false,user:user})
         }
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
     await userModel.findByIdAndUpdate(user._id,{password:hash,resetToken:""},{new:true})
     
-    return res.render('passSuccess')
+    return res.render('listings/passSuccess')
     
 }
 
@@ -318,14 +317,14 @@ exports.signIn = (req,res)=>{
     if(req.session.isAuth==true){
         return res.redirect('/')
     }
-    return res.render('signin',{trial:true})
+    return res.render('listings/signin',{trial:true})
 }
 
 exports.signUp = (req,res)=>{
     if(req.session.isAuth==true){
         return res.redirect('/')
     }
-    return res.render('signup',{exists:false,pass:true})
+    return res.render('listings/signup',{exists:false,pass:true})
 }
 
 exports.signOut = (req,res)=>{
@@ -346,7 +345,7 @@ exports.signOut = (req,res)=>{
 
 
 exports.leaderBoard = (req,res)=>{
-    res.render('leaderboard')
+    res.render('listings/leaderboard')
 }
 
 exports.generate = async (req, res) => {
