@@ -65,7 +65,7 @@ exports.emailVerify = async (req, res) => {
       }
   
       // If the update is successful, send a confirmation response
-      return res.render('emailVerified');
+      return res.render('listings/emailVerified');
     } catch (err) {
       // If there's an error during the database operation, return a 500 response
       console.error(err);
@@ -113,7 +113,7 @@ Thank you for signing up with CoLab!
 
 To complete your registration, please verify your email address by clicking the link below:
 
-Verification Link: https://${req.get('host')}/verify/${userId}
+Verification Link: http://${req.get('host')}/verify/${userId}
 
 If you did not create an account with us, please disregard this email.
 
