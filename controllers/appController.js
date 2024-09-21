@@ -1,10 +1,9 @@
 const nodemailer = require('nodemailer')
 const {EMAIL,PASSWORD,uri,key} = require('../env')
 const userModel = require('../models/userModel.js')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const validateEmail = require('../emailvalidator.js')
 const crypto = require('crypto')
-const path = require('path')
 let config = {
     service:'gmail',
     auth:{
@@ -65,7 +64,7 @@ exports.emailVerify = async (req, res) => {
       }
   
       // If the update is successful, send a confirmation response
-      return res.render('emailVerified');
+      return res.render('listings/emailVerified');
     } catch (err) {
       // If there's an error during the database operation, return a 500 response
       console.error(err);
