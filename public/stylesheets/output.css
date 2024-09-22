@@ -636,6 +636,14 @@ video {
   top: -100px;
 }
 
+.right-2 {
+  right: 0.5rem;
+}
+
+.top-1\/4 {
+  top: 25%;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -1987,6 +1995,11 @@ video {
 .text-zinc-700 {
   --tw-text-opacity: 1;
   color: rgb(63 63 70 / var(--tw-text-opacity));
+}
+
+.text-indigo-400 {
+  --tw-text-opacity: 1;
+  color: rgb(129 140 248 / var(--tw-text-opacity));
 }
 
 .underline {

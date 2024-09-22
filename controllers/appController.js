@@ -1,6 +1,7 @@
 const nodemailer = require('nodemailer')
 const {EMAIL,PASSWORD,uri,key} = require('../env')
 const userModel = require('../models/userModel.js')
+const teamProjectModel = require('../models/projectModel')
 const bcrypt = require('bcryptjs')
 const validateEmail = require('../emailvalidator.js')
 const crypto = require('crypto')
@@ -170,7 +171,8 @@ exports.create = async (req, res) => {
 
         // Store user ID in session
         // req.session.userId = user._id;
-
+        const host = req.get('host')
+        const link = (host == 'localhost:3000') ? `http://${host}/verify/${user._id}` : `https://${host}/verify/${user._id}`    
 
         // Email body and options
         const mailOptions = {
@@ -184,7 +186,7 @@ Thank you for signing up with CoLab!
 
 To complete your registration, please verify your email address by clicking the link below:
 
-Verification Link: https://${req.get('host')}/verify/${user._id}
+Verification Link: ${link}
 
 If you did not create an account with us, please disregard this email.
 
@@ -248,7 +250,8 @@ exports.sendResetLink = async (req,res)=>{
     const resetToken = crypto.randomBytes(32).toString('hex');
     await userModel.findByIdAndUpdate(user._id,{resetToken:resetToken},{new:true})
 
-    const resetLink = `https://${req.get('host')}/changePass/${resetToken}`
+    const host = req.get('host')
+    const resetLink = host == 'localhost:3000' ? `https://${host}/changePass/${resetToken}` : `http://${host}/changePass/${resetToken}`
 
     const mailOptions = {
         from: process.env.EMAIL,
@@ -346,6 +349,34 @@ exports.leaderBoard = (req,res)=>{
     res.render('listings/leaderboard')
 }
 
-exports.teamPages = (req,res,isAuth)=>{
+exports.teamPages = (req,res)=>{
     res.render('listings/teamProjects')
+}
+
+exports.addTeamProject = (req,res)=>{
+    res.render('listings/addProject')
+
+}
+async function getRandomColor() {
+    const colors = ['rose', 'amber', 'lime', 'teal', 'sky', 'purple'];
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    return colors[randomIndex];
+  }
+  
+exports.listTeamProject = async (req,res) =>{
+    const {projectName ,description, numberOfMembersRequired,existingMembers, skillsRequired ,userName}  = req.body
+    const color = await getRandomColor();
+
+    const project = await teamProjectModel.create({
+        projectName :projectName,
+        projectDescription:description,
+        existingMembers:existingMembers,
+        numberOfMembersRequired: numberOfMembersRequired,
+        skillsRequired:skillsRequired,
+        userName:userName,
+        color:color
+    })
+    return res.redirect('/teamProjects')
+
+
 }
