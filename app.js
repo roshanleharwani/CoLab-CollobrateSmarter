@@ -62,5 +62,6 @@ app.get('/signUp',controller.signUp)
 
 app.get('/leaderboard',controller.leaderBoard)
 
+app.get('/teamProjects',controller.teamPages)
 
 app.listen(3000)

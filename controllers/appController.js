@@ -346,3 +346,6 @@ exports.leaderBoard = (req,res)=>{
     res.render('listings/leaderboard')
 }
 
+exports.teamPages = (req,res,isAuth)=>{
+    res.render('listings/teamProjects')
+}
