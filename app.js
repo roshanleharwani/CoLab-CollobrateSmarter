@@ -60,8 +60,10 @@ app.get('/signIn',controller.signIn)
 
 app.get('/signUp',controller.signUp)
 
-app.get('/leaderboard',controller.leaderBoard)
+app.get('/leaderboard',isAuth,controller.leaderBoard)
 
-app.get('/teamProjects',controller.teamPages)
+app.get('/teamProjects',isAuth,controller.teamPages)
+
+app.get('/feedback',isAuth,controller.feedback)
 
 app.listen(3000)

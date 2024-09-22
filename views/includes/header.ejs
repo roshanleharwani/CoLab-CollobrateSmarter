@@ -21,12 +21,14 @@
     <div class="flex space-x-2">
       <li class="hidden md:inline">
         <img class="w-6 h-6" src="./images/home.png" alt="home icon" />
-      </li>
-      <li
-        class="mx-[10] cursor-pointer text-gray-400 hidden md:inline hover:text-white duration-300"
-      >
-        Home
-      </li>
+      <a href="/">
+        </li>
+        <li
+          class="mx-[10] cursor-pointer text-gray-400 hidden md:inline hover:text-white duration-300"
+        >
+          Home
+        </li>
+      </a >
     </div>
     <!-- Requests Section -->
     <div class="relative flex space-x-2">
@@ -63,11 +65,13 @@
           alt="contact"
         />
       </li>
-      <li
-        class="hidden text-gray-400 duration-300 cursor-pointer md:inline hover:text-white"
-      >
-        Contact
-      </li>
+      <a href="/feedback">
+        <li
+          class="hidden text-gray-400 duration-300 cursor-pointer md:inline hover:text-white"
+        >
+          Contact
+        </li>
+      </a>
     </div>
     <div>
       <li class="hidden text-white md:inline">|</li>
@@ -84,10 +88,10 @@
   </ul>
   <!-- Mobile Navigation for scrolling -->
   <div
-  id="scrollNavbar"
-  class="fixed top-1/4 z-10 flex flex-col items-center justify-center w-14 gap-4 p-2 transition-transform duration-300 ease-in-out transform bg-transparent border-2 border-white shadow-2xl backdrop-blur-xl navbar right-2 rounded-3xl shadow-black md:hidden"
->
-    <a href="#home">
+    id="scrollNavbar"
+    class="fixed z-10 flex flex-col items-center justify-center gap-4 p-2 transition-transform duration-300 ease-in-out transform bg-transparent border-2 border-white shadow-2xl top-1/4 w-14 backdrop-blur-xl navbar right-2 rounded-3xl shadow-black md:hidden"
+  >
+    <a href="/">
       <img class="w-6 h-6" src="/images/home.png" alt="home" />
     </a>
     <span class="font-bold text-center text-white">|</span>
@@ -103,10 +107,10 @@
     </div>
     <span class="font-bold text-center text-white">|</span>
     <a href="#about">
-      <img class="w-6  h-6 md:w-6 md:h-6" src="/images/about.png" alt="about" />
+      <img class="w-6 h-6 md:w-6 md:h-6" src="/images/about.png" alt="about" />
     </a>
     <span class="font-bold text-center text-white">|</span>
-    <a href="#contact">
+    <a href="/feedback">
       <img class="w-6 h-6" src="/images/telephone.png" alt="contact" />
     </a>
   </div>
@@ -124,8 +128,6 @@
     transform: translateY(0);
     opacity: 1;
   }
-
-  
 </style>
 
 <script>

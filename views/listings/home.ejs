@@ -1,210 +1,327 @@
 <% layout("/layouts/boilerplate.ejs")%>
 
-  <body class="flex flex-col min-h-screen bg-black font-poppins" onclick="toggleSidebarOnBody(event) ">
-    <!-- Header -->
+<body
+  class="flex flex-col min-h-screen bg-black font-poppins"
+  onclick="toggleSidebarOnBody(event) "
+>
+  <!-- Header -->
 
-    <main class="relative flex-grow">
-      <!-- sidebar starts here -->
-      <%- include("../includes/sidebar.ejs")%>
-        <!-- sidebar ends here -->
+  <main class="relative flex-grow">
+    <!-- sidebar starts here -->
+    <%- include("../includes/sidebar.ejs")%>
+    <!-- sidebar ends here -->
 
-        <!-- part of the page showing the trending topics starts here -->
-        <section class="trending w-5/6 min-h-48 mx-auto md:w-[90vw] flex flex-col justify-center items-centermt-16">
-          <div class="w-full my-4 text-3xl font-bold text-center text-white h-1/4">
-            Trending Events
+    <!-- part of the page showing the trending topics starts here -->
+    <section
+      class="trending w-5/6 min-h-48 mx-auto md:w-[90vw] flex flex-col justify-center items-center mt-16"
+    >
+      <div
+        class="px-10 py-3 my-4 text-3xl font-bold text-center text-white border-b-4 border-white h-1/4"
+      >
+        Trending Events
+      </div>
+      <div class="h-full md:flex md:w-full md:gap-4">
+        <div
+          class="flex flex-col justify-between w-5/6 mx-auto my-4 text-white duration-300 1Topic rounded-2xl md:w-1/3 md:hover:scale-105 hover:shadow-lg hover:shadow-gray-400"
+          style="background-color: #1a1a1a"
+        >
+          <div class="flex gap-4 p-4 header">
+            <div class="flex items-center font-semibold">#1</div>
+            <div class="flex items-center font-semibold">CSI CHAPTER</div>
+            <div class="flex items-center text-2xl font-semibold">🔥</div>
           </div>
-          <div class="h-full md:flex md:w-full md:gap-4">
-            <div
-              class="flex flex-col justify-between w-5/6 mx-auto my-4 text-white duration-300 1Topic rounded-2xl md:w-1/3 md:hover:scale-105 hover:shadow-lg hover:shadow-gray-400"
-              style="background-color: #1a1a1a">
-              <div class="flex gap-4 p-4 header">
-                <div class="flex items-center font-semibold">#1</div>
-                <div class="flex items-center font-semibold">CSI CHAPTER</div>
-                <div class="flex items-center text-2xl font-semibold">🔥</div>
-              </div>
-              <div class="flex items-center p-4 mainNews">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              </div>
-            </div>
-            <div
-              class="flex flex-col justify-between w-5/6 mx-auto my-4 text-white duration-300 1Topic rounded-2xl md:w-1/3 md:hover:scale-105 hover:shadow-lg hover:shadow-gray-400"
-              style="background-color: #1a1a1a">
-              <div class="flex gap-4 p-4 header">
-                <div class="flex items-center font-semibold">#1</div>
-                <div class="flex items-center font-semibold">CSI CHAPTER</div>
-                <div class="flex items-center text-2xl font-semibold">🔥</div>
-              </div>
-              <div class="flex items-center p-4 mainNews">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              </div>
-            </div>
-            <div
-              class="flex flex-col justify-between w-5/6 mx-auto my-4 text-white duration-300 1Topic rounded-2xl md:w-1/3 md:hover:scale-105 hover:shadow-lg hover:shadow-gray-400"
-              style="background-color: #1a1a1a">
-              <div class="flex gap-4 p-4 header">
-                <div class="flex items-center font-semibold">#1</div>
-                <div class="flex items-center font-semibold">CSI CHAPTER</div>
-                <div class="flex items-center text-2xl font-semibold">🔥</div>
-              </div>
-              <div class="flex items-center p-4 mainNews">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- trending section ends here -->
-        <!-- explore teams section starts here -->
-        <section id="Hackathon" class="w-full mx-auto mt-16 text-gray-600 body-font min-h-48 md:w-11/12">
-          <div class="container flex flex-col items-center justify-center px-5 py-24 mx-auto">
-            <div class="w-5/6 my-4 text-3xl font-bold text-center text-white h-1/4 md:text-center md:ml-4">
-              Explore Teams
-            </div>
-            <div class="flex flex-wrap mt-5 -m-4">
-              <div class="p-4 w-full md:w-1/3">
-                <div
-                  class="h-full overflow-hidden duration-300 border-2 border-gray-200 rounded-lg border-opacity-60 md:hover:scale-105">
-                  <div
-                    class="flex items-center justify-center object-cover object-top w-full px-4 text-xl font-medium text-center text-gray-200 bg-red-600 lg:h-48 md:h-48 min-h-40">
-                    hello this team belongs to me
-                  </div>
-                  <div class="p-6">
-                    <h2 class="mb-1 text-xs font-medium tracking-widest text-gray-200 title-font">
-                      CATEGORY
-                    </h2>
-                    <h1 class="mb-3 text-lg font-bold text-white title-font">
-                      The Catalyzer
-                    </h1>
-                    <p class="mb-3 leading-relaxed text-gray-300">
-                      Photo booth fam kinfolk cold-pressed sriracha leggings
-                      jianbing microdosing tousled waistcoat.
-                    </p>
-                    <div class="flex flex-wrap items-center">
-                      <a class="inline-flex items-center text-indigo-500 md:mb-2 lg:mb-0">Learn More
-                        <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"
-                          stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M5 12h14"></path>
-                          <path d="M12 5l7 7-7 7"></path>
-                        </svg>
-                      </a>
-                      <span
-                        class="inline-flex items-center py-1 pr-3 ml-auto mr-3 text-sm leading-none text-gray-400 border-r-2 border-gray-200 lg:ml-auto md:ml-0">
-                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
-                          stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                          <circle cx="12" cy="12" r="3"></circle>
-                        </svg>1.2K
-                      </span>
-                      <span class="inline-flex items-center text-sm leading-none text-gray-400">
-                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
-                          stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                          <path
-                            d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z">
-                          </path>
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="p-4 w-full md:w-1/3">
-                <div
-                  class="h-full overflow-hidden duration-300 border-2 border-gray-200 rounded-lg border-opacity-60 md:hover:scale-105">
-                  <div
-                    class="flex items-center justify-center object-cover object-top w-full px-4 text-xl font-medium text-center text-gray-200 bg-red-600 lg:h-48 md:h-48 min-h-40">
-                    hello this team belongs to me
-                  </div>
-                  <div class="p-6">
-                    <h2 class="mb-1 text-xs font-medium tracking-widest text-gray-200 title-font">
-                      CATEGORY
-                    </h2>
-                    <h1 class="text-lg font-bold text-white title-font">
-                      The 400 Blows
-                    </h1>
-                    <p class="mb-3 leading-relaxed text-gray-300">
-                      Photo booth fam kinfolk cold-pressed sriracha leggings
-                      jianbing microdosing tousled waistcoat.
-                    </p>
-                    <div class="flex flex-wrap items-center">
-                      <a class="inline-flex items-center text-indigo-500 md:mb-2 lg:mb-0">Learn More
-                        <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"
-                          stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M5 12h14"></path>
-                          <path d="M12 5l7 7-7 7"></path>
-                        </svg>
-                      </a>
-                      <span
-                        class="inline-flex items-center py-1 pr-3 ml-auto mr-3 text-sm leading-none text-gray-400 border-r-2 border-gray-200 lg:ml-auto md:ml-0">
-                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
-                          stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                          <circle cx="12" cy="12" r="3"></circle>
-                        </svg>1.2K
-                      </span>
-                      <span class="inline-flex items-center text-sm leading-none text-gray-400">
-                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
-                          stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                          <path
-                            d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z">
-                          </path>
-                        </svg>6
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="p-4 w-full md:w-1/3">
-                <div
-                  class="h-full overflow-hidden duration-300 border-2 border-gray-200 rounded-lg border-opacity-60 md:hover:scale-105">
-                  <div
-                    class="flex items-center justify-center object-cover object-top w-full px-4 text-xl font-medium text-center text-gray-200 bg-red-600 lg:h-48 md:h-48 min-h-40">
-                    hello this team belongs to me
-                  </div>
-                  <div class="p-6">
-                    <h2 class="mb-1 text-xs font-medium tracking-widest text-gray-200 title-font">
-                      CATEGORY
-                    </h2>
-                    <h1 class="mb-3 text-lg font-bold text-white title-font">
-                      Shooting Stars
-                    </h1>
-                    <p class="mb-3 leading-relaxed text-gray-300">
-                      Photo booth fam kinfolk cold-pressed sriracha leggings
-                      jianbing microdosing tousled waistcoat.
-                    </p>
-                    <div class="flex flex-wrap items-center">
-                      <a class="inline-flex items-center text-indigo-500 md:mb-2 lg:mb-0">Learn More
-                        <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"
-                          stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M5 12h14"></path>
-                          <path d="M12 5l7 7-7 7"></path>
-                        </svg>
-                      </a>
-                      <span
-                        class="inline-flex items-center py-1 pr-3 ml-auto mr-3 text-sm leading-none text-gray-400 border-r-2 border-gray-200 lg:ml-auto md:ml-0">
-                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
-                          stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                          <circle cx="12" cy="12" r="3"></circle>
-                        </svg>1.2K
-                      </span>
-                      <span class="inline-flex items-center text-sm leading-none text-gray-400">
-                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
-                          stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                          <path
-                            d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z">
-                          </path>
-                        </svg>6
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <div class="w-[88vw] min-h-14 mx-auto flex justify-end">
-          <div class="duration-300 plus-icon w-14 h-14 md:hover:scale-110">
-            <img src="/assets/plus.png" alt="" class="rounded-full hover:border-2 hover:border-white" />
+          <div class="flex items-center p-4 mainNews">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
           </div>
         </div>
-    </main>
-  </body>
+        <div
+          class="flex flex-col justify-between w-5/6 mx-auto my-4 text-white duration-300 1Topic rounded-2xl md:w-1/3 md:hover:scale-105 hover:shadow-lg hover:shadow-gray-400"
+          style="background-color: #1a1a1a"
+        >
+          <div class="flex gap-4 p-4 header">
+            <div class="flex items-center font-semibold">#1</div>
+            <div class="flex items-center font-semibold">CSI CHAPTER</div>
+            <div class="flex items-center text-2xl font-semibold">🔥</div>
+          </div>
+          <div class="flex items-center p-4 mainNews">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+          </div>
+        </div>
+        <div
+          class="flex flex-col justify-between w-5/6 mx-auto my-4 text-white duration-300 1Topic rounded-2xl md:w-1/3 md:hover:scale-105 hover:shadow-lg hover:shadow-gray-400"
+          style="background-color: #1a1a1a"
+        >
+          <div class="flex gap-4 p-4 header">
+            <div class="flex items-center font-semibold">#1</div>
+            <div class="flex items-center font-semibold">CSI CHAPTER</div>
+            <div class="flex items-center text-2xl font-semibold">🔥</div>
+          </div>
+          <div class="flex items-center p-4 mainNews">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- trending section ends here -->
+    <!-- explore teams section starts here -->
+    <section
+      id="Hackathon"
+      class="w-full mx-auto text-gray-600 body-font min-h-48 md:w-11/12"
+    >
+      <div
+        class="container flex flex-col items-center justify-center px-5 py-24 mx-auto"
+      >
+        <div
+          class="px-10 py-3 my-4 text-3xl font-bold text-center text-white border-b-4 border-white md:text-center md:ml-4"
+        >
+          Explore Teams
+        </div>
+        <div class="flex flex-wrap mt-5 -m-4">
+          <div class="w-full p-4 md:w-1/3">
+            <div
+              class="h-full overflow-hidden duration-300 border-2 border-gray-200 rounded-lg border-opacity-60 md:hover:scale-105"
+            >
+              <div
+                class="flex items-center justify-center object-cover object-top w-full px-4 text-xl font-medium text-center text-gray-200 bg-red-600 lg:h-48 md:h-48 min-h-40"
+              >
+                hello this team belongs to me
+              </div>
+              <div class="p-6">
+                <h2
+                  class="mb-1 text-xs font-medium tracking-widest text-gray-200 title-font"
+                >
+                  CATEGORY
+                </h2>
+                <h1 class="mb-3 text-lg font-bold text-white title-font">
+                  The Catalyzer
+                </h1>
+                <p class="mb-3 leading-relaxed text-gray-300">
+                  Photo booth fam kinfolk cold-pressed sriracha leggings
+                  jianbing microdosing tousled waistcoat.
+                </p>
+                <div class="flex flex-wrap items-center">
+                  <a
+                    class="inline-flex items-center text-indigo-500 md:mb-2 lg:mb-0"
+                    >Learn More
+                    <svg
+                      class="w-4 h-4 ml-2"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                  <span
+                    class="inline-flex items-center py-1 pr-3 ml-auto mr-3 text-sm leading-none text-gray-400 border-r-2 border-gray-200 lg:ml-auto md:ml-0"
+                  >
+                    <svg
+                      class="w-4 h-4 mr-1"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                      ></path>
+                      <circle cx="12" cy="12" r="3"></circle></svg
+                    >1.2K
+                  </span>
+                  <span
+                    class="inline-flex items-center text-sm leading-none text-gray-400"
+                  >
+                    <svg
+                      class="w-4 h-4 mr-1"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"
+                      ></path>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full p-4 md:w-1/3">
+            <div
+              class="h-full overflow-hidden duration-300 border-2 border-gray-200 rounded-lg border-opacity-60 md:hover:scale-105"
+            >
+              <div
+                class="flex items-center justify-center object-cover object-top w-full px-4 text-xl font-medium text-center text-gray-200 bg-red-600 lg:h-48 md:h-48 min-h-40"
+              >
+                hello this team belongs to me
+              </div>
+              <div class="p-6">
+                <h2
+                  class="mb-1 text-xs font-medium tracking-widest text-gray-200 title-font"
+                >
+                  CATEGORY
+                </h2>
+                <h1 class="text-lg font-bold text-white title-font">
+                  The 400 Blows
+                </h1>
+                <p class="mb-3 leading-relaxed text-gray-300">
+                  Photo booth fam kinfolk cold-pressed sriracha leggings
+                  jianbing microdosing tousled waistcoat.
+                </p>
+                <div class="flex flex-wrap items-center">
+                  <a
+                    class="inline-flex items-center text-indigo-500 md:mb-2 lg:mb-0"
+                    >Learn More
+                    <svg
+                      class="w-4 h-4 ml-2"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                  <span
+                    class="inline-flex items-center py-1 pr-3 ml-auto mr-3 text-sm leading-none text-gray-400 border-r-2 border-gray-200 lg:ml-auto md:ml-0"
+                  >
+                    <svg
+                      class="w-4 h-4 mr-1"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                      ></path>
+                      <circle cx="12" cy="12" r="3"></circle></svg
+                    >1.2K
+                  </span>
+                  <span
+                    class="inline-flex items-center text-sm leading-none text-gray-400"
+                  >
+                    <svg
+                      class="w-4 h-4 mr-1"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"
+                      ></path></svg
+                    >6
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full p-4 md:w-1/3">
+            <div
+              class="h-full overflow-hidden duration-300 border-2 border-gray-200 rounded-lg border-opacity-60 md:hover:scale-105"
+            >
+              <div
+                class="flex items-center justify-center object-cover object-top w-full px-4 text-xl font-medium text-center text-gray-200 bg-red-600 lg:h-48 md:h-48 min-h-40"
+              >
+                hello this team belongs to me
+              </div>
+              <div class="p-6">
+                <h2
+                  class="mb-1 text-xs font-medium tracking-widest text-gray-200 title-font"
+                >
+                  CATEGORY
+                </h2>
+                <h1 class="mb-3 text-lg font-bold text-white title-font">
+                  Shooting Stars
+                </h1>
+                <p class="mb-3 leading-relaxed text-gray-300">
+                  Photo booth fam kinfolk cold-pressed sriracha leggings
+                  jianbing microdosing tousled waistcoat.
+                </p>
+                <div class="flex flex-wrap items-center">
+                  <a
+                    class="inline-flex items-center text-indigo-500 md:mb-2 lg:mb-0"
+                    >Learn More
+                    <svg
+                      class="w-4 h-4 ml-2"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                  <span
+                    class="inline-flex items-center py-1 pr-3 ml-auto mr-3 text-sm leading-none text-gray-400 border-r-2 border-gray-200 lg:ml-auto md:ml-0"
+                  >
+                    <svg
+                      class="w-4 h-4 mr-1"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                      ></path>
+                      <circle cx="12" cy="12" r="3"></circle></svg
+                    >1.2K
+                  </span>
+                  <span
+                    class="inline-flex items-center text-sm leading-none text-gray-400"
+                  >
+                    <svg
+                      class="w-4 h-4 mr-1"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"
+                      ></path></svg
+                    >6
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="w-[88vw] min-h-14 mx-auto flex justify-end">
+      <div class="duration-300 plus-icon w-14 h-14 md:hover:scale-110">
+        <img
+          src="/assets/plus.png"
+          alt=""
+          class="rounded-full hover:border-2 hover:border-white"
+        />
+      </div>
+    </div>
+  </main>
+</body>

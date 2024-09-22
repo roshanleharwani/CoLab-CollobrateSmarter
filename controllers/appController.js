@@ -376,7 +376,11 @@ exports.listTeamProject = async (req,res) =>{
         userName:userName,
         color:color
     })
-    return res.redirect('/teamProjects')
+    res.redirect('/teamProjects')
 
 
+}
+
+exports.feedback =  async (req,res)=>{
+    return res.render('listings/contact')
 }
