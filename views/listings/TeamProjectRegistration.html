@@ -1,171 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      body,
-      html {
-        min-height: 100vh;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
 
-      main {
-        flex: 1;
-      }
-    </style>
-  </head>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body,
+    html {
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
 
-  <body class="bg-gray-900 bg-gradient-to-r from-indigo-500">
-    <main class="h-full min-w-full p-5">
-      <section class="bg-gray-50 dark:bg-transparent">
+    main {
+      flex: 1;
+    }
+
+    /* Transition effect for the dropdown */
+    #dropdown-menu {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      transform: translateY(-10px);
+    }
+
+    #dropdown-menu.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-900 bg-gradient-to-r from-indigo-500">
+  <main class="h-full min-w-full p-5">
+    <section class="bg-gray-50 dark:bg-transparent">
+      <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:min-h-screen lg:py-0">
         <div
-          class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:min-h-screen lg:py-0"
-        >
-          <div
-            class="w-full bg-transparent bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-lg xl:p-0 backdrop-blur-xl dark:bg-gray-800 dark:border-gray-700"
-          >
-            <div class="p-4 space-y-4 md:space-y-6 sm:p-4">
-              <h1
-                class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white"
-              >
-                Enter Details of Your Project
-              </h1>
-              <form class="space-y-4 md:space-y-6" action="#">
-                <div>
-                  <label
-                    for="Name"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                    >Your Name</label
-                  >
-                  <input
-                    type="text"
-                    name="Name"
-                    id="Name"
-                    placeholder="Andrew Tate"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    required=""
-                  />
-                </div>
-                <div>
-                  <label
-                    for="email"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                    >Project Name</label
-                  >
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Website Creation"
-                    required=""
-                  />
-                </div>
-                <div>
-                  <label
-                    for="confirm-password"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                    >Project Description</label
-                  >
-                  <textarea
-                    name=""
-                    id=""
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 resize-none"
-                    required=""
-                  ></textarea>
-                </div>
-                <div>
-                  <label
-                    for="members"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                    >Number of Members Required</label
-                  >
-                  <select
-                    id="members"
-                    name="members"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    required=""
-                  >
-                    <option value="" disabled selected>Members required</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                  </select>
-                </div>
-                <div>
-                  <label
-                    for="existing-users"
-                    class="block text-sm font-medium text-gray-900 dark:text-white"
-                    >Registration number of existing members</label
-                  >
-                  <input
-                    type="text"
-                    name="existing-users"
-                    id="Name"
-                    placeholder="23BCEXXXX"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    required=""
-                  />
-                </div>
-                <div class="flex items-center justify-end mr-4">Add</div>
-                <div>
-                  <label
-                    for="skills"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                    >List of Skills Required</label
-                  >
-                  <select
-                    id="skills"
-                    name="skills[]"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    required=""
-                  >
-                    <option value="HTML">HTML</option>
-                    <option value="CSS">CSS</option>
-                    <option value="javascript">JavaScript</option>
-                    <option value="Tailwind-CSS">Tailwind-CSS</option>
-                    <option value="React Js">React Js</option>
-                    <option value="Node Js">Node Js</option>
-                    <option value="Next Js">Next Js</option>
-                    <option value="MongoDB">MongoDB</option>
-                    <option value="MySQL">MySQL</option>
-                    <option value="Flutter">Flutter</option>
-                    <option value="Firebase">Firebase</option>
-                    <option value="PostgreSQL">PostgreSQL</option>
-                    <option value="AI/ML">AI/ML</option>
-                    <option value="Blockchain">Blockchain</option>
-                    <option value="AWS">AWS</option>
+          class="w-full bg-transparent bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-lg xl:p-0 backdrop-blur-xl dark:bg-gray-800 dark:border-gray-700">
+          <div class="p-4 space-y-4 md:space-y-6 sm:p-4">
+            <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+              Enter Details of Your Project
+            </h1>
+            <form class="space-y-4 md:space-y-6" action="#">
+              <div>
+                <label for="Name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Name</label>
+                <input type="text" name="Name" id="Name" placeholder="Andrew Tate"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  required="" />
+              </div>
+              <div>
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Project
+                  Name</label>
+                <input type="email" name="email" id="email"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Website Creation" required="" />
+              </div>
+              <div>
+                <label for="confirm-password"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Project Description</label>
+                <textarea name="" id=""
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 resize-none"
+                  required=""></textarea>
+              </div>
+              <div>
+                <label for="members" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number of
+                  Members Required</label>
+                <select id="members" name="members"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  required="">
+                  <option value="" disabled selected>Members required</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
+              <div>
+                <label for="existing-users" class="block text-sm font-medium text-gray-900 dark:text-white">Registration
+                  number of existing members</label>
+                <input type="text" name="existing-users" id="Name" placeholder="23BCEXXXX"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  required="" />
+              </div>
+              <div >
+                <label for="skills" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">List of Skills
+                  Required</label>
+                  <div class="relative inline-block w-full text-left">
+                    <div id="dropdown-button"
+                      class="inline-flex justify-between w-full p-2 text-sm font-medium text-gray-900 bg-gray-50 border border-gray-300 rounded-lg shadow  focus:ring-primary-600 focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                      Select Skill
+                      <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                        fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                          clip-rule="evenodd" />
+                      </svg>
+                    </div>
+                  
+                    <div id="dropdown-menu"
+                      class="absolute right-0 z-10 hidden mt-2 w-full bg-gray-50 border border-gray-300 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-700 dark:border-gray-600">
+                      <ul class="py-1 w-full" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-button">
+                        <li class="w-full flex justify-between border-b-[1px]">
+                          <div class="flex items-center justify-center ml-4 h-full pt-2 text-white">HTML</div>
+                          <div class="ml-8 p-1 flex justify-between">
+                            <button class="bg-green-500 w-8 rounded-lg font-bold size-8">+</button>
+                          </div>
+                        </li>
+                        <li class="w-full flex justify-between border-b-[1px]">
+                          <div class="flex items-center justify-center ml-4 h-full pt-2 text-white">CSS</div>
+                          <div class="ml-8 p-1 flex justify-between">
+                            <button class="bg-green-500 w-8 rounded-lg font-bold size-8">+</button>
+                            
+                          </div>
+                        </li>
+                        <li class="w-full flex justify-between border-b-[1px]">
+                          <div class="flex items-center justify-center ml-4 h-full pt-2 text-white">CSS</div>
+                          <div class="ml-8 p-1 flex justify-between">
+                            <button class="bg-green-500 w-8 rounded-lg font-bold size-8">+</button>
+                            
+                          </div>
+                        </li>
+                        <li class="w-full flex justify-between border-b-[1px]">
+                          <div class="flex items-center justify-center ml-4 h-full pt-2 text-white">CSS</div>
+                          <div class="ml-8 p-1 flex justify-between">
+                            <button class="bg-green-500 w-8 rounded-lg font-bold size-8">+</button>
+                            
+                          </div>
+                        </li>
+                        <!-- More items here -->
+                      </ul>
+                    </div>
+                  </div>
+                  
 
-                    <option value="Others">Others</option>
-                  </select>
-                </div>
-
-                <div class="flex justify-center">
-                  <button
-                    type="submit"
-                    class="w-1/2 text-black bg-white hover:bg-red-500 hover:text-white font-semibold rounded-lg text-lg px-5 py-2.5 text-center hover:ring-2 hover:ring-white hover:scale-105 duration-300"
-                  >
-                    Add Project
-                  </button>
-                </div>
-              </form>
-            </div>
+              </div>
+              <div class="flex justify-center w-full">
+                <button type="submit"
+                  class="w-full text-black bg-white hover:bg-red-500 hover:text-white font-semibold rounded-lg text-lg px-5 py-2.5 text-center hover:ring-2 hover:ring-white hover:scale-105 duration-300">
+                  Add Project
+                </button>
+              </div>
           </div>
+
         </div>
-      </section>
-    </main>
-  </body>
+
+
+        </form>
+      </div>
+      </div>
+      </div>
+    </section>
+  </main>
+</body>
+<script>
+  const dropdownButton = document.getElementById('dropdown-button');
+  const dropdownMenu = document.getElementById('dropdown-menu');
+
+  dropdownButton.addEventListener('click', () => {
+    dropdownMenu.classList.toggle('hidden');
+  });
+
+  function selectSkill(skill) {
+    dropdownButton.textContent = skill;
+    dropdownMenu.classList.add('hidden');
+    // Add any other logic you need to handle the selected skill
+  }
+
+  // Close the dropdown if clicked outside
+  window.addEventListener('click', (event) => {
+    if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+      dropdownMenu.classList.add('hidden');
+    }
+  });
+</script>
 </html>
