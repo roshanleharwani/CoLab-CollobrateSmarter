@@ -42,7 +42,7 @@ app.get('/resend', controller.resend);
 
 app.post('/create', controller.create);
 
-app.get('/signOut',controller.signOut)
+app.get('/signOut',isAuth,controller.signOut)
 
 app.post('/authenticate', controller.authenticate);
 
