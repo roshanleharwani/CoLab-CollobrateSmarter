@@ -66,4 +66,6 @@ app.get('/teamProjects',isAuth,controller.teamPages)
 
 app.get('/feedback',isAuth,controller.feedback)
 
+app.get('/about',isAuth,controller.about)
+
 app.listen(3000)

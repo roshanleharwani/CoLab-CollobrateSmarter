@@ -381,6 +381,10 @@ exports.listTeamProject = async (req,res) =>{
 
 }
 
-exports.feedback =  async (req,res)=>{
+exports.feedback =  (req,res)=>{
     return res.render('listings/contact')
+}
+
+exports.about = (req,res)=>{
+    return res.render('listings/about')
 }
