@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Search Filter</title>
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <style>
+    #searchbar {
+      margin-bottom: 10px; /* Add space between search bar and list */
+    }
+    ul {
+      padding-left: 0; /* Remove extra padding if needed */
+    }
+  </style>
+</head>
+<body>
+
+  <div data-role="page" id="pageone">
+    <div data-role="header">
+      <h1>Programming Languages</h1>
+    </div>
+
+    <div data-role="main" class="ui-content" id="filter">
+        <input id="searchbar" data-type="search" placeholder="Search languages...">
+      <!-- Search Bar & Filtered List -->
+      <ul data-role="listview" data-filter="true" data-input="#searchbar" data-filter-reveal="true" class="w-72">
+        <li>Python</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>HTML</li>
+        <li>Swift</li>
+      </ul>
+
+      <!-- Search Input Field -->
+      
+    </div>
+
+    <div data-role="footer">
+      <h4>Footer Content</h4>
+    </div>
+  </div>
+
+</body>
+</html>

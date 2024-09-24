@@ -68,4 +68,8 @@ app.get('/feedback',isAuth,controller.feedback)
 
 app.get('/about',isAuth,controller.about)
 
+
+app.get('/teamRegistration',(req,res)=>{
+  res.render('listings/TeamProjectRegistration');
+})
 app.listen(3000)
