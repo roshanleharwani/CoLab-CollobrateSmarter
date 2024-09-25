@@ -46,3 +46,27 @@ form.addEventListener('submit', (e) => {
 
 // Initial render of the list
 renderList();
+
+
+function showDropdown() {
+  document.getElementById('skillsDropdown').classList.remove('hidden');
+}
+
+function hideDropdown() {
+  document.getElementById('skillsDropdown').classList.add('hidden');
+}
+
+function selectSkill(skill) {
+  document.getElementById('project_skills').value = skill;
+  hideDropdown();
+}
+
+// Hide the dropdown if clicked outside
+document.addEventListener('click', function(event) {
+  const dropdown = document.getElementById('skillsDropdown');
+  const input = document.getElementById('project_skills');
+  
+  if (!dropdown.contains(event.target) && event.target !== input) {
+    hideDropdown();
+  }
+});

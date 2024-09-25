@@ -12,16 +12,16 @@ app.use(express.static('public'));
 const teamProject = require("./models/teamProject.js");
 const mongoose = require('mongoose');
 // local database
-main().then(() => {
-  console.log("Connected to database");
+// main().then(() => {
+//   console.log("Connected to database");
 
-}).catch(err => console.log(err));
+// }).catch(err => console.log(err));
 
-async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/colab', {
+// async function main() {
+//   await mongoose.connect('mongodb://127.0.0.1:27017/colab', {
 
-  });
-}
+//   });
+// }
 DataBase.connect(uri)
 
 const store = new MongoDBStore({
@@ -85,22 +85,22 @@ app.get('/about', isAuth, controller.about)
 app.get('/teamRegistration', (req, res) => {
   res.render('listings/TeamProjectRegistration');
 })
-app.post('/teamRegistration', async (req, res) => {
-  let project = req.body.project;
-  const existingMembers = JSON.parse(req.body.project.existing_members[1]);
-  console.log(existingMembers);
-  let insertObject = {
-    personName: project.person_name,
-    projectName: project.name,
-    description: project.description,
-    membersRequired: parseInt(project.members_required,10),
-    members: existingMembers
-  }
-  console.log(project);
-  const newProject = new teamProject(insertObject);
-  await newProject.save();
+// app.post('/teamRegistration', async (req, res) => {
+//   let project = req.body.project;
+//   const existingMembers = JSON.parse(req.body.project.existing_members[1]);
+//   console.log(existingMembers);
+//   let insertObject = {
+//     personName: project.person_name,
+//     projectName: project.name,
+//     description: project.description,
+//     membersRequired: parseInt(project.members_required,10),
+//     members: existingMembers
+//   }
+//   console.log(project);
+//   const newProject = new teamProject(insertObject);
+//   await newProject.save();
 
-  console.log("new data saved");
-  res.send('done');
-})
+//   console.log("new data saved");
+//   res.send('done');
+// })
 app.listen(3000)
