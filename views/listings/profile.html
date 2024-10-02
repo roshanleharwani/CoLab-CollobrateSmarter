@@ -5,37 +5,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="/public/stylesheets/rating.css">
 </head>
 
 <body>
-    <main class="flex items-center justify-center overflow-x-hidden">
+    <main class="flex flex-col justify-center overflow-x-hidden md:flex-row">
+        <!-- added md:flex-row flex-col removed items-center -->
 
-        <div class="flex flex-col items-center justify-center w-5/12 min-h-screen bg-black">
+        <div
+            class="flex flex-col items-center justify-start w-screen px-6 pt-20 md:min-h-screen bg-gradient-to-b from-slate-800 via-slate-900 to-black md:bg-gradient-to-r">
 
-            <div class="w-28"><img class="border-8 rounded-full border-emerald-400" src="/public//images/profile.png"
-                    alt="profile"></div>
+            <!-- Profile Picture -->
+            <div class="w-28">
+                <img class="border-8 rounded-full border-emerald-400" src="/public/images/profile.png"
+                    alt="Profile Picture of Roshan Laharwani">
+            </div>
+            <div class="my-5 rating">
+                <input type="radio" name="rating-2" class="bg-orange-400 mask mask-star-2" />
+                <input type="radio" name="rating-2" class="bg-orange-400 mask mask-star-2" checked="checked" />
+                <input type="radio" name="rating-2" class="bg-orange-400 mask mask-star-2" />
+                <input type="radio" name="rating-2" class="bg-orange-400 mask mask-star-2" />
+                <input type="radio" name="rating-2" class="bg-orange-400 mask mask-star-2" />
+            </div>
 
+            <!-- Name -->
             <span class="mt-3 text-2xl font-semibold text-white">Roshan Laharwani</span>
 
-            <div class="flex flex-col justify-start">
+            <!-- Details Section -->
+            <div class="flex flex-col justify-start mt-5">
 
-                <ul class="mt-5 space-y-4 text-lg text-white list-none">
-                    <li><strong class="text-xl font-medium text-gray-500">Graduation Year: </strong>2027</li>
-                    <li><strong class="text-xl font-medium text-gray-500">College Email ID:
-                        </strong>roshan.23bce7308@vitapstudent.ac.in
+                <ul class="space-y-4 text-sm text-white list-none">
+                    <li><strong class="font-medium text-gray-500 text-md">Graduation Year: </strong>2027</li>
+                    <li><strong class="font-medium text-gray-500 text-md">College Email ID:
+                        </strong>roshan.23bce7308@vitapstudent.ac.in</li>
+                    <li><strong class="font-medium text-gray-500 text-md">Branch: </strong>Computer Science - (CORE)
                     </li>
-                    <li><strong class="text-xl font-medium text-gray-500">Branch: </strong>Computer Science - (CORE)
-                    </li>
-                    <li><strong class="text-xl font-medium text-gray-500">Phone Number: </strong>+91-7470629602</li>
-
+                    <li><strong class="font-medium text-gray-500 text-md">Phone Number: </strong>+91-7470629602</li>
                 </ul>
 
-                <div class="self-start mt-5 text-2xl font-semibold text-white ">Skills</div>
+                <!-- Skills Section -->
+                <div class="self-start mt-5 text-2xl font-semibold text-white">Skills</div>
 
-                <div class="mt-5 ">
-                    <ul class="flex font-medium list-none gap-x-2">
+                <div class="mt-5">
+                    <ul class="flex flex-wrap font-medium list-none gap-x-2 gap-y-2">
                         <li
-                            class="p-1 px-4 text-white duration-300 ease-in-out bg-red-500 rounded-full hover:scale-105 ">
+                            class="p-1 px-4 text-white duration-300 ease-in-out bg-red-500 rounded-full hover:scale-105">
                             Python</li>
                         <li
                             class="p-1 px-4 text-white duration-300 ease-in-out rounded-full bg-emerald-500 hover:scale-105">
@@ -48,29 +64,55 @@
                             C++</li>
                     </ul>
                 </div>
-                <div class="flex gap-3 mt-5">
-                    <span class="my-3 text-2xl font-semibold text-white"> Socials: </span>
-                    <img src="/public/images/instagram.png" alt="" class="w-6 h-6 my-4">
-                    <img src="/public/images/linkedin.png" alt="" class="w-6 h-6 my-4">
-                    <img src="/public/images/github.png" alt="" class="w-6 h-6 my-4">
+
+                <!-- Socials Section -->
+                <div class="flex items-center gap-3 mt-5">
+                    <span class="text-2xl font-semibold text-white">Socials:</span>
+                    <img src="/public/images/instagram.png" alt="Instagram"
+                        class="w-6 h-6 duration-200 rounded-full hover:scale-105">
+                    <img src="/public//images/linkedin.png" alt="LinkedIn"
+                        class="w-6 h-6 duration-200 rounded-full hover:scale-105">
+                    <img src="/public/images/github.png" alt="GitHub"
+                        class="w-6 h-6 duration-200 rounded-full hover:scale-105">
                 </div>
+
+
+                <div class="my-8 dropdown dropdown-hover">
+                    <div tabindex="0" role="button" class="m-1 text-white border-b-2 border-white btn">Posts
+                    </div>
+                    <ul tabindex="0"
+                        class="dropdown-content menu bg-gray-700 rounded-box z-[1] w-52 p-2 shadow text-white">
+                        <li><a>Post 1</a></li>
+                        <li><a>Post 2</a></li>
+                    </ul>
+                </div>
+
+
+
+
+
             </div>
 
         </div>
-        <div class="flex flex-col items-center w-8/12 min-h-screen bg-gray-900">
-            <span class="p-1 px-8 mt-4 text-3xl font-medium text-white border-b-4 border-white">General
-                Information</span>
 
-            <div class="flex flex-col p-4 m-4 bg-gray-800 rounded-xl w-11/12 ">
+
+        <div class="flex flex-col items-center px-3 pt-5 bg-black md:min-h-screen">
+            <span class="p-1 px-10 mt-4 text-3xl font-medium text-white ">General
+                Information
+                <hr class="py-1 mt-2">
+            </span>
+
+
+            <div class="flex flex-col p-4 m-4 bg-gray-800 rounded-xl ">
                 <span class="self-start mb-5 text-xl font-semibold text-white ">About Me</span>
                 <p class="text-lg font-normal text-white ">Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Dolores ipsum sunt praesentium inventore minus iure mollitia porro excepturi, iste aut deleniti
                     beatae obcaecati maxime tenetur? Ducimus consequatur dolorem quia mollitia pariatur magnam.</p>
             </div>
 
-            <div class="flex items-center justify-center w-11/12 h-full p-2 m-4 bg-gray-800 rounded-xl">
+            <div class="flex items-center justify-center w-full h-full p-2 m-4 bg-gray-800 rounded-xl">
 
-                <div class="flex flex-col w-1/2 h-full mx-4 gap-y-6">
+                <div class="flex flex-col flex-wrap w-full h-full p-4 md:w-1/2 gap-y-1">
                     <div class="flex flex-col gap-y-2">
                         <span class="text-xl font-medium text-gray-400">Education: </span>
                         <span class="mx-2 text-lg font-normal text-white">Vatsalya Sr. Secondary School 12th
@@ -84,12 +126,9 @@
                     <div class="flex flex-col gap-y-2">
                         <span class="text-xl font-medium text-gray-400">Projects: </span>
                         <span class="mx-2 text-lg font-normal text-white">Auto Connect Wi-Fi automation for
-                            hostel, Chat-GPT GUI python Client using Tkinter, Just Define Dictionary website </span>
+                            hostel, Chat-GPT GUI python Client using Tkinter, Just Define Dictionary website
+                        </span>
                     </div>
-
-                </div>
-
-                <div class="flex flex-col w-1/2 h-full mx-4 gap-y-6">
                     <div class="flex flex-col gap-y-2">
                         <span class="text-xl font-medium text-gray-400">Experience: </span>
                         <span class="mx-2 text-lg font-normal text-white">Member of CSI in VIT AP for 1 Year</span>
@@ -100,8 +139,6 @@
                     </div>
 
                 </div>
-
-
             </div>
         </div>
 
