@@ -26,6 +26,9 @@ const userSchema = new mongoose.Schema({
     type:String,
     default:"",
   },
+  requests :{
+    type:Array
+  }
 
   
 });

@@ -129,4 +129,18 @@ app.get('/teamProjects/:id',async(req,res)=>{
   console.log(project);
   res.render("listings/projectDetails",{project});
 })
+
+app.post('/request/:id',async(req,res)=>{
+  
+  const id =new mongoose.Types.ObjectId(req.params.id);
+  console.log(id);
+  const user=await userModel.findById(id);
+  user.requests.push(req.session.userId);
+  await user.save();
+  console.log(user)
+})
+
+
+
+
 app.listen(3000)
