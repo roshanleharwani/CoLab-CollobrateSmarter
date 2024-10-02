@@ -136,7 +136,7 @@ The CoLab Team
 }
 
 exports.create = async (req, res) => {
-    const { email, password, confirmPassword } = req.body;
+    const {name, email, password, confirmPassword } = req.body;
     const result = validateEmail(email);
     // req.session.email = email;
     // Check if passwords match
@@ -163,6 +163,7 @@ exports.create = async (req, res) => {
 
         // Create a new user
         const user = await userModel.create({
+            name:name,
             RegNumber: result.registrationNumber,
             email: email,
             password: hash,

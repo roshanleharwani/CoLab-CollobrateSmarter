@@ -1,78 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
-    <link rel="stylesheet" href="/stylesheets/output.css">
+
+    <link rel="stylesheet" href="/public/stylesheets/output.css">
     <style>
-        body, html {
-            min-height: 100vh; ;
+        body,
+        html {
+            min-height: 100vh;
+            ;
             margin: 0;
             display: flex;
             flex-direction: column;
-      
-          }
-          main {
+
+        }
+
+        main {
             flex: 1;
-          }
+        }
     </style>
 </head>
+
 <body class="bg-gray-900 bg-gradient-to-r from-indigo-500">
     <main class="h-full min-w-full p-5 ">
-        <section class="bg-transparent md:backdrop-brightness-100 md:mt-0 backdrop-brightness-75 backdrop-blur-md rounded-xl bg-gray-50">
+        <section
+            class="bg-transparent md:backdrop-brightness-100 md:mt-0 backdrop-brightness-75 backdrop-blur-md rounded-xl bg-gray-50">
             <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:min-h-screen lg:py-0">
-    
+
                 <a href="#" class="flex items-center mt-5 mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
                     <img class="h-10 mr-2 " src="./images/logo.png" alt="logo">
                     CoLab
                 </a>
-                <div class="w-full bg-transparent bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-lg xl:p-0 backdrop-blur-xl dark:bg-gray-800 dark:border-gray-700">
+                <div
+                    class="w-full bg-transparent bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-lg xl:p-0 backdrop-blur-xl dark:bg-gray-800 dark:border-gray-700">
                     <div class="p-4 space-y-4 md:space-y-6 sm:p-4">
-                        <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                        <h1
+                            class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                             Create an account
                         </h1>
                         <form class="space-y-4 md:space-y-6" action="/create" method="post">
                             <div>
-                                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-                                <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="example@vitapstudent.ac.in" required>
+                                <label for="name"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
+                                    Name</label>
+                                <input type="name" name="name" id="name"
+                                    class="bg-gray-50 border mb-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="Your Name Here" required>
+                                <label for="email"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
+                                    email</label>
+                                <input type="email" name="email" id="email"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="example@vitapstudent.ac.in" required>
                                 <% if(exists){ %>
-                                <strong><p class="m-2 font-normal text-yellow-400">Email already exists, Please Login !</p></strong>
-                                <% } %>
+                                    <strong>
+                                        <p class="m-2 font-normal text-yellow-400">Email already exists, Please Login !
+                                        </p>
+                                    </strong>
+                                    <% } %>
                             </div>
                             <div>
-                                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                                <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                                <label for="password"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                                <input type="password" name="password" id="password" placeholder="••••••••"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    required>
                             </div>
                             <div>
-                                <label for="confirm-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
-                                <input type="text" name="confirmPassword" id="confirm-password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                                <label for="confirm-password"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm
+                                    password</label>
+                                <input type="text" name="confirmPassword" id="confirm-password" placeholder="••••••••"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    required>
                                 <% if(!pass){ %>
-                                <p class="text-red-500">Password not matched</p>
-                                <% } %>
+                                    <p class="text-red-500">Password not matched</p>
+                                    <% } %>
                             </div>
                             <div class="flex items-start">
                                 <div class="flex items-center h-5">
-                                  <input id="terms" aria-describedby="terms" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" required="">
+                                    <input id="terms" aria-describedby="terms" type="checkbox"
+                                        class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+                                        required="">
                                 </div>
                                 <div class="ml-3 text-sm">
-                                  <label for="terms" class="font-light text-gray-500 dark:text-gray-300">I accept the <a class="font-medium text-primary-600 hover:text-blue-600 hover:underline dark:text-primary-500" href="#">Terms and Conditions</a></label>
+                                    <label for="terms" class="font-light text-gray-500 dark:text-gray-300">I accept the
+                                        <a class="font-medium text-primary-600 hover:text-blue-600 hover:underline dark:text-primary-500"
+                                            href="#">Terms and Conditions</a></label>
                                 </div>
                             </div>
-                            <div class="flex items-center justify-center" >
+                            <div class="flex items-center justify-center">
 
-                                <button type="submit" class="w-3/4 text-black bg-white   hover:bg-red-500 hover:text-white  font-semibold rounded-lg text-lg  px-5 py-2.5 text-center  hover:ring-2 hover:ring-white hover:scale-105 duration-300">Create Account</button>
+                                <button type="submit"
+                                    class="w-3/4 text-black bg-white   hover:bg-red-500 hover:text-white  font-semibold rounded-lg text-lg  px-5 py-2.5 text-center  hover:ring-2 hover:ring-white hover:scale-105 duration-300">Create
+                                    Account</button>
                             </div>
                             <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                                Already have an account? <a href="/signIn" class="font-medium text-red-500 hover:underline ">Login here</a>
+                                Already have an account? <a href="/signIn"
+                                    class="font-medium text-red-500 hover:underline ">Login here</a>
                             </p>
                         </form>
                     </div>
                 </div>
             </div>
-          </section>
+        </section>
     </main>
-    
+
 </body>
+
 </html>
