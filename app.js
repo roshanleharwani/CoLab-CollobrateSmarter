@@ -122,18 +122,25 @@ app.get('/teamProjects/:id',async(req,res)=>{
   res.render("listings/projectDetails",{project});
 })
 
-app.post('/request/:id/:name',async(req,res)=>{
-  
+app.post('/request/:id/:name/:projectId',async(req,res)=>{
+  const projectId=new mongoose.Types.ObjectId(req.params.projectId);
+  const project=await projectModel.findById(projectId);
+  console.log(project);
+  console.log(projectId)
   const id =new mongoose.Types.ObjectId(req.params.id);
+  // this id is basically of the person to whom the join button will send request
+  console.log(id);
+  // this is receiving the name of the project
   const {name}=req.params;
+  // this is the id of the person who clicked on the join button
   const Pid=req.session.userId;
   
   const user=await userModel.findById(id);
-  
-  console.log()
+  console.log(Pid);
   let obj={
     Pid:Pid,
-    name:name
+    name:name,
+    projectId:projectId
   }
   user.requests.push(obj);
   await user.save();
@@ -154,8 +161,9 @@ app.get('/request/:id',async(req,res)=>{
   const requestArray = [];
   for (let i = 0; i < currUser.requests.length; i++) {
   const user = await userModel.findById(currUser.requests[i].Pid);
+  
   if (user) {
-    requestArray.push({user:user.name,projectName:currUser.requests[i].name});
+    requestArray.push({user:user.name,projectName:currUser.requests[i].name,Pid:currUser.requests[i].Pid,projectId:currUser.requests[i].projectId});
   }
   }
 
@@ -163,5 +171,12 @@ app.get('/request/:id',async(req,res)=>{
   res.render('listings/requests',{requestArray});
 })
 
-
+app.get('/accept/:personId/:postId',async(req,res)=>{
+    const personId=new mongoose.Types.ObjectId(req.params.personId);
+    const projectId=new mongoose.Types.ObjectId(req.params.postId);
+    const person=await userModel.findById(personId);
+    const project=await projectModel.findById(projectId);
+    console.log(person);
+    console.log(project);
+})
 app.listen(3000)
