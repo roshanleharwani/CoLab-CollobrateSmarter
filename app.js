@@ -140,6 +140,8 @@ app.post('/request/:id/:name',async(req,res)=>{
   const Pid=req.session.userId;
   
   const user=await userModel.findById(id);
+  
+  console.log()
   let obj={
     Pid:Pid,
     name:name
@@ -162,9 +164,9 @@ app.get('/request/:id',async(req,res)=>{
   console.log(currUser.requests);
   const requestArray = [];
   for (let i = 0; i < currUser.requests.length; i++) {
-  const user = await userModel.findById(currUser.requests[i]);
+  const user = await userModel.findById(currUser.requests[i].Pid);
   if (user) {
-    requestArray.push(user.name);
+    requestArray.push({user:user.name,projectName:currUser.requests[i].name});
   }
   }
 

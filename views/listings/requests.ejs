@@ -20,7 +20,7 @@
                 <li class="flex w-full p-3 border-2 border-white bg-grey-800 rounded-xl">
                     <div class="flex w-full p-2 gap-x-5">
                         <img src="/images/user (1).png" class="h-6" alt="">
-                        <span class="text-xl font-medium text-white"><%=requestArray[i]%></span>
+                        <span class="text-xl font-medium text-white"><%=requestArray[i].name%></span>
                         <div class="my-5 mt-0 rating">
                             <input type="radio" name="rating-2" class="bg-orange-400 mask mask-star-2" disabled />
                             <input type="radio" name="rating-2" class="bg-orange-400 mask mask-star-2" disabled />
@@ -30,7 +30,7 @@
                                 checked="checked" />
                         </div>
                         <span class="text-xl">|</span>
-                        <span class="text-xl font-medium">Education App</span>
+                        <span class="text-xl font-medium"><%=requestArray[i].name%></span>
                     </div>
                     <div class="flex items-center justify-center px-2 mb-5 mr-3 gap-x-4">
                         <!-- Accept Button -->
