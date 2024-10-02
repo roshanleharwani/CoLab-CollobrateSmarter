@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer')
 const {EMAIL,PASSWORD,uri,key} = require('../env')
-const userModel = require('../models/userModel.js')
+const userModel = require('../models/userModel.js');
 const teamProjectModel = require('../models/projectModel')
 const bcrypt = require('bcryptjs')
 const validateEmail = require('../emailvalidator.js')
@@ -19,7 +19,8 @@ let transporter = nodemailer.createTransport(config)
 
 exports.indexPage = (req,res)=>{
     if(req.session.isAuth==true){
-        return res.render('listings/home')
+        console.log(req.session.userId);
+        return res.render('listings/home');
     }
     return res.render('listings/index')
 }
@@ -170,7 +171,7 @@ exports.create = async (req, res) => {
         });
 
         // Store user ID in session
-        // req.session.userId = user._id;
+        req.session.userId = user._id;
         const host = req.get('host')
         const link = (host == 'localhost:3000') ? `http://${host}/verify/${user._id}` : `https://${host}/verify/${user._id}`    
 
@@ -221,6 +222,7 @@ exports.authenticate = async (req, res) => {
         }
         if(isExist.isVerified){
             req.session.isAuth = true;
+            req.session.userId = isExist._id;
             return res.redirect('dashboard')
         }
         else{
@@ -232,8 +234,11 @@ exports.authenticate = async (req, res) => {
     }
 }
 
-exports.dashboard = (req,res)=>{
-    res.render('listings/home')
+exports.dashboard = async(req,res)=>{
+    const id=req.session.userId;
+    const currUser=await userModel.findById(id);
+    console.log(currUser.email);
+    res.render('listings/home');
 }
 
 exports.forgetPassword = (req,res)=>{
@@ -316,6 +321,7 @@ exports.setPassword = async (req,res)=>{
 
 exports.signIn = (req,res)=>{
     if(req.session.isAuth==true){
+        console.log(req.session.userId);
         return res.redirect('/')
     }
     return res.render('listings/signin',{trial:true})

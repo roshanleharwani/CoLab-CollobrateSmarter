@@ -11,6 +11,8 @@ const ejsMate = require('ejs-mate')
 app.use(express.static('public'));
 const teamProject = require("./models/teamProject.js");
 const mongoose = require('mongoose');
+const { v4: uuidv4 } = require('uuid');
+const userModel = require('./models/userModel.js');
 // local database
 // main().then(() => {
 //   console.log("Connected to database");
@@ -18,7 +20,7 @@ const mongoose = require('mongoose');
 // }).catch(err => console.log(err));
 
 // async function main() {
-//   await mongoose.connect('mongodb://127.0.0.1:27017/colab', {
+//   await mongoose.connect('mongodb://127.0.0.1:27017/COLAB', {
 
 //   });
 // }
@@ -75,32 +77,56 @@ app.get('/signUp', controller.signUp)
 
 app.get('/leaderboard', isAuth, controller.leaderBoard)
 
-app.get('/teamProjects', isAuth, controller.teamPages)
+// app.get('/teamProjects', isAuth, controller.teamPages)
 
 app.get('/feedback', isAuth, controller.feedback)
 
 app.get('/about', isAuth, controller.about)
 
 
+app.get('/teamProjects',async(req,res)=>{
+  const allTeamProjects=await teamProject.find({});
+  
+  res.render('listings/teamProjects',{allTeamProjects});
+})
+
+
 app.get('/teamRegistration', (req, res) => {
   res.render('listings/TeamProjectRegistration');
 })
-// app.post('/teamRegistration', async (req, res) => {
-//   let project = req.body.project;
-//   const existingMembers = JSON.parse(req.body.project.existing_members[1]);
-//   console.log(existingMembers);
-//   let insertObject = {
-//     personName: project.person_name,
-//     projectName: project.name,
-//     description: project.description,
-//     membersRequired: parseInt(project.members_required,10),
-//     members: existingMembers
-//   }
-//   console.log(project);
-//   const newProject = new teamProject(insertObject);
-//   await newProject.save();
+app.post('/teamRegistration', async (req, res) => {
+  let project = req.body.project;
+  
+  const existingMembers = JSON.parse(req.body.project.existing_members[1]);
+  const requiredSkills=JSON.parse(req.body.project.skills[1]);
+  // console.log(existingMembers);
+  let insertObject = {
+    personName: project.person_name,
+    projectName: project.name.toUpperCase(),
+    description: project.description,
+    membersRequired: parseInt(project.members_required,10),
+    members: existingMembers,
+    requiredSkills:requiredSkills,
+    projectId:uuidv4(),
+    userId:req.session.userId,
+    imageIndex: Math.floor(Math.random() * 6) + 1
 
-//   console.log("new data saved");
-//   res.send('done');
-// })
+    
+  }
+  
+  const user=userModel.findById(insertObject.userId);
+  console.log(user.email);
+  console.log(insertObject)
+  const newProject = new teamProject(insertObject);
+  await newProject.save();
+
+  console.log("new data saved");
+  res.redirect('/teamProjects')
+})
+app.get('/teamProjects/:id',async(req,res)=>{
+  const id=req.params.id;
+  const project = await teamProject.findById(id);
+  console.log(project);
+  res.render("listings/projectDetails",{project});
+})
 app.listen(3000)
