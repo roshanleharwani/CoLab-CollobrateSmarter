@@ -1,0 +1,112 @@
+<% layout("/layouts/boilerplate.ejs")%>
+<body class="bg-gray-900 bg-gradient-to-r from-indigo-500">
+  <main class="h-full md:min-w-full md:p-5 flex-1">
+    <section class="bg-gray-50 dark:bg-transparent pt-14 ">
+      <div class="flex items-center justify-between px-6 py-8">
+        <div class="hidden md:block self-start w-2/3 pr-6 h-full relative">
+          <img src="/images/registerLogo.png" class="h-full w-full object-cover" alt="">
+        </div>
+        <div
+          class="md:self-end w-full bg-transparent bg-white rounded-lg shadow dark:border md:mt-0 sm:w-full lg:w-auto xl:p-0 backdrop-blur-xl dark:bg-gray-800 dark:border-gray-700 max-w-lg">
+          <!-- Set max-w-lg or any other width class to control the width -->
+          <div class="p-4 space-y-4 md:space-y-6 sm:p-4">
+            <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+              Enter Details of Your Project
+            </h1>
+            <form class="space-y-4 md:space-y-6" id="projectForm" action="/teamRegistration" method="POST">
+              <div>
+                <label for="project-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
+                  Name</label>
+                <input type="text" name="project[person_name]" id="person_name" placeholder="Andrew Tate"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  required="" />
+              </div>
+              <div>
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Project
+                  Name</label>
+                <input type="text" name="project[name]" id="project_name"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Website Creation" required="" />
+              </div>
+              <div>
+                <label for="project-description"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Project
+                  Description</label>
+                <textarea name="project[description]" id="project-description"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 resize-none"
+                  required=""></textarea>
+              </div>
+              <div>
+                <label for="members" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number of
+                  Members Required</label>
+                <select id="members" name="project[members_required]"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  required="">
+                  <option value="" disabled selected>Members required</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
+              <div>
+                <div class="relative">
+                  <label for="existing-members" class="block text-sm font-medium text-gray-900 dark:text-white mb-2">
+                    Registration number of existing members
+                  </label>
+                  <input type="text" name="project[existing_members]" id="existing-members" placeholder="23BCEXXXX"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 pr-16 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    />
+                  <button type="button" id="addBtn"
+                    class="absolute bottom-0 h-10 right-0 px-4 py-0 text-white bg-blue-500 hover:bg-blue-600 font-semibold rounded-r-lg">
+                    Add
+                  </button>
+                </div>
+                <!-- Hidden div to display the list -->
+                <div id="registered-list" class="mt-4">
+                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Registered Members:</h3>
+                  <ul id="memberList" class="list-none pl-0 flex flex-wrap gap-4 mt-2">
+                  </ul>
+                </div>
+
+              </div>
+              <div class="relative">
+                <label for="skills" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Skills Required</label>
+                <input
+                  type="text"
+                  name="project[skills]"
+                  id="project_skills"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Website Creation"
+                  required=""
+                  onclick="toggleDropdown()"
+                  onfocus="showDropdown()"
+                />
+                
+                <ul id="skillsDropdown" class="absolute z-10 hidden bg-white border border-gray-300 rounded-lg shadow-lg mt-1 w-full max-h-40 overflow-y-auto">
+                  <li class="p-2 hover:bg-gray-100 cursor-pointer" onclick="selectSkill('Web Development')">Web Development</li>
+                  <li class="p-2 hover:bg-gray-100 cursor-pointer" onclick="selectSkill('Graphic Design')">Graphic Design</li>
+                  <li class="p-2 hover:bg-gray-100 cursor-pointer" onclick="selectSkill('Digital Marketing')">Digital Marketing</li>
+                  <li class="p-2 hover:bg-gray-100 cursor-pointer" onclick="selectSkill('Content Writing')">Content Writing</li>
+                  <li class="p-2 hover:bg-gray-100 cursor-pointer" onclick="selectSkill('SEO')">SEO</li>
+                  <!-- Add more skills as needed -->
+                </ul>
+              </div>
+              <div class="flex justify-center w-full">
+                <button type="submit"
+                  class="w-full text-black bg-white hover:bg-red-500 hover:text-white font-semibold rounded-lg text-lg px-5 py-2.5 text-center hover:ring-2 hover:ring-white hover:scale-105 duration-300">
+                  Add Project
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>

@@ -2815,6 +2815,10 @@ html {
   max-height: 2.5rem;
 }
 
+.max-h-40 {
+  max-height: 10rem;
+}
+
 .min-h-14 {
   min-height: 3.5rem;
 }
@@ -2925,6 +2929,14 @@ html {
 
 .w-52 {
   width: 13rem;
+}
+
+.w-2\/3 {
+  width: 66.666667%;
+}
+
+.w-72 {
+  width: 18rem;
 }
 
 .min-w-full {
@@ -3235,6 +3247,11 @@ html {
 .rounded-s-full {
   border-start-start-radius: 9999px;
   border-end-start-radius: 9999px;
+}
+
+.rounded-r-lg {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 
 .border {
@@ -3712,6 +3729,11 @@ html {
   padding-bottom: 2rem;
 }
 
+.py-0 {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
 .pb-10 {
   padding-bottom: 2.5rem;
 }
@@ -3754,6 +3776,22 @@ html {
 
 .pt-5 {
   padding-top: 1.25rem;
+}
+
+.pl-0 {
+  padding-left: 0px;
+}
+
+.pr-16 {
+  padding-right: 4rem;
+}
+
+.pr-6 {
+  padding-right: 1.5rem;
+}
+
+.pt-14 {
+  padding-top: 3.5rem;
 }
 
 .text-left {
@@ -4250,6 +4288,11 @@ html {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-gray-100:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
 .hover\:font-semibold:hover {
   font-weight: 600;
 }
@@ -4396,6 +4439,10 @@ html {
 }
 
 @media (min-width: 640px) {
+  .sm\:w-full {
+    width: 100%;
+  }
+
   .sm\:max-w-lg {
     max-width: 32rem;
   }
@@ -4438,6 +4485,10 @@ html {
 
   .md\:mt-0 {
     margin-top: 0px;
+  }
+
+  .md\:block {
+    display: block;
   }
 
   .md\:inline {
@@ -4516,6 +4567,10 @@ html {
     width: 100%;
   }
 
+  .md\:min-w-full {
+    min-width: 100%;
+  }
+
   .md\:max-w-sm {
     max-width: 24rem;
   }
@@ -4563,6 +4618,10 @@ html {
     margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
   }
 
+  .md\:self-end {
+    align-self: flex-end;
+  }
+
   .md\:border-b-2 {
     border-bottom-width: 2px;
   }
@@ -4574,6 +4633,10 @@ html {
 
   .md\:bg-gradient-to-r {
     background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  }
+
+  .md\:p-5 {
+    padding: 1.25rem;
   }
 
   .md\:px-4 {
@@ -4699,6 +4762,10 @@ html {
 
   .lg\:w-full {
     width: 100%;
+  }
+
+  .lg\:w-auto {
+    width: auto;
   }
 
   .lg\:max-w-lg {
