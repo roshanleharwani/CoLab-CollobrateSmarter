@@ -236,25 +236,8 @@ exports.authenticate = async (req, res) => {
 }
 
 exports.dashboard = async (req, res) => {
-    const id = req.session.userId;  // Get the current user's ID from the session
-    const currUser = await userModel.findById(id);  // Find the user by ID
-
-    if (!currUser) {
-        return res.status(404).send('User not found');  // Handle user not found
-    }
-
-    console.log(currUser.requests);  // Log the requests for debugging
-
-    const requestArray = [];  // Initialize an array to hold user names
-    for (let i = 0; i < currUser.requests.length; i++) {
-        const user = await userModel.findById(currUser.requests[i]);  // Fetch the user for each request
-        if (user) {
-            requestArray.push(user.name);  // Push the user's name to the array if user is found
-        }
-    }
-
-    console.log(requestArray);  // Log the request names for debugging
-    res.render('listings/home',{requestArray});
+    
+    res.render('listings/home');
 }
 
 exports.forgetPassword = (req, res) => {

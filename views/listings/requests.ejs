@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-black">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+
+<body class="h-screen overflow-x-hidden bg-black">
+    <main class="flex flex-col items-center justify-center w-full m-5 my-5 text-white">
+        <h1 class="px-8 py-4 mb-5 text-4xl font-bold ">Project Requests</h1>
+        <%if(requestArray.length>0){%>
+            <ul class="flex flex-col w-10/12 m-8 list-none gap-y-3">
+                <%for(let i=0;i<requestArray.length;i++){%>
+                <li class="flex w-full p-3 border-2 border-white bg-grey-800 rounded-xl">
+                    <div class="flex w-full p-2 gap-x-5">
+                        <img src="/images/user (1).png" class="h-6" alt="">
+                        <span class="text-xl font-medium text-white"><%=requestArray[i]%></span>
+                        <div class="my-5 mt-0 rating">
+                            <input type="radio" name="rating-2" class="bg-orange-400 mask mask-star-2" disabled />
+                            <input type="radio" name="rating-2" class="bg-orange-400 mask mask-star-2" disabled />
+                            <input type="radio" name="rating-2" class="bg-orange-400 mask mask-star-2" disabled />
+                            <input type="radio" name="rating-2" class="bg-orange-400 mask mask-star-2" disabled />
+                            <input type="radio" name="rating-2" class="bg-orange-400 mask mask-star-2" disabled
+                                checked="checked" />
+                        </div>
+                        <span class="text-xl">|</span>
+                        <span class="text-xl font-medium">Education App</span>
+                    </div>
+                    <div class="flex items-center justify-center px-2 mb-5 mr-3 gap-x-4">
+                        <!-- Accept Button -->
+                        <a href="" class="flex items-center justify-center w-full p-1 px-5 rounded-2xl hover:bg-gray-700">
+                            <img src="/images/check-mark.png" class="w-6">
+                            <span class="ml-2 text-lg font-medium text-white ">Accept</span>
+                        </a>
+    
+                        <!-- Reject Button -->
+                        <a href="" class="flex items-center justify-center w-full p-1 px-5 rounded-full hover:bg-gray-700">
+                            <img src="/images/close (1).png" class="w-6 h-5">
+                            <span class="ml-2 text-lg font-medium text-white">Reject</span>
+                        </a>
+                    </div>
+    
+    
+                </li>
+                <%}%>
+            </ul>
+        <%}else{%>
+            <div class="flex items-center justify-center w-full min-h-screen p-28">
+                <h1 class="p-2 mb-20 font-sans text-6xl font-bold text-center text-transparent bg-gradient-to-r from-blue-500 via-green-500 to-purple-500 bg-clip-text">
+                    No Requests Currently
+                </h1>
+            </div>
+        <%}%>
+        
+        
+
+    </main>
+</body>
+
+</html>

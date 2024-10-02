@@ -1,14 +1,7 @@
-<nav
-  class="fixed top-0 z-20 flex items-center justify-between w-full h-20 px-4 align-middle bg-black md:px-4 "
->
+<nav class="fixed top-0 z-20 flex items-center justify-between w-full h-20 px-4 align-middle bg-black md:px-4 ">
   <div class="flex items-center w-2/5 h-full md:gap-x-8 gap-x-4">
     <div class="mb-2">
-      <a
-        href="#"
-        class="self-center text-5xl text-white"
-        onclick="toggleSidebar(event)"
-        >&#8801;</a
-      >
+      <a href="#" class="self-center text-5xl text-white" onclick="toggleSidebar(event)">&#8801;</a>
     </div>
     <div class="flex items-center space-x-4">
       <div class="w-10 h-10 rounded-full cursor-pointer md:h-14 md:w-14">
@@ -21,65 +14,40 @@
     <div class="flex space-x-2">
       <li class="hidden md:inline">
         <img class="w-6 h-6" src="./images/home.png" alt="home icon" />
-      <a href="/">
-        </li>
-        <li
-          class="mx-[10] cursor-pointer text-gray-400 hidden md:inline hover:text-white duration-300"
-        >
-          Home
-        </li>
-      </a >
+        <a href="/">
+      </li>
+      <li class="mx-[10] cursor-pointer text-gray-400 hidden md:inline hover:text-white duration-300">
+        Home
+      </li>
+      </a>
     </div>
     <!-- Requests Section -->
-    <div class="relative flex space-x-2">
-      <li class="relative hidden md:inline mt-[10px]">
-        <!-- Bell icon wrapped with a relative container -->
-        <img class="w-6 h-6" src="/images/bell.png" alt="requests" />
-        <!-- Badge for larger screens -->
-        <span
-          class="absolute top-[-10%] right-[-10%] bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5"
-          ><%=requestArray.length%></span
-        >
+    <div class="flex space-x-2">
+      <li class="hidden md:inline">
+        <img class="w-6 h-6" src="./images/bell.png" alt="home icon" />
+        <a href="request/<%=currUserId%>">
       </li>
-      <li
-        class="hidden text-gray-400 duration-300 cursor-pointer md:inline hover:text-white"
-      >
-      <div class="dropdown dropdown-hover ">
-        <div tabindex="0" role="button" class="btn bg-transparent border-0 text-lg font-normal -mx-3">Requests</div>
-        <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] min-w-52 shadow">
-          <%for(let i=0;i<requestArray.length;i++){%>
-            <li><a class="flex"><div><img src="/images/user (1).png" class="max-w-8 rounded-full p-1 hover:bg-gray-900 mr-1 -ml-2" alt=""></div><div class="line-clamp-1 max-w-[100px]"><%=requestArray[i]%></div><div class="flex gap-2 justify-end -mr-3"><img src="/images/check-mark.png" class="w-8 rounded-full p-2 hover:bg-gray-900" alt=""><img src="/images/close (1).png" class="w-8 rounded-full p-2 hover:bg-gray-900 mr-1" alt=""></div></a></li>
-          <%}%>
-          
-          
-        </ul>
-      </div>
+      <li class="mx-[10] cursor-pointer text-gray-400 hidden md:inline hover:text-white duration-300">
+        Requests
       </li>
+      </a>
     </div>
     <div class="flex space-x-1">
       <li class="hidden md:inline">
         <img class="w-6 h-6" src="./images/about.png" alt="" />
       </li>
       <a href="/about">
-        <li
-          class="hidden text-gray-400 duration-300 cursor-pointer md:inline hover:text-white"
-        >
+        <li class="hidden text-gray-400 duration-300 cursor-pointer md:inline hover:text-white">
           About
         </li>
-      </a >
+      </a>
     </div>
     <div class="flex space-x-2">
       <li>
-        <img
-          class="hidden w-6 h-6 md:inline"
-          src="/images/telephone.png"
-          alt="contact"
-        />
+        <img class="hidden w-6 h-6 md:inline" src="/images/telephone.png" alt="contact" />
       </li>
       <a href="/feedback">
-        <li
-          class="hidden text-gray-400 duration-300 cursor-pointer md:inline hover:text-white"
-        >
+        <li class="hidden text-gray-400 duration-300 cursor-pointer md:inline hover:text-white">
           Contact
         </li>
       </a>
@@ -89,19 +57,14 @@
     </div>
     <div>
       <li class="mx-[10px] cursor-pointer">
-        <img
-          class="w-10 h-10 border-4 rounded-full"
-          src="https://avatar.iran.liara.run/public/boy?username=surya"
-          alt="profile"
-        />
+        <img class="w-10 h-10 border-4 rounded-full" src="https://avatar.iran.liara.run/public/boy?username=surya"
+          alt="profile" />
       </li>
     </div>
   </ul>
   <!-- Mobile Navigation for scrolling -->
-  <div
-    id="scrollNavbar"
-    class="fixed z-10 flex flex-col items-center justify-center gap-4 p-2 transition-transform duration-300 ease-in-out transform bg-transparent border-2 border-white shadow-2xl top-1/4 w-14 backdrop-blur-xl navbar right-2 rounded-3xl shadow-black md:hidden"
-  >
+  <div id="scrollNavbar"
+    class="fixed z-10 flex flex-col items-center justify-center gap-4 p-2 transition-transform duration-300 ease-in-out transform bg-transparent border-2 border-white shadow-2xl top-1/4 w-14 backdrop-blur-xl navbar right-2 rounded-3xl shadow-black md:hidden">
     <a href="/">
       <img class="w-6 h-6" src="/images/home.png" alt="home" />
     </a>
@@ -111,15 +74,12 @@
         <img class="w-6 h-6" src="/images/bell.png" alt="notifications" />
       </a>
       <!-- Badge for smaller screens -->
-      <span
-        class="absolute top-0 right-0 px-1 text-xs text-white bg-red-500 rounded-full"
-        >3</span
-      >
+      <span class="absolute top-0 right-0 px-1 text-xs text-white bg-red-500 rounded-full">3</span>
     </div>
-    
+
     <span class="font-bold text-center text-white">|</span>
     <a href="#"></a>
-      <img class="w-8 h-8 -my-2" src="/images/plus.png" alt="plus" />
+    <img class="w-8 h-8 -my-2" src="/images/plus.png" alt="plus" />
     </a>
     <span class="font-bold text-center text-white">|</span>
     <a href="/about">

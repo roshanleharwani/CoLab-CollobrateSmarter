@@ -45,7 +45,10 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, "public")))
 app.engine("ejs", ejsMate);
-
+app.use((req, res, next) => {
+  res.locals.currUserId=req.session.userId;
+  next();
+});
 
 app.get('/', controller.indexPage)
 
@@ -130,17 +133,44 @@ app.get('/teamProjects/:id',async(req,res)=>{
   res.render("listings/projectDetails",{project});
 })
 
-app.post('/request/:id',async(req,res)=>{
+app.post('/request/:id/:name',async(req,res)=>{
   
   const id =new mongoose.Types.ObjectId(req.params.id);
-  console.log(id);
+  const {name}=req.params;
+  const Pid=req.session.userId;
+  
   const user=await userModel.findById(id);
-  user.requests.push(req.session.userId);
+  let obj={
+    Pid:Pid,
+    name:name
+  }
+  user.requests.push(obj);
   await user.save();
   console.log(user)
 })
 
+app.get('/request/:id',async(req,res)=>{
+  const {id}=req.params;
+  console.log(id);
+  
+  const currUser = await userModel.findById(id);
 
+  if (!currUser) {
+        return res.status(404).send('User not found'); 
+  }
+
+  console.log(currUser.requests);
+  const requestArray = [];
+  for (let i = 0; i < currUser.requests.length; i++) {
+  const user = await userModel.findById(currUser.requests[i]);
+  if (user) {
+    requestArray.push(user.name);
+  }
+  }
+
+  console.log(requestArray);  // Log the request names for debugging
+  res.render('listings/requests',{requestArray});
+})
 
 
 app.listen(3000)
