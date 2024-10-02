@@ -32,19 +32,28 @@
     </div>
     <!-- Requests Section -->
     <div class="relative flex space-x-2">
-      <li class="relative hidden md:inline">
+      <li class="relative hidden md:inline mt-[10px]">
         <!-- Bell icon wrapped with a relative container -->
         <img class="w-6 h-6" src="/images/bell.png" alt="requests" />
         <!-- Badge for larger screens -->
         <span
           class="absolute top-[-10%] right-[-10%] bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5"
-          >3</span
+          ><%=requestArray.length%></span
         >
       </li>
       <li
         class="hidden text-gray-400 duration-300 cursor-pointer md:inline hover:text-white"
       >
-        Requests
+      <div class="dropdown dropdown-hover ">
+        <div tabindex="0" role="button" class="btn bg-transparent border-0 text-lg font-normal -mx-3">Requests</div>
+        <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] min-w-52 shadow">
+          <%for(let i=0;i<requestArray.length;i++){%>
+            <li><a class="flex"><div><img src="/images/user (1).png" class="max-w-8 rounded-full p-1 hover:bg-gray-900 mr-1 -ml-2" alt=""></div><div class="line-clamp-1 max-w-[100px]"><%=requestArray[i]%></div><div class="flex gap-2 justify-end -mr-3"><img src="/images/check-mark.png" class="w-8 rounded-full p-2 hover:bg-gray-900" alt=""><img src="/images/close (1).png" class="w-8 rounded-full p-2 hover:bg-gray-900 mr-1" alt=""></div></a></li>
+          <%}%>
+          
+          
+        </ul>
+      </div>
       </li>
     </div>
     <div class="flex space-x-1">
