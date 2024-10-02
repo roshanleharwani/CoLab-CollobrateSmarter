@@ -154,6 +154,7 @@ app.post('/request/:id/:name/:projectId',async(req,res)=>{
     name:name,
     projectId:projectId
   }
+   
   user.requests.push(obj);
   await user.save();
   console.log(user)
@@ -186,6 +187,7 @@ app.get('/request/:id',async(req,res)=>{
 app.get('/accept/:personId/:postId',async(req,res)=>{
     const personId=new mongoose.Types.ObjectId(req.params.personId);
     const projectId=new mongoose.Types.ObjectId(req.params.postId);
+    console.log(projectId);
     const person=await userModel.findById(personId);
     const project=await projectModel.findById(projectId);
     console.log(person);
