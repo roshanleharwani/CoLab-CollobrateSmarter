@@ -8,22 +8,11 @@ const session = require('express-session')
 const MongoDBStore = require("connect-mongodb-session")(session);
 const DataBase = require('./connect/db.js')
 const ejsMate = require('ejs-mate')
-app.use(express.static('public'));
 const teamProject = require("./models/teamProject.js");
 const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 const userModel = require('./models/userModel.js');
-// local database
-// main().then(() => {
-//   console.log("Connected to database");
 
-// }).catch(err => console.log(err));
-
-// async function main() {
-//   await mongoose.connect('mongodb://127.0.0.1:27017/COLAB', {
-
-//   });
-// }
 DataBase.connect(uri)
 
 const store = new MongoDBStore({
