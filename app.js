@@ -13,7 +13,8 @@ const teamProject = require("./models/teamProject.js");
 const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 const userModel = require('./models/userModel.js');
-const projectModel = require("./models/projectModel.js")
+
+const { CdpDialog } = require("puppeteer")
 // local database
 // main().then(() => {
 //   console.log("Connected to database");
@@ -129,24 +130,29 @@ app.post('/teamRegistration', async (req, res) => {
 })
 app.get('/teamProjects/:id',async(req,res)=>{
   const id=req.params.id;
+  console.log(id);
   const project = await teamProject.findById(id);
-  console.log(project);
+  // console.log(project.id);
+  // console.log(project);
   res.render("listings/projectDetails",{project});
 })
 
 app.post('/request/:id/:name/:projectId',async(req,res)=>{
-  const projectId=new mongoose.Types.ObjectId(req.params.projectId);
-  const project=await projectModel.findById(projectId);
+  const projectId=req.params.projectId;
+  
+  const project=await teamProject.findById(projectId);
   console.log(project);
-  console.log(projectId)
-  const id =new mongoose.Types.ObjectId(req.params.id);
+  console.log('this is the end');
+  const id =req.params.id;
   // this id is basically of the person to whom the join button will send request
   console.log(id);
   // this is receiving the name of the project
   const {name}=req.params;
   // this is the id of the person who clicked on the join button
   const Pid=req.session.userId;
-  
+  console.log('hello ji ye yha se start hua h ')
+  console.log(id);
+  console.log('HELLO JI YE KHATAM H');
   const user=await userModel.findById(id);
   console.log(Pid);
   let obj={
@@ -184,13 +190,50 @@ app.get('/request/:id',async(req,res)=>{
   res.render('listings/requests',{requestArray});
 })
 
-app.get('/accept/:personId/:postId',async(req,res)=>{
-    const personId=new mongoose.Types.ObjectId(req.params.personId);
-    const projectId=new mongoose.Types.ObjectId(req.params.postId);
-    console.log(projectId);
-    const person=await userModel.findById(personId);
-    const project=await projectModel.findById(projectId);
-    console.log(person);
-    console.log(project);
-})
+app.get('/accept/:personId/:postId', async (req, res) => {
+  try {
+      console.log('Start of request processing');
+      
+      // Fetch the person (recipient) and project by their IDs
+      const person = await userModel.findById(req.params.personId);
+      const project = await teamProject.findById(req.params.postId);
+
+      // Check if person and project exist
+      if (!person || !project) {
+          return res.status(404).send('Person or project not found');
+      }
+
+      console.log("Person found:", person);
+      console.log("Project found:", project);
+
+      // Add the person to the project members (ensure 'RegNumber' exists)
+      if (person.RegNumber) {
+          person.members.push(person.RegNumber.toUpperCase());
+      } else {
+          console.log("Person does not have a RegNumber.");
+          return res.status(400).send('Person has no RegNumber');
+      }
+
+      // Loop through requests to find and remove the one with matching projectId
+      for (let i = 0; i < person.requests.length; i++) {
+          if (person.requests[i].projectId.toString() === req.params.postId) {
+              person.requests.splice(i, 1);  // Remove the request
+              break;  // Exit the loop after removing the request
+          }
+      }
+
+      // Save the updated person document to the database
+      await person.save();
+      console.log("Person document updated successfully");
+
+      // Redirect back to the requests page
+      res.redirect(`/request/${req.session.userId}`);
+
+      console.log("End of request processing");
+  } catch (error) {
+      console.error("Error processing request:", error);
+      res.status(500).send('Server error');
+  }
+});
+
 app.listen(3000)
