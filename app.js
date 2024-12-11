@@ -132,39 +132,48 @@ app.get('/teamProjects/:id',async(req,res)=>{
   const project = await teamProject.findById(id);
   // console.log(project.id);
   // console.log(project);
+  console.log(project);
   res.render("listings/projectDetails",{project});
 })
 
-app.post('/request/:id/:name/:projectId',async(req,res)=>{
-  const projectId=req.params.projectId;
-  
+app.post('/request/:id/:name/:userId',async(req,res)=>{
+  res.send("hello I am surya");
+  const projectId=req.params.id;
+  // console.log(projectId);
   const project=await teamProject.findById(projectId);
   console.log(project);
   console.log('this is the end');
-  const id =req.params.id;
-  // this id is basically of the person to whom the join button will send request
-  console.log(id);
-  // this is receiving the name of the project
+  const userId = req.params.userId;
+    // console.log('User ID (raw):', userId);
+
+    // Convert userId to ObjectId
+    // console.log('User ID (ObjectId):', userObjectId);
+    // console.log('User:', user);
+  // // this id is basically of the person to whom the join button will send request
+  // // this is receiving the name of the project
   const {name}=req.params;
-  // this is the id of the person who clicked on the join button
+  // // this is the id of the person who clicked on the join button
   const Pid=req.session.userId;
-  console.log('hello ji ye yha se start hua h ')
-  console.log(id);
-  console.log('HELLO JI YE KHATAM H');
-  const user=await userModel.findById(id);
   console.log(Pid);
+  // console.log('hello ji ye yha se start hua h ')
+  // console.log(id);
+  // console.log('HELLO JI YE KHATAM H');
+  const user=await userModel.findById(userId);
+  console.log(user);
+
   let obj={
     Pid:Pid,
     name:name,
     projectId:projectId
   }
-   
+   console.log(obj);
   user.requests.push(obj);
   await user.save();
   console.log(user)
 })
 
 app.get('/request/:id',async(req,res)=>{
+  console.log("..................................................");
   const {id}=req.params;
   console.log(id);
   
@@ -194,37 +203,49 @@ app.get('/accept/:personId/:postId', async (req, res) => {
       
       // Fetch the person (recipient) and project by their IDs
       const person = await userModel.findById(req.params.personId);
-      const project = await teamProject.findById(req.params.postId);
+      const myProject = await teamProject.findById(req.params.postId);
+      console.log(person);
+      console.log(myProject);
 
       // Check if person and project exist
-      if (!person || !project) {
+      if (!person || !myProject) {
           return res.status(404).send('Person or project not found');
       }
 
-      console.log("Person found:", person);
-      console.log("Project found:", project);
-
-      // Add the person to the project members (ensure 'RegNumber' exists)
+      // console.log("Person found:", person);
+      // console.log("Project found:", project);
+      console.log("finding the user");
+      console.log(person.RegNumber);
+      // // Add the person to the project members (ensure 'RegNumber' exists)
       if (person.RegNumber) {
-          person.members.push(person.RegNumber.toUpperCase());
+          myProject.members.push(person.RegNumber.toUpperCase());
+          
       } else {
           console.log("Person does not have a RegNumber.");
           return res.status(400).send('Person has no RegNumber');
       }
 
-      // Loop through requests to find and remove the one with matching projectId
-      for (let i = 0; i < person.requests.length; i++) {
-          if (person.requests[i].projectId.toString() === req.params.postId) {
-              person.requests.splice(i, 1);  // Remove the request
+      // // Loop through requests to find and remove the one with matching projectId
+      console.log(myProject);
+      const currUser=req.session.userId;
+      const user=await userModel.findById(currUser);
+      console.log(user);
+      console.log("heyyyyyyyy");
+      console.log(user);
+      console.log("hellllllllloo");
+      for (let i = 0; i < user.requests.length; i++) {
+          if (user.requests[i].projectId === req.params.postId) {
+              user.requests.splice(i, 1);  // Remove the request
               break;  // Exit the loop after removing the request
           }
       }
 
-      // Save the updated person document to the database
-      await person.save();
-      console.log("Person document updated successfully");
+      // // Save the updated person document to the database
+      await user.save();
+      console.log(user);
+      console.log("my document updated successfully");
 
-      // Redirect back to the requests page
+      // // Redirect back to the requests page
       res.redirect(`/request/${req.session.userId}`);
 
       console.log("End of request processing");
