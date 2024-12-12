@@ -142,7 +142,7 @@ app.get('/teamProjects/:id',async(req,res)=>{
   const user=await userModel.findById(currUser);
   const regNo=user.RegNumber.toUpperCase();
   console.log(regNo);
-  res.render("listings/projectDetails",{project,regNo});
+  res.render("listings/projectDetails",{project,regNo,currUser});
 })
 
 app.post('/request/:id/:name/:userId',async(req,res)=>{

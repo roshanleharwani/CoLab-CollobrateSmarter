@@ -65,24 +65,40 @@
                                 </div>
                                 <%}%>
                                 <%}%>
-                                <% if (!(project.members.includes(regNo))) { %>
-                                <div>
-                                    
-                                      <!-- Button for logged-in user not being a member -->
-                                      <form action="/request/<%= project._id %>/<%= project.projectName %>/<%= project.userId %>" method="post">
-                                        <button
-                                          class="w-64 text-xl duration-300 ease-in-out btn btn-warning hover:scale-105">
-                                          Join Team
-                                        </button>
-                                      </form>
-                                    
-                                  </div>
-                                  <% }else{ %>
-                                    <div
-                                          class=" h-32 duration-300 ease-in-out text-emerald-400 text-3xl font-bold hover:scale-105">
-                                          You are already a part of the team.
-                                  </div>
-                                  <%}%>
+                                <%if(project.userId.toString()===currUser.toString()){%>
+                                    <div>
+                                            
+                                        <!-- Button for logged-in user not being a member -->
+                                        <form action="/request/<%= project._id %>/<%= project.projectName %>/<%= project.userId %>" method="post">
+                                          <button
+                                            class="w-64 text-xl duration-300 ease-in-out btn bg-red-500 hover:scale-105">
+                                            Delete
+                                          </button>
+                                        </form>
+                                      
+                                    </div>
+                                <%}else{%>
+                                    <% if (!(project.members.includes(regNo))) { %>
+                                        <div>
+                                            
+                                              <!-- Button for logged-in user not being a member -->
+                                              <form action="/request/<%= project._id %>/<%= project.projectName %>/<%= project.userId %>" method="post">
+                                                <button
+                                                  class="w-64 text-xl duration-300 ease-in-out btn btn-warning hover:scale-105">
+                                                  Join Team
+                                                </button>
+                                              </form>
+                                            
+                                          </div>
+                                          <% }else{ %>
+                                            <div
+                                                  class=" h-32 duration-300 ease-in-out text-emerald-400 text-3xl font-bold hover:scale-105">
+                                                  You are already a part of the team.
+                                          </div>
+                                          <%}%>
+                                <%}%>
+
+                                
                                   
                         </div>
 
