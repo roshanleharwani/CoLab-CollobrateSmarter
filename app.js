@@ -13,6 +13,9 @@ const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 const userModel = require('./models/userModel.js');
 const flash=require("connect-flash");
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
+
 const projectModel = require("./models/projectModel.js")
 // local database
 // main().then(() => {
@@ -144,7 +147,12 @@ app.get('/teamProjects/:id',async(req,res)=>{
   console.log(regNo);
   res.render("listings/projectDetails",{project,regNo,currUser});
 })
-
+app.delete('/delete/:id',async(req,res)=>{
+  const id=req.params.id;
+  await teamProject.findByIdAndDelete(id);
+  req.flash("success","Project deleted");
+  res.redirect("/teamProjects");
+})
 app.post('/request/:id/:name/:userId',async(req,res)=>{
   res.redirect("/requestSent");
   const projectId=req.params.id;

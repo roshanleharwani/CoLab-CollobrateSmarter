@@ -74,7 +74,7 @@
                                     <div>
                                             
                                         <!-- Button for logged-in user not being a member -->
-                                        <form action="/request/<%= project._id %>/<%= project.projectName %>/<%= project.userId %>" method="post">
+                                        <form action="/delete/<%= project._id %>?_method=DELETE" method="POST">
                                           <button
                                             class="w-64 text-xl duration-300 ease-in-out btn bg-red-500 hover:scale-105">
                                             Delete
