@@ -2943,6 +2943,10 @@ html {
   height: 100vh;
 }
 
+.h-\[44px\] {
+  height: 44px;
+}
+
 .max-h-0 {
   max-height: 0px;
 }
@@ -3354,6 +3358,10 @@ html {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.overflow-visible {
+  overflow: visible;
 }
 
 .overflow-y-auto {
@@ -3971,6 +3979,10 @@ html {
 
 .pt-5 {
   padding-top: 1.25rem;
+}
+
+.pt-14 {
+  padding-top: 3.5rem;
 }
 
 .text-left {
@@ -4657,6 +4669,10 @@ html {
     width: 83.333333%;
   }
 
+  .sm\:w-full {
+    width: 100%;
+  }
+
   .sm\:max-w-lg {
     max-width: 32rem;
   }
@@ -4781,6 +4797,14 @@ html {
     width: 100%;
   }
 
+  .md\:w-\[80rem\] {
+    width: 80rem;
+  }
+
+  .md\:min-w-full {
+    min-width: 100%;
+  }
+
   .md\:max-w-sm {
     max-width: 24rem;
   }
@@ -4830,6 +4854,10 @@ html {
 
   .md\:bg-gradient-to-r {
     background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  }
+
+  .md\:p-5 {
+    padding: 1.25rem;
   }
 
   .md\:px-4 {

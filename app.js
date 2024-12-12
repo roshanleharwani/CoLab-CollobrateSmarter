@@ -108,6 +108,7 @@ app.post('/teamRegistration', async (req, res) => {
   // console.log(existingMembers);
   let insertObject = {
     personName: project.person_name,
+    phoneNumber:project.phoneNumber,
     projectName: project.name.toUpperCase(),
     description: project.description,
     membersRequired: parseInt(project.members_required,10),
