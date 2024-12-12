@@ -12,6 +12,7 @@ const teamProject = require("./models/teamProject.js");
 const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 const userModel = require('./models/userModel.js');
+const flash=require("connect-flash");
 const projectModel = require("./models/projectModel.js")
 // local database
 // main().then(() => {
@@ -38,7 +39,7 @@ app.use(session({
   saveUninitialized: false,
   store: store
 }));
-
+app.use(flash());
 
 app.set('view engine', 'ejs')
 app.use(express.json())
@@ -47,6 +48,8 @@ app.use(express.static(path.join(__dirname, "public")))
 app.engine("ejs", ejsMate);
 app.use((req, res, next) => {
   res.locals.currUserId=req.session.userId;
+  res.locals.success=req.flash("success");
+    res.locals.error=req.flash("error");
   next();
 });
 
@@ -142,7 +145,7 @@ app.get('/teamProjects/:id',async(req,res)=>{
 })
 
 app.post('/request/:id/:name/:userId',async(req,res)=>{
-  res.send("hello I am surya");
+  res.redirect("/requestSent");
   const projectId=req.params.id;
   // console.log(projectId);
   const project=await teamProject.findById(projectId);
@@ -201,7 +204,9 @@ app.get('/request/:id',async(req,res)=>{
   console.log(requestArray);  // Log the request names for debugging
   res.render('listings/requests',{requestArray});
 })
-
+app.get('/requestSent',(req,res)=>{
+  res.render("listings/requestSent")
+})
 app.get('/accept/:personId/:postId', async (req, res) => {
   try {
       console.log('Start of request processing');
@@ -250,7 +255,7 @@ app.get('/accept/:personId/:postId', async (req, res) => {
       await myProject.save();
       console.log(user);
       console.log("my document updated successfully");
-
+      req.flash("success", "request accepted");
       // // Redirect back to the requests page
       res.redirect(`/request/${req.session.userId}`);
 
@@ -260,5 +265,25 @@ app.get('/accept/:personId/:postId', async (req, res) => {
       res.status(500).send('Server error');
   }
 });
+app.get('/reject/:personId/:postId', async (req, res) => {
+  try{
+    const currUser=req.session.userId;
+    const user=await userModel.findById(currUser);
+    for (let i = 0; i < user.requests.length; i++) {
+      if (user.requests[i].projectId === req.params.postId) {
+          user.requests.splice(i, 1);  // Remove the request
+          break;  // Exit the loop after removing the request
+      }
+  }
+  await user.save();
+  req.flash("error", "request Rejected");
+  res.redirect(`/request/${req.session.userId}`);
+
+
+  }catch(error){
+    console.error("Error processing request:",error);
+    res.status(500).send('server error');
+  }
+})
 
 app.listen(3000)
