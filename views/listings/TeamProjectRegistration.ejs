@@ -4,32 +4,39 @@
      <!-- sidebar starts here -->
      <%- include("../includes/sidebar.ejs")%>
      <!-- sidebar ends here -->
-    <section class="bg-gray-50 dark:bg-transparent pt-14 ">
-      <div class="flex items-center justify-between px-6 py-8">
-        <div class="hidden md:block self-start w-2/3 pr-6 h-full relative">
-          <img src="/images/registerLogo.png" class="h-full w-full object-cover" alt="">
-        </div>
+    <section class="bg-gray-50 dark:bg-transparent pt-14 overflow-x-hidden.">
+      <div class="flex items-center justify-between md:flex md:justify-center  w-full px-6 py-8">
+        
         <div
-          class="md:self-end w-full bg-transparent bg-white rounded-lg shadow dark:border md:mt-0 sm:w-full lg:w-auto xl:p-0 backdrop-blur-xl dark:bg-gray-800 dark:border-gray-700 max-w-lg">
+          class="md:w-[80rem] rounded-xl shadow dark:border md:mt-0 sm:w-full  xl:p-0 backdrop-blur-xl dark:bg-gray-800 dark:border-gray-700 max-w-lg">
           <!-- Set max-w-lg or any other width class to control the width -->
           <div class="p-4 space-y-4 md:space-y-6 sm:p-4">
             <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Enter Details of Your Project
             </h1>
             <form class="space-y-4 md:space-y-6" id="projectForm" action="/teamRegistration" method="POST">
-              <div>
-                <label for="project-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
-                  Name</label>
-                <input type="text" name="project[person_name]" id="person_name" placeholder="Andrew Tate"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required="" />
+              <div class="flex gap-x-4">
+
+                <div class="w-full">
+                  <label for="project-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
+                    Name</label>
+                  <input type="text" name="project[person_name]" id="person_name" placeholder="Andrew Tate"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    required="" />
+                </div>
+                <div class="w-full">
+                  <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Project
+                    Name</label>
+                  <input type="text" name="project[name]" id="project_name"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Website Creation" required="" />
+                </div>
               </div>
-              <div>
-                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Project
-                  Name</label>
-                <input type="text" name="project[name]" id="project_name"
+              <div class="w-full">
+                <label for="project[phoneNumber]" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone No.</label>
+                <input type="number" name="project[phoneNumber]" id="number"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Website Creation" required="" />
+                  placeholder="+91 XXXXXXXXX" required="" />
               </div>
               <div>
                 <label for="project-description"
@@ -59,17 +66,21 @@
                 </select>
               </div>
               <div>
-                <div class="relative">
+                <div class="">
                   <label for="existing-members" class="block text-sm font-medium text-gray-900 dark:text-white mb-2">
                     Registration number of existing members
                   </label>
-                  <input type="text" name="project[existing_members]" id="existing-members" placeholder="23BCEXXXX"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 pr-16 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    />
-                  <button type="button" id="addBtn"
-                    class="absolute bottom-0 h-10 right-0 px-4 py-0 text-white bg-blue-500 hover:bg-blue-600 font-semibold rounded-r-lg">
-                    Add
-                  </button>
+                  <div class="flex justify-center items-center
+                  ">
+
+                    <input type="text" name="project[existing_members]" id="existing-members" placeholder="23BCEXXXX"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-s-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 pr-16 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      />
+                    <button type="button" id="addBtn"
+                      class="h-[44px]  px-4 py-0 text-white bg-blue-500 hover:bg-blue-600 font-semibold rounded-r-lg">
+                      Add
+                    </button>
+                  </div>
                 </div>
                 <!-- Hidden div to display the list -->
                 <div id="registered-list" class="mt-4 hidden">
@@ -79,19 +90,19 @@
                 </div>
 
               </div>
-              <div class="relative">
+              <div class="">
                 <label for="skills" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Skills Required</label>
-                <div class="flex">
+                <div class="flex w-full justify-center items-center">
                   <input
                     type="text"
                     id="project_skills"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-s-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Website Creation"
                     name="project[skills]"
                     onclick="toggleDropdown()"
                     onfocus="showDropdown()"
                   />
-                  <button type="button" id="addSkillBtn" class=" bottom-0 right-0 h-10 px-4 text-white bg-green-500 hover:bg-green-600 font-semibold rounded-r-lg" onclick="addSkill()">
+                  <button type="button" id="addSkillBtn" class="  h-[44px] px-4 text-white bg-green-500 hover:bg-green-600 font-semibold rounded-r-lg" onclick="addSkill()">
                     +
                   </button>
                 </div>

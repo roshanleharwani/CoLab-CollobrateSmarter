@@ -6,6 +6,10 @@ const projectSchema = new mongoose.Schema({
     type:String,
     required:true
   },
+  phoneNumber:{
+    type:Number,
+    require:true
+  },
   projectName: {
     type: String,
     required: true
