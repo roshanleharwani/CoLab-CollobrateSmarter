@@ -1,18 +1,18 @@
 <% layout("/layouts/boilerplate.ejs")%>
 
-  <body class="bg-gray-900 bg-gradient-to-r from-indigo-500">
-    <section class="flex items-center justify-center w-full m-y-5">
+  <body class="bg-gradient-to-r from-indigo-800 to-gray-950 ">
+    <section class="flex items-center justify-center ">
       <%- include("../includes/sidebar.ejs")%>
 
         <div class="items-center justify-center hidden w-1/2 md:flex">
-          <img src="/images/register-removebg-preview.png" alt="" class="object-fill w-full">
+          <img src="/images/register-removebg-preview.png" alt="" class="object-fill w-full my-20">
         </div>
 
         <div
           class="   md:w-full border-white shadow border-[1px] p-2 rounded-xl dark:border md:mt-0 sm:w-5/6  xl:w-2/5  backdrop-blur-xl dark:bg-gray-800 dark:border-gray-700">
           <!-- Set max-w-lg or any other width class to control the width -->
           <div class="p-4 space-y-4 md:space-y-6 sm:p-4">
-            <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+            <h1 class="text-lg font-bold leading-tight tracking-tight text-gray-900 md:text-xl dark:text-white">
               Enter Details of Your Project
             </h1>
             <form class="space-y-4 md:space-y-6" id="projectForm" action="/teamRegistration" method="POST">
