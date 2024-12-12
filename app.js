@@ -133,7 +133,12 @@ app.get('/teamProjects/:id',async(req,res)=>{
   // console.log(project.id);
   // console.log(project);
   console.log(project);
-  res.render("listings/projectDetails",{project});
+  const currUser=req.session.userId;
+  console.log(currUser);
+  const user=await userModel.findById(currUser);
+  const regNo=user.RegNumber.toUpperCase();
+  console.log(regNo);
+  res.render("listings/projectDetails",{project,regNo});
 })
 
 app.post('/request/:id/:name/:userId',async(req,res)=>{
@@ -242,6 +247,7 @@ app.get('/accept/:personId/:postId', async (req, res) => {
 
       // // Save the updated person document to the database
       await user.save();
+      await myProject.save();
       console.log(user);
       console.log("my document updated successfully");
 
