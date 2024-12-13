@@ -3,6 +3,7 @@ const userModel = require('../models/userModel.js');
 const teamProjectSchema = new mongoose.Schema({
   personName: { type: String, required: true },
   projectName: { type: String, required: true },
+  phoneNumber:{type:Number,required:true},
   description: { type: String, required: true },
   membersRequired: { type: Number, required: true },
   members: { type: Array, default: [] }, // This defines 'members' as an array of strings

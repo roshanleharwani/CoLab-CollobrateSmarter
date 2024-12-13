@@ -17,6 +17,20 @@ const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
 
 const projectModel = require("./models/projectModel.js")
+
+// email purpose
+const nodemailer = require('nodemailer')
+const { EMAIL, PASSWORD} = require('./env.js')
+let config = {
+    service: 'gmail',
+    auth: {
+        user: EMAIL,
+        pass: PASSWORD
+    }
+}
+
+
+let transporter = nodemailer.createTransport(config)
 // local database
 // main().then(() => {
 //   console.log("Connected to database");
@@ -111,8 +125,8 @@ app.post('/teamRegistration', async (req, res) => {
   // console.log(existingMembers);
   let insertObject = {
     personName: project.person_name,
-    phoneNumber:project.phoneNumber,
     projectName: project.name.toUpperCase(),
+    phoneNumber:project.phoneNumber,
     description: project.description,
     membersRequired: parseInt(project.members_required,10),
     members: existingMembers,
@@ -171,6 +185,7 @@ app.post('/request/:id/:name/:userId',async(req,res)=>{
   const {name}=req.params;
   // // this is the id of the person who clicked on the join button
   const Pid=req.session.userId;
+  const person=await userModel.findById(Pid);
   console.log(Pid);
   // console.log('hello ji ye yha se start hua h ')
   // console.log(id);
@@ -186,6 +201,18 @@ app.post('/request/:id/:name/:userId',async(req,res)=>{
    console.log(obj);
   user.requests.push(obj);
   await user.save();
+   const mailOptions = {
+              from: EMAIL,
+              to: user.email,
+              subject: 'Request for Collaboration',
+              text: `
+   Hey ${user.name}, ${person.name} RegistrationNumber:-${person.RegNumber} has sent you request regarding colloboration
+   in the Project ${name} . Kindly Look toward it.
+              `
+          };
+  
+          // Send the email
+          await transporter.sendMail(mailOptions);
   console.log(user)
 })
 
@@ -222,6 +249,10 @@ app.get('/accept/:personId/:postId', async (req, res) => {
       
       // Fetch the person (recipient) and project by their IDs
       const person = await userModel.findById(req.params.personId);
+      const personEmail=person.email;
+      const currPersonId=req.session.userId;
+      const currPerson=await userModel.findById(currPersonId);
+      const ownerName=currPerson.name;
       const myProject = await teamProject.findById(req.params.postId);
       console.log(person);
       console.log(myProject);
@@ -267,7 +298,34 @@ app.get('/accept/:personId/:postId', async (req, res) => {
       req.flash("success", "request accepted");
       // // Redirect back to the requests page
       res.redirect(`/request/${req.session.userId}`);
+      const mailOptions = {
+        from: process.env.EMAIL,
+        to: personEmail,
+        subject: 'Acceptance of request',
+        text: `
+Dear ${person.name},
 
+I hope this message finds you well. I am pleased to inform you that your request regarding ${myProject.projectName} has been reviewed and accepted.
+
+We value your interest and are excited to move forward with this. Here are the details of the approval:
+
+
+Next Steps: kindly contact me in the given below number for further processes
+If you have any questions or require further assistance, please feel free to reach out to us at ${myProject.phoneNumber}. We look forward to working with you and making this a success.
+
+Thank you for reaching out to us.
+
+Best regards,
+${ownerName}
+Leader
+${myProject.projectName}
+${myProject.phoneNumber}
+        `
+    };
+
+    // Send the email
+    await transporter.sendMail(mailOptions);
+    console.log("email has been sent");
       console.log("End of request processing");
   } catch (error) {
       console.error("Error processing request:", error);
