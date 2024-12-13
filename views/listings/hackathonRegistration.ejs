@@ -1,0 +1,144 @@
+<% layout("/layouts/boilerplate.ejs")%>
+
+    <body class="bg-gray-900 bg-gradient-to-r from-indigo-500">
+        <main class="h-full min-w-full p-5 ">
+            <%- include("../includes/sidebar.ejs")%>
+                <section class=" bg-gray-50 dark:bg-transparent">
+                    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:min-h-screen lg:py-0">
+                        <div
+                            class="w-full bg-transparent bg-white shadow rounded-xl dark:border md:mt-0 sm:max-w-lg xl:p-0 backdrop-blur-xl dark:bg-gray-800 dark:border-gray-700">
+                            <div class="p-4 space-y-4 md:space-y-6 sm:p-4">
+                                <h1
+                                    class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                                    Enter Details of Your Team
+                                </h1>
+                                <form class="space-y-4 md:space-y-6" action="#">
+                                    <div class="flex items-center justify-between gap-5">
+
+                                        <div class="w-full">
+                                            <label for="members"
+                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Club
+                                                Name</label>
+                                            <input type="text" name="Name" id="Name" placeholder="Machine Learning Club"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                required>
+                                        </div>
+
+                                        <div class="w-full">
+                                            <label for="Name"
+                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Team
+                                                Name</label>
+                                            <input type="text" name="Name" id="Name" placeholder="Blue Wizard"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                required="">
+                                        </div>
+
+                                    </div>
+                                    <div class="w-full">
+                                        <label for="project[phoneNumber]"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
+                                            No.</label>
+                                        <input type="number" name="project[phoneNumber]" id="number"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="+91 XXXXXXXXX" required="" />
+                                    </div>
+                                    <div class="">
+                                        <label for="existing-members"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                            Registration number of existing members
+                                        </label>
+                                        <div class="flex items-center justify-center ">
+
+                                            <input type="text" name="project[existing_members]" id="existing-members"
+                                                placeholder="23BCEXXXX"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-s-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 pr-20 dark:bg-gray-700 dark:border-gray-600 dark dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                                            <button type="button" id="addBtn"
+                                                class="h-[44px]  px-4 py-0 text-white bg-blue-500 hover:bg-blue-600 font-semibold rounded-r-lg">
+                                                Add
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!-- Hidden div to display the list -->
+                                    <div id="registered-list" class="hidden mt-4">
+                                        <h6 class="text-lg font-semibold text-gray-900 dark:text-white"
+                                            id="registeredMembers">
+                                            Registered
+                                            Members:</h6>
+                                        <ul id="memberList" class="flex flex-wrap gap-4 pl-0 mt-2 list-none">
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <label for="members"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number
+                                            of
+                                            Members Required </label>
+
+                                        <input type="number" max="10" min="1" id="members"
+                                            name="project[members_required]" oninput="enforceRange(this)"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full py-1.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            required>
+                                        </input>
+                                    </div>
+                                    <div>
+                                        <label for="members"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Event
+                                            Type</label>
+                                        <select id="members" name="members"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            required="">
+                                            <option value="Hackathon" selected>Hackathon</option>
+                                            <option value="codeathon">codeathon</option>
+                                            <option value="other">other</option>
+                                        </select>
+                                    </div>
+                                    <div class="">
+                                        <label for="skills"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Skills
+                                            Required</label>
+                                        <div class="flex items-center justify-center w-full">
+                                            <input type="text" id="project_skills"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-s-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="Website Creation" name="project[skills]"
+                                                onclick="toggleDropdown()" onfocus="showDropdown()" />
+                                            <button type="button" id="addSkillBtn"
+                                                class="  h-[44px] px-4 text-white bg-green-500 hover:bg-green-600 font-semibold rounded-r-lg"
+                                                onclick="addSkill()">
+                                                +
+                                            </button>
+                                        </div>
+
+                                        <div id="addedSkills" class="hidden mt-4">
+                                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Selected
+                                                Skills:
+                                            </h3>
+                                            <ul id="skillList" class="flex flex-wrap gap-4 pl-0 mt-2 list-none"></ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex justify-center">
+                                        <button type="submit"
+                                            class="w-1/2 text-black bg-white   hover:bg-red-500 hover:text-white  font-semibold rounded-lg text-lg  px-5 py-2.5 text-center   hover:scale-105 duration-300">Post
+                                        </button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+        </main>
+        <script>
+            function enforceRange(input) {
+                const min = parseInt(input.min, 10);
+                const max = parseInt(input.max, 10);
+                const value = parseInt(input.value, 10);
+
+                if (value < min) {
+                    input.value = min; // Set to minimum if below range
+                } else if (value > max) {
+                    input.value = max; // Set to maximum if above range
+                }
+            }
+        </script>
+
+    </body>
