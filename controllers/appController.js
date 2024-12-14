@@ -4,7 +4,8 @@ const userModel = require('../models/userModel.js');
 const teamProjectModel = require('../models/projectModel')
 const bcrypt = require('bcryptjs')
 const validateEmail = require('../emailvalidator.js')
-const crypto = require('crypto')
+const crypto = require('crypto');
+const teamProject = require("../models/teamProject.js");
 let config = {
     service: 'gmail',
     auth: {
@@ -393,3 +394,265 @@ exports.feedback = (req, res) => {
 exports.about = (req, res) => {
     return res.render('listings/about')
 }
+
+exports.teamProjects=async(req,res)=>{
+    const allTeamProjects=await teamProject.find({});
+    
+    res.render('listings/teamProjects',{allTeamProjects});
+  }
+
+exports.teamRegistration=(req, res) => {
+    res.render('listings/TeamProjectRegistration');
+  }
+
+exports.teamRegistrationPost=async (req, res) => {
+    let project = req.body.project;
+    
+    const existingMembers = JSON.parse(req.body.project.existing_members[1]);
+    const requiredSkills=JSON.parse(req.body.project.skills[1]);
+    // console.log(existingMembers);
+    let insertObject = {
+      personName: project.person_name,
+      projectName: project.name.toUpperCase(),
+      phoneNumber:project.phoneNumber,
+      description: project.description,
+      membersRequired: parseInt(project.members_required,10),
+      members: existingMembers,
+      requiredSkills:requiredSkills,
+      projectId:uuidv4(),
+      userId:req.session.userId,
+      imageIndex: Math.floor(Math.random() * 6) + 1
+  
+      
+    }
+    
+    const user=userModel.findById(insertObject.userId);
+    console.log(user.email);
+    console.log(insertObject)
+    const newProject = new teamProject(insertObject);
+    await newProject.save();
+  
+    console.log("new data saved");
+    res.redirect('/teamProjects')
+  }
+
+exports.projectDetails=async(req,res)=>{
+    const id=req.params.id;
+    console.log(id);
+    const project = await teamProject.findById(id);
+    // console.log(project.id);
+    // console.log(project);
+    console.log(project);
+    const currUser=req.session.userId;
+    console.log(currUser);
+    const user=await userModel.findById(currUser);
+    const regNo=user.RegNumber.toUpperCase();
+    console.log(regNo);
+    res.render("listings/projectDetails",{project,regNo,currUser});
+  }
+  
+exports.deleteProject=async(req,res)=>{
+    const id=req.params.id;
+    await teamProject.findByIdAndDelete(id);
+    req.flash("success","Project deleted");
+    res.redirect("/teamProjects");
+  }
+
+exports.sendRequest=async(req,res)=>{
+    res.redirect("/requestSent");
+    const projectId=req.params.id;
+    // console.log(projectId);
+    const project=await teamProject.findById(projectId);
+    console.log(project);
+    console.log('this is the end');
+    const userId = req.params.userId;
+      // console.log('User ID (raw):', userId);
+  
+      // Convert userId to ObjectId
+      // console.log('User ID (ObjectId):', userObjectId);
+      // console.log('User:', user);
+    // // this id is basically of the person to whom the join button will send request
+    // // this is receiving the name of the project
+    const {name}=req.params;
+    // // this is the id of the person who clicked on the join button
+    const Pid=req.session.userId;
+    const person=await userModel.findById(Pid);
+    console.log(Pid);
+    // console.log('hello ji ye yha se start hua h ')
+    // console.log(id);
+    // console.log('HELLO JI YE KHATAM H');
+    const user=await userModel.findById(userId);
+    console.log(user);
+  
+    let obj={
+      Pid:Pid,
+      name:name,
+      projectId:projectId
+    }
+     console.log(obj);
+    user.requests.push(obj);
+    await user.save();
+     const mailOptions = {
+                from: EMAIL,
+                to: user.email,
+                subject: 'Collaboration Request Notification',
+                text: `
+     Dear ${user.name},
+  
+You have received a collaboration request from ${person.name} (Registration Number: ${person.RegNumber.toUpperCase()}) regarding the project "${name}".
+  
+Please review the request and take the necessary steps to proceed. If you need any assistance or further details, feel free to reach out.
+  
+  Best regards,
+  Team Colab
+                `
+            };
+    
+            // Send the email
+            await transporter.sendMail(mailOptions);
+    console.log(user)
+  }
+
+  exports.requests=async(req,res)=>{
+    console.log("..................................................");
+    const {id}=req.params;
+    console.log(id);
+    
+    const currUser = await userModel.findById(id);
+  
+    if (!currUser) {
+          return res.status(404).send('User not found'); 
+    }
+  
+    console.log(currUser.requests);
+    const requestArray = [];
+    for (let i = 0; i < currUser.requests.length; i++) {
+    const user = await userModel.findById(currUser.requests[i].Pid);
+    
+    if (user) {
+      requestArray.push({user:user.name,projectName:currUser.requests[i].name,Pid:currUser.requests[i].Pid,projectId:currUser.requests[i].projectId});
+    }
+    }
+  
+    console.log(requestArray);  // Log the request names for debugging
+    res.render('listings/requests',{requestArray});
+  }
+
+  exports.requestSent=(req,res)=>{
+    res.render("listings/requestSent")
+  }
+
+  exports.acceptRequest=async (req, res) => {
+    try {
+        console.log('Start of request processing');
+        
+        // Fetch the person (recipient) and project by their IDs
+        const person = await userModel.findById(req.params.personId);
+        const personEmail=person.email;
+        const currPersonId=req.session.userId;
+        const currPerson=await userModel.findById(currPersonId);
+        const ownerName=currPerson.name;
+        const myProject = await teamProject.findById(req.params.postId);
+        console.log(person);
+        console.log(myProject);
+  
+        // Check if person and project exist
+        if (!person || !myProject) {
+            return res.status(404).send('Person or project not found');
+        }
+  
+        // console.log("Person found:", person);
+        // console.log("Project found:", project);
+        console.log("finding the user");
+        console.log(person.RegNumber);
+        // // Add the person to the project members (ensure 'RegNumber' exists)
+        if (person.RegNumber) {
+            myProject.members.push(person.RegNumber.toUpperCase());
+            
+        } else {
+            console.log("Person does not have a RegNumber.");
+            return res.status(400).send('Person has no RegNumber');
+        }
+  
+        // // Loop through requests to find and remove the one with matching projectId
+        console.log(myProject);
+        const currUser=req.session.userId;
+        const user=await userModel.findById(currUser);
+        console.log(user);
+        console.log("heyyyyyyyy");
+        console.log(user);
+        console.log("hellllllllloo");
+        for (let i = 0; i < user.requests.length; i++) {
+            if (user.requests[i].projectId === req.params.postId) {
+                user.requests.splice(i, 1);  // Remove the request
+                break;  // Exit the loop after removing the request
+            }
+        }
+  
+        // // Save the updated person document to the database
+        await user.save();
+        await myProject.save();
+        console.log(user);
+        console.log("my document updated successfully");
+        req.flash("success", "request accepted");
+        // // Redirect back to the requests page
+        res.redirect(`/request/${req.session.userId}`);
+        const mailOptions = {
+          from: process.env.EMAIL,
+          to: personEmail,
+          subject: 'Acceptance of request',
+          text: `
+  Dear ${person.name},
+  
+  I hope this message finds you well. I am pleased to inform you that your request regarding ${myProject.projectName} has been reviewed and accepted.
+  
+  We value your interest and are excited to move forward with this. Here are the details of the approval:
+  
+  
+  Next Steps: kindly contact me in the given below number for further processes
+  If you have any questions or require further assistance, please feel free to reach out to us at ${myProject.phoneNumber}. We look forward to working with you and making this a success.
+  
+  Thank you for reaching out to us.
+  
+  Best regards,
+  ${ownerName}
+  Leader
+  ${myProject.projectName}
+  ${myProject.phoneNumber}
+          `
+      };
+  
+      // Send the email
+      await transporter.sendMail(mailOptions);
+      console.log("email has been sent");
+        console.log("End of request processing");
+    } catch (error) {
+        console.error("Error processing request:", error);
+        res.status(500).send('Server error');
+    }
+  }
+
+  exports.rejectRequest=async (req, res) => {
+    try{
+      const currUser=req.session.userId;
+      const user=await userModel.findById(currUser);
+      for (let i = 0; i < user.requests.length; i++) {
+        if (user.requests[i].projectId === req.params.postId) {
+            user.requests.splice(i, 1);  // Remove the request
+            break;  // Exit the loop after removing the request
+        }
+    }
+    await user.save();
+    req.flash("error", "request Rejected");
+    res.redirect(`/request/${req.session.userId}`);
+  
+  
+    }catch(error){
+      console.error("Error processing request:",error);
+      res.status(500).send('server error');
+    }
+  }
+
+  exports.hackathonRegistration=(req,res)=>{
+    res.render("listings/hackathonRegistration")
+  }

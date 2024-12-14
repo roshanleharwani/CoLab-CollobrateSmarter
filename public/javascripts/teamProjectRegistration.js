@@ -82,6 +82,7 @@ const selectedSkills = []; // Array to hold selected skills
   }
 
   function addSkill() {
+    console.log("Add Skill Button Clicked");
     const skill = document.getElementById('project_skills').value;
 
     if (skill && !selectedSkills.includes(skill)) {
