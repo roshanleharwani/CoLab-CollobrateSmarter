@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen p-8 text-white bg-gray-900">
+    <div class="max-w-4xl mx-auto space-y-8">
+        <div class="flex items-center space-x-6">
+            <img src="/placeholder.svg?height=150&width=150" alt="Profile Picture"
+                class="object-cover w-32 h-32 border-4 border-blue-400 rounded-full">
+            <h1 class="text-3xl font-bold">User Profile</h1>
+        </div>
+
+        <section class="p-6 bg-gray-800 rounded-lg">
+            <h2 class="mb-4 text-2xl font-semibold">Personal Information</h2>
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div class="flex items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-400" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <span>Name: John Doe</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="font-mono text-blue-400">#</span>
+                    <span>Registration Number: 12345678</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="font-mono text-blue-400">📞</span>
+                    <span>Phone: +1 234 567 8900</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="font-mono text-blue-400">@</span>
+                    <span>Email: john.doe@example.com</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-400" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"
+                            clip-rule="evenodd" />
+                        <path
+                            d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
+                    </svg>
+                    <span>Projects Done: 15</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-400" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <span>Programming Languages: JavaScript, Python, Java</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 bg-gray-800 rounded-lg">
+            <h2 class="mb-4 text-2xl font-semibold">About Me</h2>
+            <p class="text-gray-300">
+                I'm a passionate software developer with 5 years of experience in web and mobile application
+                development.
+                I love creating user-friendly interfaces and solving complex problems through code.
+                When I'm not coding, you can find me hiking in the mountains or experimenting with new recipes in the
+                kitchen.
+            </p>
+        </section>
+
+        <section class="p-6 bg-gray-800 rounded-lg">
+            <h2 class="mb-4 text-2xl font-semibold">Post History</h2>
+            <div class="space-y-6">
+                <div class="flex flex-col overflow-hidden bg-gray-700 rounded-lg">
+                    <img src="/placeholder.svg?height=200&width=400" alt="Building a Responsive Web App"
+                        class="object-cover w-full h-48">
+                    <div class="flex flex-col justify-between flex-grow p-4">
+                        <div>
+                            <h3 class="mb-2 text-lg font-semibold">Building a Responsive Web App</h3>
+                            <p class="mb-2 text-sm text-gray-300">Learn how to create a responsive web application using
+                                React and Tailwind CSS.</p>
+                            <p class="mb-4 text-xs text-gray-400">Date: 2023-05-15</p>
+                        </div>
+                        <button
+                            class="self-start px-4 py-2 text-white transition duration-300 bg-blue-500 rounded hover:bg-blue-600">
+                            Team
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex flex-col overflow-hidden bg-gray-700 rounded-lg">
+                    <img src="/placeholder.svg?height=200&width=400" alt="Introduction to Machine Learning"
+                        class="object-cover w-full h-48">
+                    <div class="flex flex-col justify-between flex-grow p-4">
+                        <div>
+                            <h3 class="mb-2 text-lg font-semibold">Introduction to Machine Learning</h3>
+                            <p class="mb-2 text-sm text-gray-300">Discover the basics of machine learning and its
+                                applications in real-world scenarios.</p>
+                            <p class="mb-4 text-xs text-gray-400">Date: 2023-04-22</p>
+                        </div>
+                        <button
+                            class="self-start px-4 py-2 text-white transition duration-300 bg-blue-500 rounded hover:bg-blue-600">
+                            Team
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

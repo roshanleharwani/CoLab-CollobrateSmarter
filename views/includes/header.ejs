@@ -1,4 +1,5 @@
-<nav class="fixed top-0 z-20 flex items-center justify-between w-full h-20 px-4 align-middle bg-transparent md:px-4 ">
+<nav id="nav"
+  class="fixed top-0 left-0 z-20 flex items-center justify-between w-full h-20 px-4 text-white align-middle transition-transform duration-300 bg-transparent bg-gray-900 md:px-4">
   <div class="flex items-center w-2/5 h-full md:gap-x-8 gap-x-4">
     <div class="mb-2">
       <a href="#" class="self-center text-5xl text-white" onclick="toggleSidebar(event)">&#8801;</a>
@@ -64,28 +65,28 @@
     </div>
   </ul>
   <!-- Mobile Navigation for scrolling -->
-  <div id="scrollNavbar" 
-  class="fixed z-10 flex items-center justify-evenly w-full px-4 py-2 transition-transform duration-300 ease-in-out transform bg-black border-b-2 border-white navbar">
-  <a href="/">
-    <img class="w-6 h-6" src="/images/home.png" alt="home" />
-  </a>
-  <div class="relative">
-    <a href="#request">
-      <img class="w-6 h-6" src="/images/bell.png" alt="notifications" />
-      <!-- Badge for smaller screens -->
-      <span class="absolute top-0 right-0 px-1 text-xs text-white bg-red-500 rounded-full">3</span>
+  <div id="scrollNavbar"
+    class="fixed z-10 flex items-center w-full px-4 py-2 transition-transform duration-300 ease-in-out transform bg-black border-b-2 border-white justify-evenly navbar">
+    <a href="/">
+      <img class="w-6 h-6" src="/images/home.png" alt="home" />
+    </a>
+    <div class="relative">
+      <a href="#request">
+        <img class="w-6 h-6" src="/images/bell.png" alt="notifications" />
+        <!-- Badge for smaller screens -->
+        <span class="absolute top-0 right-0 px-1 text-xs text-white bg-red-500 rounded-full">3</span>
+      </a>
+    </div>
+    <a href="#">
+      <img class="w-8 h-8" src="/images/plus (1).png" alt="plus" />
+    </a>
+    <a href="/about">
+      <img class="w-6 h-6" src="/images/about.png" alt="about" />
+    </a>
+    <a href="/feedback">
+      <img class="w-6 h-6" src="/images/telephone.png" alt="contact" />
     </a>
   </div>
-  <a href="#">
-    <img class="w-8 h-8" src="/images/plus (1).png" alt="plus" />
-  </a>
-  <a href="/about">
-    <img class="w-6 h-6" src="/images/about.png" alt="about" />
-  </a>
-  <a href="/feedback">
-    <img class="w-6 h-6" src="/images/telephone.png" alt="contact" />
-  </a>
-</div>
 
 </nav>
 
@@ -93,53 +94,84 @@
 <style>
   #scrollNavbar {
     position: fixed;
-    top: 0; /* Place it at the very top */
-    left: 0; /* Start from the left edge */
-    width: 100%; /* Full-width navbar */
-    height: auto; /* Auto height for horizontal layout */
-    padding: 10px; /* Add some padding */
-    display: flex; /* Use flexbox for horizontal alignment */
-    justify-content: space-evenly; /* Distribute items evenly */
-    align-items: center; /* Center items vertically */
-    background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
-    border-bottom: 2px solid white; /* Optional border at the bottom */
-    z-index: 20; /* Ensure it's above other elements */
-    transform: translateY(-100%); /* Initially hidden */
-    opacity: 0; /* Fully transparent initially */
+    top: 0;
+    /* Place it at the very top */
+    left: 0;
+    /* Start from the left edge */
+    width: 100%;
+    /* Full-width navbar */
+    height: auto;
+    /* Auto height for horizontal layout */
+    padding: 10px;
+    /* Add some padding */
+    display: flex;
+    /* Use flexbox for horizontal alignment */
+    justify-content: space-evenly;
+    /* Distribute items evenly */
+    align-items: center;
+    /* Center items vertically */
+    background: rgba(0, 0, 0, 0.8);
+    /* Semi-transparent background */
+    border-bottom: 2px solid white;
+    /* Optional border at the bottom */
+    z-index: 20;
+    /* Ensure it's above other elements */
+    transform: translateY(-100%);
+    /* Initially hidden */
+    opacity: 0;
+    /* Fully transparent initially */
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   }
-  
+
   /* Show scrollNavbar only for small screens */
   @media (min-width: 768px) {
     #scrollNavbar {
-      display: none; /* Hide on medium and larger screens */
+      display: none;
+      /* Hide on medium and larger screens */
     }
   }
-  
+
   #scrollNavbar.show {
-    transform: translateY(0); /* Slide down to visible position */
-    opacity: 1; /* Fully visible */
+    transform: translateY(0);
+    /* Slide down to visible position */
+    opacity: 1;
+    /* Fully visible */
   }
-  
-  
 </style>
 
 <script>
   let lastScrollTop = 0;
-const navbar = document.getElementById("scrollNavbar");
+  const navbar = document.getElementById("scrollNavbar");
 
-window.addEventListener("scroll", function () {
-  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  window.addEventListener("scroll", function () {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-  if (scrollTop > lastScrollTop) {
-    // Scroll down, show navbar
-    navbar.classList.add("show");
-  } else {
-    // Scroll up, hide navbar
-    navbar.classList.remove("show");
-  }
+    if (scrollTop > lastScrollTop) {
+      // Scroll down, show navbar
+      navbar.classList.add("show");
+    } else {
+      // Scroll up, hide navbar
+      navbar.classList.remove("show");
+    }
 
-  lastScrollTop = scrollTop;
-});
+    lastScrollTop = scrollTop;
+  });
+  let lastScrollY = window.scrollY;
+  const nav = document.getElementById('nav');
+
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > lastScrollY) {
+      // Scrolling down - hide the nav
+      nav.classList.add('-translate-y-full');
+    } else {
+      // Scrolling up - show the nav
+      nav.classList.remove('-translate-y-full');
+    }
+
+    lastScrollY = currentScrollY;
+  });
+
 
 </script>

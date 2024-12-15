@@ -16,6 +16,7 @@
             Your browser does not support the video tag.
           </video>
 
+
           <!-- Overlay -->
           <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black via-black/70 to-transparent">
           </div>
@@ -38,15 +39,132 @@
               <a href="/competeRegistration" class="w-full sm:w-auto">
                 <button
                   class="w-full px-6 py-3 text-xl font-semibold text-white transition duration-300 ease-in-out bg-red-500 rounded-md sm:w-auto hover:-translate-y-1 hover:bg-red-600 hover:scale-105">
-                  Create Team
+                  Build Team
                 </button>
               </a>
             </div>
           </div>
         </section>
-        <section class="flex flex-col h-screen p-4 bg-gray-950">
-          <div class="text-4xl font-semibold text-white">Explore Teams</div>
+        <section class="py-5 bg-black">
+          <div class="container px-4 mx-auto">
+            <div class="flex items-center justify-between mb-8">
+              <h2 class="text-3xl font-bold text-white">Trending Events</h2>
+              <a href="/events" class="flex items-center text-red-500 hover:text-red-400">
+                View all
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd" />
+                </svg>
+              </a>
+            </div>
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <% for(let i=0;i<3;i++){%>
+                <div
+                  class="overflow-hidden duration-500 ease-in-out bg-gray-900 rounded-lg hover:scale-105 hover:-translate-y-3">
+                  <div class="p-6">
+                    <div class="flex items-center justify-between mb-4">
+                      <span class="px-2 py-1 text-sm text-red-500 bg-red-500 rounded-md bg-opacity-10">
+                        Hackathon
+                      </span>
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-red-500" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path fill-rule="evenodd"
+                          d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z"
+                          clip-rule="evenodd" />
+                      </svg>
+                    </div>
+                    <h3 class="mb-2 text-xl font-semibold text-white">
+                      CSI Technical Day Hackathon
+                    </h3>
+                    <p class="mb-4 text-sm text-gray-400">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel dolor atque provident, hic ratione
+                      neque iste iure expedita eaque beatae.
+                    </p>
+                    <div class="flex items-center justify-between text-sm text-gray-500">
+                      <span class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1" viewBox="0 0 20 20"
+                          fill="currentColor">
+                          <path fill-rule="evenodd"
+                            d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                            clip-rule="evenodd" />
+                        </svg>
+                        12-12-2024
+                      </span>
+                      <span class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1" viewBox="0 0 20 20"
+                          fill="currentColor">
+                          <path
+                            d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
+                        </svg>
+                        200 participants
+                      </span>
+                    </div>
+                  </div>
+                  <div class="px-6 py-4 bg-gray-700 bg-opacity-50">
+                    <a href="" class="text-red-500 hover:text-red-400">Join Event</a>
+                  </div>
+                </div>
+                <%}%>
+            </div>
+          </div>
         </section>
+
+        <section class="py-16">
+          <div class="container px-4 mx-auto">
+            <div class="flex items-center justify-between mb-8">
+              <h2 class="text-3xl font-bold text-white">Explore Teams</h2>
+              <a href="/teams" class="flex items-center text-red-500 hover:text-red-400">
+                View all
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd" />
+                </svg>
+              </a>
+            </div>
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <% for(let i=0;i<3;i++){%>
+                <div
+                  class="overflow-hidden duration-500 ease-in-out bg-gray-900 rounded-lg hover:scale-105 hover:-translate-y-3 ">
+                  <div class="p-4 bg-gradient-to-r from-red-600 to-red-700">
+                    <h3 class="text-xl font-semibold text-white">
+                      The Machine Manipulators
+                    </h3>
+                  </div>
+                  <div class="flex flex-col gap-4 p-6">
+                    <div class="text-lg text-white">
+                      Website Creation
+                    </div>
+                    <p class="mb-4 text-sm text-gray-300">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit placeat fuga optio vel minima
+                      incidunt ratione aliquid, impedit voluptatem consequatur.
+                    </p>
+
+                    <div class="flex items-center justify-between pt-4 text-sm text-gray-500 border-t border-gray-700">
+                      <div class="flex items-center gap-4">
+                        <span class="flex items-center">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                            <path fill-rule="evenodd"
+                              d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                              clip-rule="evenodd" />
+                          </svg>
+                          20
+                        </span>
+
+                      </div>
+                      <a href="" class="text-red-500 hover:text-red-400">Learn More</a>
+                    </div>
+                  </div>
+                </div>
+                <%}%>
+
+            </div>
+          </div>
+        </section>
+
 
     </main>
   </body>

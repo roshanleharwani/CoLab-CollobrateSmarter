@@ -1,201 +1,111 @@
 <% layout("/layouts/boilerplate.ejs")%>
 
-<body class="w-screen h-full bg-gray-900">
-    <main
-        class="flex flex-col items-center mt-20 justify-center w-full h-full bg-gradient-to-r from-slate-700 via-slate-950 to-gray-900 max-w-screen">
-        <!-- sidebar starts here -->
-      <%- include("../includes/sidebar.ejs")%>
-      <!-- sidebar ends here -->
-        <div class="relative flex justify-center w-full h-24 bg-black border-b-[0.5px] border-white">
-            <div class="absolute bg-white rounded-full -bottom-16 size-28 md:size-32"><img
-                    src="./images/profile.png" alt="Profile Image"
-                    class="w-full border-[8px] border-amber-500 rounded-full" /></div>
-        </div>
-        <div class="mt-20 -mb-10 rating">
-            <input type="radio" name="rating-2" class="bg-orange-400 mask mask-star-2" />
-            <input type="radio" name="rating-2" class="bg-orange-400 mask mask-star-2" checked="checked" />
-            <input type="radio" name="rating-2" class="bg-orange-400 mask mask-star-2" />
-            <input type="radio" name="rating-2" class="bg-orange-400 mask mask-star-2" />
-            <input type="radio" name="rating-2" class="bg-orange-400 mask mask-star-2" />
-        </div>
-        <div class="content-center p-4 px-8 mt-20 text-3xl font-semibold text-white border-b-4 border-white">User
-            Details
-        </div>
-        <div class="flex flex-col items-center justify-center w-full h-full ">
-            <a href="/edit"><div
-                class="px-4 py-2 mt-5 font-semibold text-gray-600 transition-all duration-300 ease-in-out bg-white rounded-lg cursor-pointer md:self-start hover:-translate-y-2 hover:bg-opacity-70 md:ml-28 bg-opacity-60">
-                Edit Details</div></a>
-            
-            <div
-                class="flex flex-wrap items-center w-10/12 h-full gap-4 p-2 m-4 mt-10 bg-transparent bg-gray-100 rounded-lg shadow-2xl drop-shadow-2xl backdrop-blur-lg md:m-2 gap-x-10 md:gap-x-28 bg-opacity-20 opacity-70 md:p-10">
-                <div class="flex flex-col">
-                    <div class="text-xl text-gray-400">Name</div>
-                    <div class="text-xl text-white ">Roshan Laharwani</div>
+    <body class="min-h-screen p-8 text-white bg-gray-900">
+        <%- include("../includes/sidebar.ejs")%>
+            <div class="max-w-4xl mx-auto my-32 space-y-8 ">
+                <div class="flex items-center space-x-6">
+                    <img src="/images/profile.png" alt="Profile Picture"
+                        class="object-cover w-32 h-32 border-4 border-blue-400 rounded-full">
+                    <h1 class="text-3xl font-bold">User Profile</h1>
                 </div>
 
-                <div class="flex flex-col ">
-                    <div class="text-xl text-gray-400">Email</div>
-                    <div class="text-xl text-white line-clamp-2">roshan.23bce7308@vitapstudent.ac.in</div>
-                </div>
-
-
-                <div class="flex flex-col">
-                    <div class="text-xl text-gray-400">Reg No.</div>
-                    <div class="text-xl text-white">23BCE7308</div>
-                </div>
-
-                <div class="flex flex-col">
-                    <div class="text-xl text-gray-400">Ph No.</div>
-                    <div class="text-xl text-white">7470629602</div>
-                </div>
-
-                <div class="flex flex-col">
-                    <div class="text-xl text-gray-400">Education</div>
-                    <div class="text-xl text-white">Vatsalya Sr. Secondary School 12th :85.5%</div>
-                </div>
-                <div class="flex flex-col">
-                    <div class="text-xl text-gray-400">Clubs</div>
-                    <div class="text-xl text-white">Member of Next Nexus Club</div>
-                </div>
-                <div class="flex flex-col">
-                    <div class="text-xl text-gray-400">Projects</div>
-                    <ul class="m-4 text-lg text-white list-disc">
-                        <li>AutoConnect</li>
-                        <li>CoLab</li>
-                        <li>CLEAN</li>
-                    </ul>
-                </div>
-                <div class="flex flex-col">
-                    <div class="text-xl text-gray-400">Experience</div>
-                    <div class="text-xl text-white">GFG HackOctoberFest 1st Runner Up</div>
-                </div>
-                <div class="flex flex-col">
-                    <div class="text-xl text-gray-400">Verbal Languages</div>
-                    <ul class="m-4 text-lg text-white list-disc">
-                        <li>Hindi</li>
-                        <li>Sindhi</li>
-                        <li>English</li>
-                    </ul>
-                </div>
-                <div class="flex flex-col">
-                    <div class="text-xl text-gray-400">Socials</div>
-                    <ul class="m-4 text-lg text-white list-disc">
-                        <li>Instagram</li>
-                        <li>LinkedIn</li>
-                        <li>GitHub</li>
-                    </ul>
-                </div>
-
-            </div>
-            <div
-                class="flex flex-col items-center justify-center w-10/12 h-full gap-3 p-4 m-4 mt-4 bg-transparent bg-gray-100 rounded-lg shadow-2xl drop-shadow-2xl backdrop-blur-lg md:m-6 gap-x-10 md:gap-x-28 md:p-10">
-                <div class="text-2xl text-gray-400">About Me</div>
-                <div class="m-4 text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias mollitia
-                    omnis facilis
-                    labore sint dicta, velit nisi architecto sunt quia voluptas totam? Perspiciatis vero aliquam
-                    repellendus libero itaque porro fugit modi. Tempora eligendi nam labore itaque placeat quia
-                    pariatur. Perspiciatis suscipit adipisci, beatae laborum reiciendis eveniet dolore, recusandae earum
-                    quae amet fugiat! Quam alias architecto veniam aliquid natus facere tenetur minima quo eos eaque
-                    commodi at, in distinctio quidem dolore doloremque, aut dignissimos ullam cum. Cumque officia,
-                    perferendis maxime consequatur quam, at exercitationem corporis sequi perspiciatis, quasi modi
-                    blanditiis voluptatum asperiores id nostrum eaque esse? Optio nostrum cum alias officia.
-                </div>
-            </div>
-
-        </div>
-        <div
-            class="flex flex-col items-center justify-center w-10/12 h-full gap-3 p-4 m-4 mt-4 bg-transparent bg-gray-100 rounded-lg shadow-2xl drop-shadow-2xl backdrop-blur-lg md:m-6 gap-x-10 md:gap-x-28 opacity-70 md:p-10">
-            <div class="mr-10 text-2xl text-gray-400">Skills</div>
-            <div class="flex items-center justify-center w-3/4">
-                <input type="text" id="project_skills"
-                    class="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-s-lg outline-none  block w-full p-2.5 dark:bg-gray-500 dark:border-gray-600 dark:placeholder-gray-200 placeholder-shown:text-center dark:text-white "
-                    placeholder="Add Skills" name="project[skills]" onclick="toggleDropdown()"
-                    onfocus="showDropdown()" />
-                <button type="button" id="addSkillBtn"
-                    class="px-4 font-semibold text-white bg-green-500 size-10 hover:bg-green-600 rounded-e-lg"
-                    onclick="addSkill()">
-                    +
-                </button>
-            </div>
-
-            <div class="flex flex-wrap items-center justify-center gap-4 p-4">
-
-                <div
-                    class="px-2 py-1 font-semibold text-white duration-300 bg-red-500 border-[0.5px] border-white rounded-full cursor-pointer hover:-translate-y-1 hover:scale-105">
-                    JavaScript </div>
-                <div
-                    class="px-2 py-1 font-semibold text-white duration-300 bg-green-500 border-[0.5px] border-white rounded-full cursor-pointer hover:-translate-y-1 hover:scale-105">
-                    C++ </div>
-                <div
-                    class="px-2 py-1 font-semibold text-white duration-300 bg-yellow-500 border-[0.5px] border-white rounded-full cursor-pointer hover:-translate-y-1 hover:scale-105">
-                    Java </div>
-                <div
-                    class="px-2 py-1 font-semibold text-white duration-300 bg-indigo-500 border-[0.5px] border-white rounded-full cursor-pointer hover:-translate-y-1 hover:scale-105">
-                    tailwindcss </div>
-
-            </div>
-        </div>
-        <div
-            class="flex flex-col items-center justify-center w-10/12 h-full gap-3 p-4 m-4 mt-4 bg-transparent bg-gray-100 rounded-lg shadow-2xl drop-shadow-2xl backdrop-blur-lg md:m-6 gap-x-10 md:gap-x-28 bg-opacity-20 opacity-70 md:p-10">
-            <div class="text-2xl text-gray-400">Post History</div>
-            <div class="flex w-full h-full gap-10 p-10 bg-opacity-10 rounded-2xl ">
-                <div
-                    class="container p-2 duration-300 ease-in-out rounded-lg bg-gradient-to-br from-gray-800 via-slate-800 to-gray-950 post-card hover:scale-105 hover:-translate-y-5">
-                    <div class="rounded-lg post-image"><img src="./images/2.jpg" alt="" class="w-full rounded-lg">
-                    </div>
-                    <div>
-                        <div class="p-4 pb-0 pl-0 m-2 mb-0 text-sm font-light">31/11/2024</div>
-                        <div
-                            class="flex items-center justify-between p-4 pl-0 m-2 text-lg font-medium text-white post-title">
-                            WebSite Creation
+                <section class="p-6 bg-gray-800 rounded-lg">
+                    <h2 class="mb-4 text-2xl font-semibold">Personal Information</h2>
+                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                        <div class="flex items-center space-x-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-400" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span>Name: John Doe</span>
                         </div>
-                        <div class="m-2 post-description line-clamp-2">Lorem ipsum dolor sit amet consectetur
-                            adipisicing elit.
-                            Iusto, a?
+                        <div class="flex items-center space-x-2">
+                            <span class="font-mono text-blue-400">#</span>
+                            <span>Registration Number: 12345678</span>
                         </div>
-                        <div
-                            class="w-1/2 p-2 m-2 mt-2 text-lg text-center text-white duration-300 bg-indigo-500 rounded-lg cursor-pointer hover:-translate-y-1 hover:scale-105 whitespace-nowrap ">
-                            Project Team</div>
-                    </div>
-                </div>
-                <div
-                    class="container p-2 duration-300 ease-in-out rounded-lg bg-gradient-to-br from-gray-800 via-slate-800 to-gray-950 post-card hover:scale-105 hover:-translate-y-5">
-                    <div class="rounded-lg post-image"><img src="./images/4.jpg" alt="" class="w-full rounded-lg">
-                    </div>
-                    <div>
-                        <div class="p-4 pb-0 pl-0 m-2 mb-0 text-sm font-light text-white">05-11-2024</div>
-                        <div class="p-4 pl-0 m-2 mb-0 text-lg font-medium text-white post-title">Hackathon</div>
-                        <div class="m-2 post-description line-clamp-2 text-white">Lorem ipsum dolor sit amet consectetur Lorem
-                            ipsum dolor sit
-                            amet. isicing elit.
-                            Iusto, a?
+                        <div class="flex items-center space-x-2">
+                            <span class="font-mono text-blue-400">📞</span>
+                            <span>Phone: +1 234 567 8900</span>
                         </div>
-                        <div
-                            class="w-1/2 p-2 m-2 mt-2 text-lg text-center text-white duration-300 bg-indigo-500 rounded-lg cursor-pointer hover:-translate-y-1 hover:scale-105 whitespace-nowrap ">
-                            Project Team</div>
-                    </div>
-                </div>
-                <div
-                    class="container p-2 duration-300 ease-in-out rounded-lg bg-gradient-to-br from-gray-800 via-slate-800 to-gray-950 post-card hover:scale-105 hover:-translate-y-5">
-                    <div class="rounded-lg post-image"><img src="./images/1.jpg" alt="" class="w-full rounded-lg">
-                    </div>
-                    <div>
-                        <div class="p-4 pb-0 pl-0 m-2 mb-0 text-sm font-light">28/04/2024</div>
-                        <div class="p-4 pl-0 m-2 text-lg font-medium text-white post-title">App Development</div>
-                        <div class="m-2 post-description line-clamp-2">Lorem ipsum dolor sit amet consectetur
-                            adipisicing Lorem,
-                            ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, quidem? elit.
-                            Iusto, a?
+                        <div class="flex items-center space-x-2">
+                            <span class="font-mono text-blue-400">@</span>
+                            <span>Email: john.doe@example.com</span>
                         </div>
-                        <div
-                            class="w-1/2 p-2 m-2 mt-2 text-lg text-center text-white duration-300 bg-indigo-500 rounded-lg cursor-pointer hover:-translate-y-1 hover:scale-105 whitespace-nowrap ">
-                            Project Team</div>
+                        <div class="flex items-center space-x-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-400" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"
+                                    clip-rule="evenodd" />
+                                <path
+                                    d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
+                            </svg>
+                            <span>Projects Done: 15</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-400" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span>Programming Languages: JavaScript, Python, Java</span>
+                        </div>
                     </div>
-                </div>
+                </section>
 
+                <section class="p-6 bg-gray-800 rounded-lg">
+                    <h2 class="mb-4 text-2xl font-semibold">About Me</h2>
+                    <p class="text-gray-300">
+                        I'm a passionate software developer with 5 years of experience in web and mobile application
+                        development.
+                        I love creating user-friendly interfaces and solving complex problems through code.
+                        When I'm not coding, you can find me hiking in the mountains or experimenting with new recipes
+                        in the
+                        kitchen.
+                    </p>
+                </section>
+
+                <section class="p-6 bg-gray-800 rounded-lg">
+                    <h2 class="mb-4 text-2xl font-semibold">Post History</h2>
+                    <div class="space-y-6">
+                        <div class="flex flex-col overflow-hidden bg-gray-700 rounded-lg">
+                            <img src="/images/1.jpg" alt="Building a Responsive Web App"
+                                class="object-cover w-full h-48">
+                            <div class="flex flex-col justify-between flex-grow p-4">
+                                <div>
+                                    <h3 class="mb-2 text-lg font-semibold">Building a Responsive Web App</h3>
+                                    <p class="mb-2 text-sm text-gray-300">Learn how to create a responsive web
+                                        application using
+                                        React and Tailwind CSS.</p>
+                                    <p class="mb-4 text-xs text-gray-400">Date: 2023-05-15</p>
+                                </div>
+                                <button
+                                    class="self-start px-4 py-2 text-white transition duration-300 bg-blue-500 rounded hover:bg-blue-600">
+                                    Team
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col overflow-hidden bg-gray-700 rounded-lg">
+                            <img src="/images/3.jpg" alt="Introduction to Machine Learning "
+                                class="object-cover object-center w-full h-48">
+                            <div class="flex flex-col justify-between flex-grow p-4">
+                                <div>
+                                    <h3 class="mb-2 text-lg font-semibold">Introduction to Machine Learning</h3>
+                                    <p class="mb-2 text-sm text-gray-300">Discover the basics of machine learning and
+                                        its
+                                        applications in real-world scenarios.</p>
+                                    <p class="mb-4 text-xs text-gray-400">Date: 2023-04-22</p>
+                                </div>
+                                <button
+                                    class="self-start px-4 py-2 text-white transition duration-300 bg-blue-500 rounded hover:bg-blue-600">
+                                    Team
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
-        </div>
-    </main>
-</body>
-
-
+    </body>
