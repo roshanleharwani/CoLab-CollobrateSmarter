@@ -15,7 +15,7 @@ const userModel = require('./models/userModel.js');
 const flash=require("connect-flash");
 const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
-
+const userDetails=require('./models/userDetails.js');
 const projectModel = require("./models/projectModel.js")
 
 // email purpose
@@ -129,10 +129,25 @@ app.get('/reject/:personId/:postId',isAuth,controller.rejectRequest);
 app.get('/competeRegistration',isAuth,controller.hackathonRegistration);
 
 app.get('/profile',(req,res)=>{
-  res.render('listings/userDetails.ejs')
+  res.render('listings/userDetails.ejs',{})
 })
 app.get('/edit',(req,res)=>{
   res.render('listings/editUserDetails.ejs')
+})
+
+app.post('/saveDetails',async(req,res)=>{
+    const id=res.locals.currUserId;
+    const self=req.body.self;
+    console.log(self.name);
+    let insertObject={
+      name:self.name,
+      phoneNumber:self.number,
+      email:self.email,
+      regNumber:self.regNo,
+      branch:self.branch,
+      graduationYear:self.year,
+      userId:res.locals.currUserId,
+    }
 })
 
 app.listen(3000)

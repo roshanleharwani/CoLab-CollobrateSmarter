@@ -20,7 +20,7 @@ let transporter = nodemailer.createTransport(config)
 
 exports.indexPage = (req, res) => {
     if (req.session.isAuth == true) {
-        console.log(req.session.userId);
+        
         return res.render('listings/home');
     }
     return res.render('listings/index')

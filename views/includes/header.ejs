@@ -64,66 +64,82 @@
     </div>
   </ul>
   <!-- Mobile Navigation for scrolling -->
-  <div id="scrollNavbar"
-    class="fixed z-10 flex flex-col items-center justify-center gap-4 p-2 transition-transform duration-300 ease-in-out transform bg-transparent border-2 border-white shadow-2xl top-1/4 w-14 backdrop-blur-xl navbar right-2 rounded-3xl shadow-black md:hidden">
-    <a href="/">
-      <img class="w-6 h-6" src="/images/home.png" alt="home" />
-    </a>
-    <span class="font-bold text-center text-white">|</span>
-    <div class="relative">
-      <a href="#request">
-        <img class="w-6 h-6" src="/images/bell.png" alt="notifications" />
-      </a>
+  <div id="scrollNavbar" 
+  class="fixed z-10 flex items-center justify-evenly w-full px-4 py-2 transition-transform duration-300 ease-in-out transform bg-black border-b-2 border-white navbar">
+  <a href="/">
+    <img class="w-6 h-6" src="/images/home.png" alt="home" />
+  </a>
+  <div class="relative">
+    <a href="#request">
+      <img class="w-6 h-6" src="/images/bell.png" alt="notifications" />
       <!-- Badge for smaller screens -->
       <span class="absolute top-0 right-0 px-1 text-xs text-white bg-red-500 rounded-full">3</span>
-    </div>
-
-    <span class="font-bold text-center text-white">|</span>
-    <a href="#"></a>
-    <img class="w-8 h-8 -my-2" src="/images/plus.png" alt="plus" />
-    </a>
-    <span class="font-bold text-center text-white">|</span>
-    <a href="/about">
-      <img class="w-6 h-6 md:w-6 md:h-6" src="/images/about.png" alt="about" />
-    </a>
-    <span class="font-bold text-center text-white">|</span>
-    <a href="/feedback">
-      <img class="w-6 h-6" src="/images/telephone.png" alt="contact" />
     </a>
   </div>
+  <a href="#">
+    <img class="w-8 h-8" src="/images/plus (1).png" alt="plus" />
+  </a>
+  <a href="/about">
+    <img class="w-6 h-6" src="/images/about.png" alt="about" />
+  </a>
+  <a href="/feedback">
+    <img class="w-6 h-6" src="/images/telephone.png" alt="contact" />
+  </a>
+</div>
+
 </nav>
 
 <!-- CSS to enable smooth animation -->
 <style>
   #scrollNavbar {
+    position: fixed;
+    top: 0; /* Place it at the very top */
+    left: 0; /* Start from the left edge */
+    width: 100%; /* Full-width navbar */
+    height: auto; /* Auto height for horizontal layout */
+    padding: 10px; /* Add some padding */
+    display: flex; /* Use flexbox for horizontal alignment */
+    justify-content: space-evenly; /* Distribute items evenly */
+    align-items: center; /* Center items vertically */
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    border-bottom: 2px solid white; /* Optional border at the bottom */
+    z-index: 20; /* Ensure it's above other elements */
+    transform: translateY(-100%); /* Initially hidden */
+    opacity: 0; /* Fully transparent initially */
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    transform: translateY(-100%);
-    opacity: 0;
   }
-
+  
+  /* Show scrollNavbar only for small screens */
+  @media (min-width: 768px) {
+    #scrollNavbar {
+      display: none; /* Hide on medium and larger screens */
+    }
+  }
+  
   #scrollNavbar.show {
-    transform: translateY(0);
-    opacity: 1;
+    transform: translateY(0); /* Slide down to visible position */
+    opacity: 1; /* Fully visible */
   }
+  
+  
 </style>
 
 <script>
   let lastScrollTop = 0;
-  const navbar = document.getElementById("scrollNavbar");
+const navbar = document.getElementById("scrollNavbar");
 
-  window.addEventListener("scroll", function () {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+window.addEventListener("scroll", function () {
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    if (scrollTop > lastScrollTop) {
-      // Scroll down, show navbar
-      navbar.classList.add("show");
-      navbar.classList.remove("hide");
-    } else {
-      // Scroll up, hide navbar
-      navbar.classList.add("hide");
-      navbar.classList.remove("show");
-    }
+  if (scrollTop > lastScrollTop) {
+    // Scroll down, show navbar
+    navbar.classList.add("show");
+  } else {
+    // Scroll up, hide navbar
+    navbar.classList.remove("show");
+  }
 
-    lastScrollTop = scrollTop;
-  });
+  lastScrollTop = scrollTop;
+});
+
 </script>
