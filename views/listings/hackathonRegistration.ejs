@@ -4,9 +4,9 @@
         <main class="h-full min-w-full p-5 ">
             <%- include("../includes/sidebar.ejs")%>
                 <section class=" bg-gray-50 dark:bg-transparent">
-                    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:min-h-screen lg:py-0">
+                    <div class="flex flex-col items-center justify-center px-6 py-8 mt-10 lg:min-h-screen lg:py-0">
                         <div
-                            class="w-full bg-transparent bg-white shadow rounded-xl dark:border md:mt-0 sm:max-w-lg xl:p-0 backdrop-blur-xl dark:bg-gray-800 dark:border-gray-700">
+                            class="w-full shadow rounded-xl dark:border md:mt-0 sm:max-w-lg xl:p-0 backdrop-blur-xl dark:bg-gray-800 dark:border-gray-700">
                             <div class="p-4 space-y-4 md:space-y-6 sm:p-4">
                                 <h1
                                     class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
@@ -92,41 +92,48 @@
                                         </select>
                                     </div>
                                     <div class="">
-                                        <label for="skills" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Skills
-                                          Required</label>
+                                        <label for="skills"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Skills
+                                            Required</label>
                                         <div class="flex items-center justify-center w-full">
-                                          <input type="text" id="project_skills"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-s-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Website Creation" name="project[skills]" onclick="toggleDropdown()"
-                                            onfocus="showDropdown()" />
-                                          <button type="button" id="addSkillBtn"
-                                            class="  h-[44px] px-4 text-white bg-green-500 hover:bg-green-600 font-semibold rounded-r-lg"
-                                            onclick="addSkill()">
-                                            +
-                                          </button>
+                                            <input type="text" id="project_skills"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-s-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="Website Creation" name="project[skills]"
+                                                onclick="toggleDropdown()" onfocus="showDropdown()" />
+                                            <button type="button" id="addSkillBtn"
+                                                class="  h-[44px] px-4 text-white bg-green-500 hover:bg-green-600 font-semibold rounded-r-lg"
+                                                onclick="addSkill()">
+                                                +
+                                            </button>
                                         </div>
-                    
+
                                         <ul id="skillsDropdown"
-                                          class="absolute z-20 hidden w-full mt-1 overflow-y-auto bg-white border border-gray-300 rounded-lg shadow-lg max-h-40">
-                                          <li class="p-2 cursor-pointer hover:bg-gray-100" onclick="selectSkill('Web Development')">Web
-                                            Development</li>
-                                          <li class="p-2 cursor-pointer hover:bg-gray-100" onclick="selectSkill('Graphic Design')">Graphic
-                                            Design</li>
-                                          <li class="p-2 cursor-pointer hover:bg-gray-100" onclick="selectSkill('Digital Marketing')">
-                                            Digital Marketing</li>
-                                          <li class="p-2 cursor-pointer hover:bg-gray-100" onclick="selectSkill('Content Writing')">Content
-                                            Writing</li>
-                                          <li class="p-2 cursor-pointer hover:bg-gray-100" onclick="selectSkill('SEO')">SEO</li>
+                                            class="absolute z-20 hidden w-full mt-1 overflow-y-auto bg-white border border-gray-300 rounded-lg shadow-lg max-h-40">
+                                            <li class="p-2 cursor-pointer hover:bg-gray-100"
+                                                onclick="selectSkill('Web Development')">Web
+                                                Development</li>
+                                            <li class="p-2 cursor-pointer hover:bg-gray-100"
+                                                onclick="selectSkill('Graphic Design')">Graphic
+                                                Design</li>
+                                            <li class="p-2 cursor-pointer hover:bg-gray-100"
+                                                onclick="selectSkill('Digital Marketing')">
+                                                Digital Marketing</li>
+                                            <li class="p-2 cursor-pointer hover:bg-gray-100"
+                                                onclick="selectSkill('Content Writing')">Content
+                                                Writing</li>
+                                            <li class="p-2 cursor-pointer hover:bg-gray-100"
+                                                onclick="selectSkill('SEO')">SEO</li>
                                         </ul>
-                    
+
                                         <div id="addedSkills" class="hidden mt-4">
-                                          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Selected Skills:</h3>
-                                          <ul id="skillList" class="flex flex-wrap gap-4 pl-0 mt-2 list-none"></ul>
+                                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Selected
+                                                Skills:</h3>
+                                            <ul id="skillList" class="flex flex-wrap gap-4 pl-0 mt-2 list-none"></ul>
                                         </div>
-                                      </div>
-                    
-                    
-                                      
+                                    </div>
+
+
+
 
                                     <div class="flex justify-center">
                                         <button type="submit"
