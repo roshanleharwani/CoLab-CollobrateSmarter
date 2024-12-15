@@ -1,23 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-
-</head>
+<% layout("/layouts/boilerplate.ejs")%>
 
 <body class="w-full h-full bg-gray-900">
     <section class="flex flex-col items-center justify-center w-full h-full">
-
+        <%- include("../includes/sidebar.ejs")%>
 
         <div
             class="flex items-center justify-center w-11/12 h-screen gap-5 p-4 m-4 text-white shadow-2xl rounded-xl drop-shadow-xl backdrop-blur-lg">
             <div class="flex flex-col items-center justify-center w-1/4 h-full gap-4 bg-gray-800 rounded-xl">
 
-                <div class="bg-white rounded-full size-36 profile"><img src="/public/images/profile.png" alt=""
+                <div class="bg-white rounded-full size-36 profile"><img src="./images/profile.png" alt=""
                         class="w-full border-[10px] border-emerald-500 rounded-full">
                 </div>
                 <div class="flex items-center justify-center bg-gray-400 rounded-lg text-md gap-x-1 bg-opacity-45">

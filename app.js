@@ -128,6 +128,11 @@ app.get('/reject/:personId/:postId',isAuth,controller.rejectRequest);
 
 app.get('/competeRegistration',isAuth,controller.hackathonRegistration);
 
-
+app.get('/profile',(req,res)=>{
+  res.render('listings/userDetails.ejs')
+})
+app.get('/edit',(req,res)=>{
+  res.render('listings/editUserDetails.ejs')
+})
 
 app.listen(3000)
