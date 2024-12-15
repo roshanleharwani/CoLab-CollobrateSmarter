@@ -451,12 +451,12 @@ exports.projectDetails=async(req,res)=>{
     res.render("listings/projectDetails",{project,regNo,currUser});
   }
   
-exports.deleteProject=async(req,res)=>{
-    const id=req.params.id;
-    await teamProject.findByIdAndDelete(id);
-    req.flash("success","Project deleted");
-    res.redirect("/teamProjects");
-  }
+    exports.deleteProject=async(req,res)=>{
+        const id=req.params.id;
+        await teamProject.findByIdAndDelete(id);
+        req.flash("success","Project deleted");
+        res.redirect("/teamProjects");
+    }
 
 exports.sendRequest=async(req,res)=>{
     res.redirect("/requestSent");

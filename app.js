@@ -114,7 +114,7 @@ app.post('/teamRegistration',isAuth,controller.teamRegistrationPost)
 
 app.get('/teamProjects/:id',isAuth,controller.projectDetails);
 
-app.delete('/delete:id',isAuth,controller.deleteProject);
+app.delete('/delete/:id',isAuth,controller.deleteProject);
 
 app.post('/request/:id/:name/:userId',isAuth,controller.sendRequest)
 
