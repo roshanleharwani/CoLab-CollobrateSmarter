@@ -1,161 +1,167 @@
 <% layout("/layouts/boilerplate.ejs")%>
 
-<body class="w-full h-full bg-gray-900">
-    <section class="flex flex-col items-center justify-center w-full h-full">
-        <%- include("../includes/sidebar.ejs")%>
+    <body class="w-full h-full bg-gray-900">
+        <section class="flex flex-col items-center justify-center w-full h-full ">
+            <%- include("../includes/sidebar.ejs")%>
 
-        <div
-            class="flex items-center justify-center w-11/12 h-screen gap-5 p-4 m-4 text-white shadow-2xl rounded-xl drop-shadow-xl backdrop-blur-lg">
-            <div class="flex flex-col items-center justify-center w-1/4 h-full gap-4 bg-gray-800 rounded-xl">
+                <div
+                    class="flex items-center justify-center w-11/12 h-screen gap-5 p-4 m-4 text-white shadow-2xl rounded-xl drop-shadow-xl backdrop-blur-lg">
+                    <div class="flex flex-col items-center justify-center w-1/4 h-full gap-4 bg-gray-800 rounded-xl">
 
-                <div class="bg-white rounded-full size-36 profile"><img src="./images/profile.png" alt=""
-                        class="w-full border-[10px] border-emerald-500 rounded-full">
-                </div>
-                <div class="flex items-center justify-center bg-gray-400 rounded-lg text-md gap-x-1 bg-opacity-45">
-                    <button class="p-1 text-center rounded-s-lg hover:bg-slate-700 ">remove</button>
-                    <div class="p-0">|</div>
-                    <button class="p-1 text-center rounded-e-lg hover:bg-slate-700 ">change</button>
-                </div>
-
-                <button id="general"
-                    class="w-3/4 px-4 py-2 mt-4 text-black bg-gray-600 rounded-lg autofoucs focus:bg-gray-700 focus:text-white focus:outline-white focus:outline">General
-                    Info</button>
-                <button id="about"
-                    class="w-3/4 px-4 py-2 mt-4 text-black bg-gray-600 rounded-lg focus:bg-gray-700 focus:text-white focus:outline-white focus:outline">Change
-                    About</button>
-                <button id="password"
-                    class="w-3/4 px-4 py-2 mt-4 text-black bg-gray-600 rounded-lg focus:bg-gray-700 focus:text-white focus:outline-white focus:outline">Change
-                    Password</button>
-
-            </div>
-
-            <div class="w-3/4 h-full bg-gray-800 rounded-xl">
-
-                <form class="flex-col items-center justify-center w-full p-5 gap-y-5 general-info" action="/saveDetails" method="POST">
-                    <div class="px-8 py-2 text-2xl font-semibold border-b-4 border-white mb-14 ">General Info</div>
-                    <div class="flex w-full gap-4 ">
-
-                        <div class="flex flex-col w-full gap-y-2">
-                            <label class="text-lg text-gray-200 ">Name</label>
-                            <input type="text" name="self[name]" class="w-full p-2 text-lg bg-gray-900 rounded-lg "
-                                placeholder="Your Name">
+                        <div class="bg-white rounded-full size-36 profile"><img src="./images/profile.png" alt=""
+                                class="w-full border-[10px] border-emerald-500 rounded-full">
                         </div>
-                        <div class="flex flex-col w-full gap-y-2">
-                            <label class="text-lg text-gray-200 ">Phone No.</label>
-                            <input type="Name" name="self[number]" class="w-full p-2 text-lg bg-gray-900 rounded-lg "
-                                placeholder="+91 XXXXXXXXX">
+                        <div
+                            class="flex items-center justify-center bg-gray-400 rounded-lg text-md gap-x-1 bg-opacity-45">
+                            <button class="p-1 text-center rounded-s-lg hover:bg-slate-700 ">remove</button>
+                            <div class="p-0">|</div>
+                            <button class="p-1 text-center rounded-e-lg hover:bg-slate-700 ">change</button>
                         </div>
 
-
-                    </div>
-                    <div class="flex w-full gap-4 ">
-                        <div class="flex flex-col w-full gap-y-2">
-                            <label class="text-lg text-gray-200 ">Email</label>
-                            <input type="email" name="self[email]" class="w-full p-2 text-lg bg-gray-900 rounded-lg " readonly
-                                value="roshan.23bce7308@vitapstudent.ac.in">
-                        </div>
-
-
-                        <div class="flex flex-col w-full gap-y-2">
-                            <label class="text-lg text-gray-200 ">Registration No.</label>
-                            <input type="text" name="self[regNo]" class="w-full p-2 text-lg bg-gray-900 rounded-lg " value="23BCE7308">
-                        </div>
-
-                    </div>
-                    <div class="flex w-full gap-4 ">
-                        <div class="flex flex-col w-full gap-y-2">
-                            <label class="text-lg text-gray-200 ">Branch</label>
-                            <input type="text" name="self[branch]" class="w-full p-2 text-lg bg-gray-900 rounded-lg " readonly value="CSE">
-                        </div>
-
-
-                        <div class="flex flex-col w-full gap-y-2">
-                            <label class="text-lg text-gray-200 ">Graduation Year</label>
-                            <input type="number" name="self[year]" class="w-full p-2 text-lg bg-gray-900 rounded-lg " value="2027"
-                                readonly>
-                        </div>
-
-                    </div>
-                    <button
-                        class="self-end p-2 m-5 text-lg duration-300 ease-out bg-indigo-600 rounded-lg hover:bg-indigo-800 hover:scale-105 hover:-translate-y-2">Save
-                        Details</button>
-                </form>
-
-                <div class="flex-col items-center justify-center hidden w-full p-5 gap-y-5 about">
-                    <div class="px-8 py-2 text-2xl font-semibold border-b-4 border-white ">Change About</div>
-                    <div class="flex flex-col w-full gap-4 p-4 mt-14">
-                        <label for="" class="w-full text-lg font-semibold">Your Bio</label>
-                        <textarea name="about" id="" class="h-48 p-2 bg-gray-700 rounded-lg resize-none"
-                            placeholder="Enter about yourself..."></textarea>
-                    </div>
-                    <button
-                        class="self-end p-2 m-5 text-lg duration-300 ease-out bg-indigo-600 rounded-lg hover:bg-indigo-800 hover:scale-105 hover:-translate-y-2">Save
-                        About</button>
-                </div>
-                <div class="flex-col items-center justify-center hidden w-full p-5 gap-y-5 password">
-                    <div class="px-8 py-2 text-2xl font-semibold border-b-4 border-white ">Change Password</div>
-                    <div class="flex flex-col w-full p-4 gap-y-5 ">
-
-
-                        <div class="flex flex-col items-center justify-center w-full gap-y-2">
-                            <label for="" class="w-1/2 text-lg text-white ">Current </label>
-                            <input placeholder="Current Password" type="text"
-                                class="w-1/2 p-2 text-white bg-gray-700 rounded-lg">
-                        </div>
-
-                        <div class="flex flex-col items-center justify-center w-full gap-y-2">
-                            <label for="" class="w-1/2 text-lg text-white ">New </label>
-                            <input placeholder="New Password" type="text"
-                                class="w-1/2 p-2 text-white bg-gray-700 rounded-lg">
-                        </div>
-
-                        <div class="flex flex-col items-center justify-center w-full gap-y-2">
-                            <label for="" class="w-1/2 text-lg text-white ">Confirm </label>
-                            <input placeholder="Confirm New-Password" type="text"
-                                class="w-1/2 p-2 text-white bg-gray-700 rounded-lg">
-                        </div>
-                        <button
-                            class="self-center w-1/3 p-2 m-5 text-lg bg-indigo-600 rounded-lg hover:bg-indigo-800">Change
+                        <button id="general"
+                            class="w-3/4 px-4 py-2 mt-4 text-black bg-gray-600 rounded-lg autofoucs focus:bg-gray-700 focus:text-white focus:outline-white focus:outline">General
+                            Info</button>
+                        <button id="about"
+                            class="w-3/4 px-4 py-2 mt-4 text-black bg-gray-600 rounded-lg focus:bg-gray-700 focus:text-white focus:outline-white focus:outline">Change
+                            About</button>
+                        <button id="password"
+                            class="w-3/4 px-4 py-2 mt-4 text-black bg-gray-600 rounded-lg focus:bg-gray-700 focus:text-white focus:outline-white focus:outline">Change
                             Password</button>
 
                     </div>
-                </div>
+
+                    <div class="w-3/4 h-full bg-gray-800 rounded-xl">
+
+                        <form class="flex-col items-center justify-center w-full p-5 gap-y-5 general-info"
+                            action="/saveDetails" method="POST">
+                            <div class="px-8 py-2 text-2xl font-semibold border-b-4 border-white mb-14 ">General Info
+                            </div>
+                            <div class="flex w-full gap-4 ">
+
+                                <div class="flex flex-col w-full gap-y-2">
+                                    <label class="text-lg text-gray-200 ">Name</label>
+                                    <input type="text" name="self[name]"
+                                        class="w-full p-2 text-lg bg-gray-900 rounded-lg " placeholder="Your Name">
+                                </div>
+                                <div class="flex flex-col w-full gap-y-2">
+                                    <label class="text-lg text-gray-200 ">Phone No.</label>
+                                    <input type="Name" name="self[number]"
+                                        class="w-full p-2 text-lg bg-gray-900 rounded-lg " placeholder="+91 XXXXXXXXX">
+                                </div>
 
 
-            </div>
-
-    </section>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Buttons
-            const generalButton = document.getElementById("general");
-            const aboutButton = document.getElementById("about");
-            const passwordButton = document.getElementById("password");
-
-            // Sections
-            const generalSection = document.querySelector(".general-info");
-            const aboutSection = document.querySelector(".about");
-            const passwordSection = document.querySelector(".password");
-
-            // Helper function to show the selected section and hide others
-            function toggleSection(selectedSection) {
-                // Hide all sections
-                generalSection.classList.add("hidden");
-                aboutSection.classList.add("hidden");
-                passwordSection.classList.add("hidden");
-
-                // Show the selected section
-                selectedSection.classList.remove("hidden");
-            }
-
-            // Event listeners for the buttons
-            generalButton.addEventListener("click", () => toggleSection(generalSection));
-            aboutButton.addEventListener("click", () => toggleSection(aboutSection));
-            passwordButton.addEventListener("click", () => toggleSection(passwordSection));
-        });
-    </script>
+                            </div>
+                            <div class="flex w-full gap-4 ">
+                                <div class="flex flex-col w-full gap-y-2">
+                                    <label class="text-lg text-gray-200 ">Email</label>
+                                    <input type="email" name="self[email]"
+                                        class="w-full p-2 text-lg bg-gray-900 rounded-lg " readonly
+                                        value="roshan.23bce7308@vitapstudent.ac.in">
+                                </div>
 
 
-</body>
+                                <div class="flex flex-col w-full gap-y-2">
+                                    <label class="text-lg text-gray-200 ">Registration No.</label>
+                                    <input type="text" name="self[regNo]"
+                                        class="w-full p-2 text-lg bg-gray-900 rounded-lg " value="23BCE7308">
+                                </div>
 
-</html>
+                            </div>
+                            <div class="flex w-full gap-4 ">
+                                <div class="flex flex-col w-full gap-y-2">
+                                    <label class="text-lg text-gray-200 ">Branch</label>
+                                    <input type="text" name="self[branch]"
+                                        class="w-full p-2 text-lg bg-gray-900 rounded-lg " readonly value="CSE">
+                                </div>
+
+
+                                <div class="flex flex-col w-full gap-y-2">
+                                    <label class="text-lg text-gray-200 ">Graduation Year</label>
+                                    <input type="number" name="self[year]"
+                                        class="w-full p-2 text-lg bg-gray-900 rounded-lg " value="2027" readonly>
+                                </div>
+
+                            </div>
+                            <button
+                                class="self-end p-2 m-5 text-lg duration-300 ease-out bg-indigo-600 rounded-lg hover:bg-indigo-800 hover:scale-105 hover:-translate-y-2">Save
+                                Details</button>
+                        </form>
+
+                        <div class="flex-col items-center justify-center hidden w-full p-5 gap-y-5 about">
+                            <div class="px-8 py-2 text-2xl font-semibold border-b-4 border-white ">Change About</div>
+                            <div class="flex flex-col w-full gap-4 p-4 mt-14">
+                                <label for="" class="w-full text-lg font-semibold">Your Bio</label>
+                                <textarea name="about" id="" class="h-48 p-2 bg-gray-700 rounded-lg resize-none"
+                                    placeholder="Enter about yourself..."></textarea>
+                            </div>
+                            <button
+                                class="self-end p-2 m-5 text-lg duration-300 ease-out bg-indigo-600 rounded-lg hover:bg-indigo-800 hover:scale-105 hover:-translate-y-2">Save
+                                About</button>
+                        </div>
+                        <div class="flex-col items-center justify-center hidden w-full p-5 gap-y-5 password">
+                            <div class="px-8 py-2 text-2xl font-semibold border-b-4 border-white ">Change Password</div>
+                            <div class="flex flex-col w-full p-4 gap-y-5 ">
+
+
+                                <div class="flex flex-col items-center justify-center w-full gap-y-2">
+                                    <label for="" class="w-1/2 text-lg text-white ">Current </label>
+                                    <input placeholder="Current Password" type="text"
+                                        class="w-1/2 p-2 text-white bg-gray-700 rounded-lg">
+                                </div>
+
+                                <div class="flex flex-col items-center justify-center w-full gap-y-2">
+                                    <label for="" class="w-1/2 text-lg text-white ">New </label>
+                                    <input placeholder="New Password" type="text"
+                                        class="w-1/2 p-2 text-white bg-gray-700 rounded-lg">
+                                </div>
+
+                                <div class="flex flex-col items-center justify-center w-full gap-y-2">
+                                    <label for="" class="w-1/2 text-lg text-white ">Confirm </label>
+                                    <input placeholder="Confirm New-Password" type="text"
+                                        class="w-1/2 p-2 text-white bg-gray-700 rounded-lg">
+                                </div>
+                                <button
+                                    class="self-center w-1/3 p-2 m-5 text-lg bg-indigo-600 rounded-lg hover:bg-indigo-800">Change
+                                    Password</button>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+        </section>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                // Buttons
+                const generalButton = document.getElementById("general");
+                const aboutButton = document.getElementById("about");
+                const passwordButton = document.getElementById("password");
+
+                // Sections
+                const generalSection = document.querySelector(".general-info");
+                const aboutSection = document.querySelector(".about");
+                const passwordSection = document.querySelector(".password");
+
+                // Helper function to show the selected section and hide others
+                function toggleSection(selectedSection) {
+                    // Hide all sections
+                    generalSection.classList.add("hidden");
+                    aboutSection.classList.add("hidden");
+                    passwordSection.classList.add("hidden");
+
+                    // Show the selected section
+                    selectedSection.classList.remove("hidden");
+                }
+
+                // Event listeners for the buttons
+                generalButton.addEventListener("click", () => toggleSection(generalSection));
+                aboutButton.addEventListener("click", () => toggleSection(aboutSection));
+                passwordButton.addEventListener("click", () => toggleSection(passwordSection));
+            });
+        </script>
+
+
+    </body>
+
+    </html>

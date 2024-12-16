@@ -497,14 +497,14 @@ exports.sendRequest=async(req,res)=>{
                 to: user.email,
                 subject: 'Collaboration Request Notification',
                 text: `
-     Dear ${user.name},
+Dear ${user.name},
   
 You have received a collaboration request from ${person.name} (Registration Number: ${person.RegNumber.toUpperCase()}) regarding the project "${name}".
   
 Please review the request and take the necessary steps to proceed. If you need any assistance or further details, feel free to reach out.
   
-  Best regards,
-  Team Colab
+Best regards,
+Team Colab
                 `
             };
     
