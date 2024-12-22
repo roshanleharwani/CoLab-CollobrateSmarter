@@ -1,6 +1,7 @@
 <% layout("/layouts/boilerplate.ejs")%>
 
-    <body class="min-h-screen p-8 text-white bg-gray-900">
+    <body class="flex flex-col min-h-screen text-white bg-gray-950" onclick="toggleSidebarOnBody(event) "
+        data-scroll-container>
         <%- include("../includes/sidebar.ejs")%>
             <div class="max-w-3xl mx-auto my-32 space-y-8 ">
                 <div class="flex items-center space-x-6">

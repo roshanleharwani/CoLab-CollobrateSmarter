@@ -1,7 +1,7 @@
 <% layout("/layouts/boilerplate.ejs")%>
 
-    <body class="w-full h-full bg-gray-900">
-        <section class="flex flex-col items-center justify-center w-full h-full ">
+    <body class="flex flex-col min-h-screen bg-gray-950" onclick="toggleSidebarOnBody(event) " data-scroll-container>
+        <section class="flex flex-col items-center justify-center w-full h-full mt-20">
             <%- include("../includes/sidebar.ejs")%>
 
                 <div

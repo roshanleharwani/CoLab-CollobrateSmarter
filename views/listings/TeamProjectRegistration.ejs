@@ -1,6 +1,6 @@
 <% layout("/layouts/boilerplate.ejs")%>
 
-  <body class="bg-gray-900 bg-gradient-to-r from-indigo-500">
+  <body class="bg-gray-900 bg-gradient-to-r from-indigo-500" data-scroll-container>
     <main class="flex-1 h-full overflow-visible md:min-w-full md:p-5">
       <!-- sidebar starts here -->
       <%- include("../includes/sidebar.ejs")%>
@@ -136,16 +136,16 @@
         </section>
     </main>
   </body>
-    <script>
-      function enforceRange(input) {
-        const min = parseInt(input.min, 10);
-        const max = parseInt(input.max, 10);
-        const value = parseInt(input.value, 10);
+  <script>
+    function enforceRange(input) {
+      const min = parseInt(input.min, 10);
+      const max = parseInt(input.max, 10);
+      const value = parseInt(input.value, 10);
 
-        if (value < min) {
-          input.value = min; // Set to minimum if below range
-        } else if (value > max) {
-          input.value = max; // Set to maximum if above range
-        }
+      if (value < min) {
+        input.value = min; // Set to minimum if below range
+      } else if (value > max) {
+        input.value = max; // Set to maximum if above range
       }
-    </script>
+    }
+  </script>
